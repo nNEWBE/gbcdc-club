@@ -36,7 +36,7 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-3 mb-5">
               <div className="relative w-10 h-10 rounded-full overflow-hidden border border-primary/30">
                 <Image
-                  src="/logo.png"
+                  src="/GBCDC logo Icon.png"
                   alt="GBCDC Logo"
                   fill
                   sizes="40px"

@@ -74,7 +74,7 @@ export default function Navbar() {
           >
             <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20 group-hover:border-primary/40 transition-all">
               <Image
-                src="/logo.png"
+                src="/GBCDC logo Icon.png"
                 alt="GBCDC Logo"
                 fill
                 sizes="40px"
