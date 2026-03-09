@@ -99,7 +99,7 @@ export default function ContactSection() {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="flex items-start gap-4 p-5 bg-white rounded-xl border border-neutral-200/80 hover:border-neutral-300 hover:shadow-lg hover:shadow-black/5 transition-all duration-300 group"
+                  className="flex items-start gap-4 p-5 bg-white rounded-xl border border-border hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group"
                 >
                   <div className="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
                     <item.icon size={18} />
@@ -131,7 +131,7 @@ export default function ContactSection() {
                   <a
                     key={social.label}
                     href={social.href}
-                    className="w-11 h-11 rounded-full bg-white border border-neutral-200 hover:bg-primary hover:text-white hover:border-primary flex items-center justify-center transition-all duration-300"
+                    className="w-11 h-11 rounded-full bg-white border border-border hover:bg-primary hover:text-white hover:border-primary flex items-center justify-center transition-all duration-300"
                     aria-label={social.label}
                   >
                     <social.icon size={18} />
@@ -141,7 +141,7 @@ export default function ContactSection() {
             </div>
 
             {/* Map */}
-            <div className="rounded-xl overflow-hidden border border-neutral-200 h-48">
+            <div className="rounded-xl overflow-hidden border border-border h-48">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.3!2d90.26!3d23.86!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDUxJzM2LjAiTiA5MMKwMTUnMzYuMCJF!5e0!3m2!1sen!2sbd!4v1234567890"
                 width="100%"
@@ -164,7 +164,7 @@ export default function ContactSection() {
           >
             <form
               onSubmit={handleSubmit}
-              className="bg-white rounded-2xl border border-neutral-200/80 p-8 md:p-10 shadow-sm"
+              className="bg-white rounded-2xl border border-border p-8 md:p-10 shadow-sm"
             >
               <h3 className="text-xl font-bold text-black mb-6">
                 Send us a message
@@ -186,7 +186,7 @@ export default function ContactSection() {
                       setFormState({ ...formState, name: e.target.value })
                     }
                     placeholder="Your name"
-                    className="w-full px-4 py-3 rounded-xl border border-neutral-200 bg-neutral-50 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/10 transition-all resize-none placeholder:text-neutral-400"
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-neutral-50 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/10 transition-all resize-none placeholder:text-neutral-400"
                     required
                   />
                 </div>
@@ -205,7 +205,7 @@ export default function ContactSection() {
                       setFormState({ ...formState, email: e.target.value })
                     }
                     placeholder="your@email.com"
-                    className="w-full px-4 py-3 rounded-xl border border-neutral-200 bg-neutral-50 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/10 transition-all resize-none placeholder:text-neutral-400"
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-neutral-50 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/10 transition-all resize-none placeholder:text-neutral-400"
                     required
                   />
                 </div>
@@ -226,7 +226,7 @@ export default function ContactSection() {
                     setFormState({ ...formState, subject: e.target.value })
                   }
                   placeholder="What's this about?"
-                  className="w-full px-4 py-3 rounded-xl border border-neutral-200 bg-neutral-50 text-sm focus:outline-none focus:border-black focus:ring-1 focus:ring-black/10 transition-all placeholder:text-neutral-400"
+                  className="w-full px-4 py-3 rounded-xl border border-border bg-neutral-50 text-sm focus:outline-none focus:border-black focus:ring-1 focus:ring-black/10 transition-all placeholder:text-neutral-400"
                   required
                 />
               </div>
@@ -246,7 +246,7 @@ export default function ContactSection() {
                   }
                   placeholder="Write your message here..."
                   rows={5}
-                  className="w-full px-4 py-3 rounded-xl border border-neutral-200 bg-neutral-50 text-sm focus:outline-none focus:border-black focus:ring-1 focus:ring-black/10 transition-all resize-none placeholder:text-neutral-400"
+                  className="w-full px-4 py-3 rounded-xl border border-border bg-neutral-50 text-sm focus:outline-none focus:border-black focus:ring-1 focus:ring-black/10 transition-all resize-none placeholder:text-neutral-400"
                   required
                 />
               </div>

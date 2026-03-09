@@ -159,7 +159,7 @@ export default function CoursesPage() {
           ].map((stat) => (
             <div
               key={stat.label}
-              className="text-center p-5 bg-neutral-50 rounded-2xl border border-neutral-100"
+              className="text-center p-5 bg-neutral-50 rounded-2xl border border-border"
             >
               <stat.icon size={22} className="text-primary mx-auto mb-2" />
               <div className="text-2xl font-bold text-black">{stat.value}</div>
@@ -178,7 +178,7 @@ export default function CoursesPage() {
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.3 + i * 0.08 }}
-              className="group bg-white rounded-2xl border border-neutral-200/80 overflow-hidden hover:border-neutral-300 hover:shadow-xl hover:shadow-black/5 transition-all duration-500"
+              className="group bg-white rounded-2xl border border-border overflow-hidden hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500"
             >
               {/* Course Header */}
               <div className={`${course.color} p-6 text-white relative overflow-hidden`}>

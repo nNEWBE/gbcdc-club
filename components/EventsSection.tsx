@@ -88,7 +88,7 @@ export default function EventsSection() {
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 + i * 0.15 }}
-              className="group relative bg-white rounded-2xl border border-neutral-200 overflow-hidden hover:shadow-2xl hover:shadow-black/8 transition-all duration-500"
+              className="group relative bg-white rounded-2xl border border-border overflow-hidden hover:shadow-2xl hover:shadow-primary/8 transition-all duration-500"
             >
               {/* Event Image */}
               <div className="relative aspect-[16/9] overflow-hidden">

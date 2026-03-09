@@ -149,7 +149,7 @@ export default function ExecutivePage() {
                 initial={{ opacity: 0, y: 40 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.3 + i * 0.15 }}
-                className="group relative bg-white rounded-2xl border border-neutral-200 p-8 md:p-10 hover:shadow-2xl hover:shadow-black/5 transition-all duration-500 overflow-hidden"
+                className="group relative bg-white rounded-2xl border border-border p-8 md:p-10 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 overflow-hidden"
               >
                 {/* Decorative Background */}
                 <div className={`absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl ${config.gradient} opacity-5 rounded-bl-full`} />
@@ -218,7 +218,7 @@ export default function ExecutivePage() {
                 initial={{ opacity: 0, y: 40 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.5 + i * 0.08 }}
-                className="group bg-white rounded-2xl p-6 md:p-7 border border-neutral-200/80 hover:border-neutral-300 hover:shadow-xl hover:shadow-black/5 transition-all duration-500"
+                className="group bg-white rounded-2xl p-6 md:p-7 border border-border hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500"
               >
                 <div className="flex flex-col items-center text-center">
                   <div className={`relative w-20 h-20 rounded-full bg-gradient-to-br ${config.gradient} flex items-center justify-center text-white text-xl font-bold mb-4 group-hover:scale-110 transition-transform duration-500 shadow-lg shadow-black/10`}>

@@ -135,7 +135,7 @@ export default function ContactPage() {
               <a
                 key={item.label}
                 href={item.href}
-                className="group flex items-start gap-4 p-5 bg-neutral-50 rounded-xl border border-neutral-100 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 cursor-pointer"
+                className="group flex items-start gap-4 p-5 bg-neutral-50 rounded-xl border border-border hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 cursor-pointer"
               >
                 <div className="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-all duration-300">
                   <item.icon size={18} />
@@ -164,7 +164,7 @@ export default function ContactPage() {
             >
               <form
                 onSubmit={handleSubmit}
-                className="bg-white rounded-2xl border border-neutral-200/80 p-8 md:p-10 shadow-sm"
+                className="bg-white rounded-2xl border border-border p-8 md:p-10 shadow-sm"
               >
                 <h3 className="text-xl font-bold text-black mb-2">
                   Send us a message
@@ -189,7 +189,7 @@ export default function ContactPage() {
                         setFormState({ ...formState, name: e.target.value })
                       }
                       placeholder="Your name"
-                      className="w-full px-4 py-3 rounded-xl border border-neutral-200 bg-neutral-50 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/10 transition-all resize-none placeholder:text-neutral-400"
+                      className="w-full px-4 py-3 rounded-xl border border-border bg-neutral-50 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/10 transition-all resize-none placeholder:text-neutral-400"
                       required
                     />
                   </div>
@@ -208,7 +208,7 @@ export default function ContactPage() {
                         setFormState({ ...formState, email: e.target.value })
                       }
                       placeholder="your@email.com"
-                      className="w-full px-4 py-3 rounded-xl border border-neutral-200 bg-neutral-50 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/10 transition-all resize-none placeholder:text-neutral-400"
+                      className="w-full px-4 py-3 rounded-xl border border-border bg-neutral-50 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/10 transition-all resize-none placeholder:text-neutral-400"
                       required
                     />
                   </div>
@@ -229,7 +229,7 @@ export default function ContactPage() {
                       setFormState({ ...formState, subject: e.target.value })
                     }
                     placeholder="What's this about?"
-                    className="w-full px-4 py-3 rounded-xl border border-neutral-200 bg-neutral-50 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/10 transition-all placeholder:text-neutral-400"
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-neutral-50 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/10 transition-all placeholder:text-neutral-400"
                     required
                   />
                 </div>
@@ -249,7 +249,7 @@ export default function ContactPage() {
                     }
                     placeholder="Write your message here..."
                     rows={5}
-                    className="w-full px-4 py-3 rounded-xl border border-neutral-200 bg-neutral-50 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/10 transition-all resize-none placeholder:text-neutral-400"
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-neutral-50 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/10 transition-all resize-none placeholder:text-neutral-400"
                     required
                   />
                 </div>
@@ -286,7 +286,7 @@ export default function ContactPage() {
               className="lg:col-span-2 space-y-6"
             >
               {/* Social Links */}
-              <div className="bg-neutral-50 rounded-2xl border border-neutral-100 p-6">
+              <div className="bg-neutral-50 rounded-2xl border border-border p-6">
                 <h4 className="text-sm font-bold text-black uppercase tracking-wider mb-4">
                   Follow Us
                 </h4>
@@ -300,7 +300,7 @@ export default function ContactPage() {
                     <a
                       key={social.label}
                       href={social.href}
-                      className="flex items-center gap-3 p-3 bg-white rounded-xl border border-neutral-200/80 hover:border-primary/30 hover:shadow-md transition-all duration-300 group cursor-pointer"
+                      className="flex items-center gap-3 p-3 bg-white rounded-xl border border-border hover:border-primary/30 hover:shadow-md transition-all duration-300 group cursor-pointer"
                       aria-label={social.label}
                     >
                       <div className="w-9 h-9 rounded-lg bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
@@ -316,7 +316,7 @@ export default function ContactPage() {
               </div>
 
               {/* Map */}
-              <div id="map" className="rounded-2xl overflow-hidden border border-neutral-200 h-56">
+              <div id="map" className="rounded-2xl overflow-hidden border border-border h-56">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.3!2d90.26!3d23.86!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDUxJzM2LjAiTiA5MMKwMTUnMzYuMCJF!5e0!3m2!1sen!2sbd!4v1234567890"
                   width="100%"
@@ -371,7 +371,7 @@ export default function ContactPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.4, delay: 0.2 + i * 0.05 }}
-                className="bg-white rounded-xl border border-neutral-200/80 overflow-hidden"
+                className="bg-white rounded-xl border border-border overflow-hidden"
               >
                 <button
                   onClick={() => setExpandedFaq(expandedFaq === i ? null : i)}
@@ -388,7 +388,7 @@ export default function ContactPage() {
                     animate={{ opacity: 1, height: "auto" }}
                     className="px-5 pb-5"
                   >
-                    <p className="text-sm text-neutral-500 leading-relaxed border-t border-neutral-100 pt-4">
+                    <p className="text-sm text-neutral-500 leading-relaxed border-t border-border pt-4">
                       {faq.a}
                     </p>
                   </motion.div>

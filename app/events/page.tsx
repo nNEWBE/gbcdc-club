@@ -140,7 +140,7 @@ export default function EventsPage() {
           ].map((stat) => (
             <div
               key={stat.label}
-              className="text-center p-5 bg-neutral-50 rounded-2xl border border-neutral-100"
+              className="text-center p-5 bg-neutral-50 rounded-2xl border border-border"
             >
               <div className="text-2xl font-bold text-primary">{stat.value}</div>
               <div className="text-xs font-medium text-neutral-500 mt-1 uppercase tracking-wider">
@@ -186,7 +186,7 @@ export default function EventsPage() {
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.35 + i * 0.1 }}
-              className="group relative bg-white rounded-2xl border border-neutral-200 overflow-hidden hover:shadow-2xl hover:shadow-black/8 transition-all duration-500"
+              className="group relative bg-white rounded-2xl border border-border overflow-hidden hover:shadow-2xl hover:shadow-primary/8 transition-all duration-500"
             >
               {/* Event Image */}
               <div className="relative aspect-[16/9] overflow-hidden">

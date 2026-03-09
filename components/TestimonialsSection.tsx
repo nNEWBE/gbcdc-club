@@ -59,7 +59,7 @@ export default function TestimonialsSection() {
   return (
     <section
       id="testimonials"
-      className="py-24 md:py-32 bg-black text-white"
+      className="py-24 md:py-32 bg-[#020617] text-white"
       ref={ref}
     >
       <div className="section-container">
@@ -69,7 +69,7 @@ export default function TestimonialsSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="inline-block px-4 py-1.5 bg-white/10 text-white/70 text-xs font-semibold uppercase tracking-widest rounded-full mb-4"
+            className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/20 text-primary text-xs font-semibold uppercase tracking-widest rounded-full mb-4"
           >
             Impact
           </motion.span>
@@ -101,8 +101,8 @@ export default function TestimonialsSection() {
         >
           <div className="relative bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10 p-8 md:p-12">
             {/* Quote Icon */}
-            <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-6">
-              <Quote size={20} className="text-white/50" />
+            <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-6">
+              <Quote size={20} className="text-primary" />
             </div>
 
             {/* Testimonial Content */}
@@ -119,7 +119,7 @@ export default function TestimonialsSection() {
 
               <div className="flex items-center gap-4">
                 {/* Avatar */}
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-neutral-400 to-neutral-600 flex items-center justify-center text-white font-bold text-sm">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-emerald-400 flex items-center justify-center text-white font-bold text-sm">
                   {testimonials[currentIndex].name
                     .split(" ")
                     .map((n) => n[0])
@@ -145,7 +145,7 @@ export default function TestimonialsSection() {
                     onClick={() => setCurrentIndex(i)}
                     className={`h-1.5 rounded-full transition-all duration-300 ${
                       i === currentIndex
-                        ? "w-8 bg-white"
+                        ? "w-8 bg-primary"
                         : "w-1.5 bg-white/20 hover:bg-white/40"
                     }`}
                     aria-label={`Go to testimonial ${i + 1}`}
@@ -155,14 +155,14 @@ export default function TestimonialsSection() {
               <div className="flex items-center gap-2">
                 <button
                   onClick={prev}
-                  className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors"
+                  className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-primary/20 hover:border-primary/30 transition-colors cursor-pointer"
                   aria-label="Previous testimonial"
                 >
                   <ChevronLeft size={18} />
                 </button>
                 <button
                   onClick={next}
-                  className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors"
+                  className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-primary/20 hover:border-primary/30 transition-colors cursor-pointer"
                   aria-label="Next testimonial"
                 >
                   <ChevronRight size={18} />

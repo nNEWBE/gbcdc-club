@@ -123,7 +123,7 @@ export default function TeamSection() {
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
-              className="group relative bg-white rounded-2xl p-8 text-center border border-neutral-200/80 hover:border-neutral-300 hover:shadow-xl hover:shadow-black/5 transition-all duration-500"
+              className="group relative bg-white rounded-2xl p-8 text-center border border-border hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500"
             >
               {/* Avatar */}
               <div className="relative w-24 h-24 mx-auto mb-5 rounded-full bg-gradient-to-br from-neutral-800 to-neutral-600 flex items-center justify-center text-white text-2xl font-bold group-hover:scale-110 transition-transform duration-500 shadow-lg shadow-black/10">

@@ -179,7 +179,7 @@ export default function NoticesPage() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.4, delay: 0.6 + i * 0.08 }}
-                className="group bg-white rounded-xl border border-neutral-200/80 p-6 hover:border-neutral-300 hover:shadow-lg hover:shadow-black/5 transition-all duration-400 cursor-pointer"
+                className="group bg-white rounded-xl border border-border p-6 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all duration-400 cursor-pointer"
               >
                 <div className="flex flex-col sm:flex-row sm:items-start gap-4">
                   <div className="w-12 h-12 shrink-0 rounded-xl bg-neutral-100 text-neutral-500 flex items-center justify-center group-hover:bg-primary/10 group-hover:text-primary transition-colors duration-300">

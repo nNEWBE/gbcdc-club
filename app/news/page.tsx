@@ -124,7 +124,7 @@ export default function NewsPage() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="group relative bg-white rounded-3xl border border-neutral-200 overflow-hidden hover:shadow-2xl hover:shadow-black/8 transition-all duration-500 mb-12 cursor-pointer"
+          className="group relative bg-white rounded-3xl border border-border overflow-hidden hover:shadow-2xl hover:shadow-primary/8 transition-all duration-500 mb-12 cursor-pointer"
         >
           <div className="grid lg:grid-cols-2">
             <div className="relative aspect-[16/10] lg:aspect-auto overflow-hidden">
@@ -177,7 +177,7 @@ export default function NewsPage() {
                 initial={{ opacity: 0, y: 40 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.4 + i * 0.08 }}
-                className="group bg-white rounded-2xl border border-neutral-200/80 overflow-hidden hover:border-neutral-300 hover:shadow-xl hover:shadow-black/5 transition-all duration-500 cursor-pointer"
+                className="group bg-white rounded-2xl border border-border overflow-hidden hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 cursor-pointer"
               >
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <Image

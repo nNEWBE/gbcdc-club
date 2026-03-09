@@ -89,7 +89,7 @@ export default function AboutSection() {
             </div>
             {/* Decorative element */}
             <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-neutral-100 rounded-2xl -z-10" />
-            <div className="absolute -top-6 -left-6 w-24 h-24 border-2 border-neutral-200 rounded-2xl -z-10" />
+            <div className="absolute -top-6 -left-6 w-24 h-24 border-2 border-border rounded-2xl -z-10" />
           </motion.div>
 
           {/* Text Content */}

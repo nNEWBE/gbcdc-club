@@ -112,7 +112,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="lg:hidden glass border-t border-neutral-200/50 overflow-hidden"
+            className="lg:hidden glass border-t border-border/50 overflow-hidden"
           >
             <div className="section-container py-6 flex flex-col gap-1">
               {navLinks.map((link, i) => (
@@ -135,7 +135,7 @@ export default function Navbar() {
                   </motion.button>
                 </Link>
               ))}
-              <div className="pt-4 mt-2 border-t border-neutral-200">
+              <div className="pt-4 mt-2 border-t border-border">
                 <Link
                   href="/contact"
                   onClick={handleNavClick}

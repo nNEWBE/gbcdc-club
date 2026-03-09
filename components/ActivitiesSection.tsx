@@ -100,7 +100,7 @@ export default function ActivitiesSection() {
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
-              className="group relative p-8 bg-white rounded-2xl border border-neutral-200/80 hover:border-neutral-300 transition-all duration-500 hover:shadow-xl hover:shadow-black/5 hover:-translate-y-1"
+              className="group relative p-8 bg-white rounded-2xl border border-border hover:border-primary/40 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1"
             >
               {/* Icon */}
               <div className={`w-14 h-14 rounded-2xl ${activity.color} text-white flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-500`}>

@@ -161,7 +161,7 @@ export default function AboutUsPage() {
                   { num: "500+", label: "Members" },
                   { num: "100+", label: "Programs" },
                 ].map((stat) => (
-                  <div key={stat.label} className="text-center p-4 bg-neutral-50 rounded-xl border border-neutral-100">
+                  <div key={stat.label} className="text-center p-4 bg-neutral-50 rounded-xl border border-border">
                     <div className="text-2xl font-bold text-primary">{stat.num}</div>
                     <div className="text-xs font-medium text-neutral-500 mt-1 uppercase tracking-wider">
                       {stat.label}
@@ -180,7 +180,7 @@ export default function AboutUsPage() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
-                className="group p-6 bg-neutral-50 rounded-2xl border border-neutral-100 hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 cursor-default"
+                className="group p-6 bg-neutral-50 rounded-2xl border border-border hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 cursor-default"
               >
                 <div className="w-12 h-12 rounded-xl bg-primary text-white group-hover:bg-white group-hover:text-primary flex items-center justify-center mb-4 transition-all duration-500">
                   <item.icon size={22} />
@@ -217,7 +217,7 @@ export default function AboutUsPage() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.2 + i * 0.08 }}
-                className="group flex items-start gap-4 p-6 bg-white rounded-xl border border-neutral-200/80 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
+                className="group flex items-start gap-4 p-6 bg-white rounded-xl border border-border hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
               >
                 <div className="w-11 h-11 shrink-0 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
                   <value.icon size={20} />
@@ -299,7 +299,7 @@ export default function AboutUsPage() {
             </Link>
             <Link
               href="/executive"
-              className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-black text-sm font-semibold rounded-full border border-neutral-200 hover:border-neutral-300 hover:shadow-md transition-all duration-200 cursor-pointer"
+              className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-black text-sm font-semibold rounded-full border border-border hover:border-primary/40 hover:shadow-md transition-all duration-200 cursor-pointer"
             >
               Meet the Team
             </Link>

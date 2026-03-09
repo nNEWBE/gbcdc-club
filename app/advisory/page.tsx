@@ -111,7 +111,7 @@ export default function AdvisoryPage() {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="mb-12"
         >
-          <div className="group relative bg-neutral-50 rounded-3xl border border-neutral-200 p-8 md:p-12 overflow-hidden hover:shadow-xl hover:shadow-black/5 transition-all duration-500">
+          <div className="group relative bg-neutral-50 rounded-3xl border border-border p-8 md:p-12 overflow-hidden hover:shadow-xl hover:shadow-primary/5 transition-all duration-500">
             {/* Decorative */}
             <div className="absolute -top-20 -right-20 w-60 h-60 bg-primary/5 rounded-full blur-3xl" />
             <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-primary/5 rounded-full blur-2xl" />
@@ -125,10 +125,10 @@ export default function AdvisoryPage() {
                 <p className="text-sm font-semibold text-primary mt-1">{advisors[0].title}</p>
                 <p className="text-xs text-neutral-400 mt-1">{advisors[0].designation}</p>
                 <div className="flex items-center gap-2 mt-4">
-                  <a href="#" className="w-9 h-9 rounded-full bg-white border border-neutral-200 hover:bg-primary hover:text-white hover:border-primary flex items-center justify-center transition-all duration-300 cursor-pointer" aria-label={`${advisors[0].name}'s LinkedIn`}>
+                  <a href="#" className="w-9 h-9 rounded-full bg-white border border-border hover:bg-primary hover:text-white hover:border-primary flex items-center justify-center transition-all duration-300 cursor-pointer" aria-label={`${advisors[0].name}'s LinkedIn`}>
                     <Linkedin size={14} />
                   </a>
-                  <a href="#" className="w-9 h-9 rounded-full bg-white border border-neutral-200 hover:bg-primary hover:text-white hover:border-primary flex items-center justify-center transition-all duration-300 cursor-pointer" aria-label={`Email ${advisors[0].name}`}>
+                  <a href="#" className="w-9 h-9 rounded-full bg-white border border-border hover:bg-primary hover:text-white hover:border-primary flex items-center justify-center transition-all duration-300 cursor-pointer" aria-label={`Email ${advisors[0].name}`}>
                     <Mail size={14} />
                   </a>
                 </div>
@@ -144,7 +144,7 @@ export default function AdvisoryPage() {
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {advisors[0].expertise.map((exp) => (
-                    <span key={exp} className="px-3 py-1.5 bg-white border border-neutral-200 rounded-full text-xs font-medium text-neutral-600">
+                    <span key={exp} className="px-3 py-1.5 bg-white border border-border rounded-full text-xs font-medium text-neutral-600">
                       {exp}
                     </span>
                   ))}
@@ -162,7 +162,7 @@ export default function AdvisoryPage() {
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.4 + i * 0.1 }}
-              className="group bg-white rounded-2xl border border-neutral-200/80 p-6 md:p-7 hover:border-neutral-300 hover:shadow-xl hover:shadow-black/5 transition-all duration-500 overflow-hidden relative"
+              className="group bg-white rounded-2xl border border-border p-6 md:p-7 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 overflow-hidden relative"
             >
               {/* Subtle gradient top */}
               <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${advisor.gradient}`} />
