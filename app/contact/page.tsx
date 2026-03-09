@@ -1,5 +1,4 @@
 "use client";
-
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import Link from "next/link";
@@ -16,7 +15,6 @@ import {
   CheckCircle2,
   ArrowRight,
 } from "lucide-react";
-
 const faqs = [
   {
     q: "How can I become a member of GBCDC?",
@@ -39,7 +37,6 @@ const faqs = [
     a: "Volunteer opportunities are posted on our Notices page. You can also register your interest through the contact form below or visit the club office to join the volunteer roster.",
   },
 ];
-
 export default function ContactPage() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
@@ -51,7 +48,6 @@ export default function ContactPage() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
@@ -60,10 +56,9 @@ export default function ContactPage() {
       setFormState({ name: "", email: "", subject: "", message: "" });
     }, 3000);
   };
-
   return (
     <main className="min-h-screen pt-28 pb-20" ref={ref}>
-      {/* Hero */}
+      {}
       <section className="pb-16 bg-white">
         <div className="section-container">
           <div className="text-center mb-16">
@@ -94,8 +89,7 @@ export default function ContactPage() {
               love to hear from you.
             </motion.p>
           </div>
-
-          {/* Contact Cards */}
+          {}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -147,15 +141,16 @@ export default function ContactPage() {
                   <div className="text-sm font-semibold text-black">
                     {item.value}
                   </div>
-                  <div className="text-xs text-neutral-400 mt-0.5">{item.desc}</div>
+                  <div className="text-xs text-neutral-400 mt-0.5">
+                    {item.desc}
+                  </div>
                 </div>
               </a>
             ))}
           </motion.div>
-
-          {/* Form + Info */}
+          {}
           <div className="grid lg:grid-cols-5 gap-12">
-            {/* Contact Form */}
+            {}
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -170,9 +165,9 @@ export default function ContactPage() {
                   Send us a message
                 </h3>
                 <p className="text-sm text-neutral-400 mb-6">
-                  Fill out the form and our team will get back to you within 24 hours.
+                  Fill out the form and our team will get back to you within 24
+                  hours.
                 </p>
-
                 <div className="grid sm:grid-cols-2 gap-5 mb-5">
                   <div>
                     <label
@@ -213,7 +208,6 @@ export default function ContactPage() {
                     />
                   </div>
                 </div>
-
                 <div className="mb-5">
                   <label
                     htmlFor="contact-subject"
@@ -233,7 +227,6 @@ export default function ContactPage() {
                     required
                   />
                 </div>
-
                 <div className="mb-6">
                   <label
                     htmlFor="contact-message"
@@ -253,7 +246,6 @@ export default function ContactPage() {
                     required
                   />
                 </div>
-
                 <button
                   type="submit"
                   disabled={submitted}
@@ -277,25 +269,44 @@ export default function ContactPage() {
                 </button>
               </form>
             </motion.div>
-
-            {/* Side Info */}
+            {}
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 }}
               className="lg:col-span-2 space-y-6"
             >
-              {/* Social Links */}
+              {}
               <div className="bg-neutral-50 rounded-2xl border border-border p-6">
                 <h4 className="text-sm font-bold text-black uppercase tracking-wider mb-4">
                   Follow Us
                 </h4>
                 <div className="grid grid-cols-2 gap-3">
                   {[
-                    { icon: Facebook, label: "Facebook", handle: "@gbcdc.official", href: "#" },
-                    { icon: Linkedin, label: "LinkedIn", handle: "@gbcdc", href: "#" },
-                    { icon: Instagram, label: "Instagram", handle: "@gbcdc_official", href: "#" },
-                    { icon: MessageCircle, label: "WhatsApp", handle: "Group Chat", href: "#" },
+                    {
+                      icon: Facebook,
+                      label: "Facebook",
+                      handle: "@gbcdc.official",
+                      href: "#",
+                    },
+                    {
+                      icon: Linkedin,
+                      label: "LinkedIn",
+                      handle: "@gbcdc",
+                      href: "#",
+                    },
+                    {
+                      icon: Instagram,
+                      label: "Instagram",
+                      handle: "@gbcdc_official",
+                      href: "#",
+                    },
+                    {
+                      icon: MessageCircle,
+                      label: "WhatsApp",
+                      handle: "Group Chat",
+                      href: "#",
+                    },
                   ].map((social) => (
                     <a
                       key={social.label}
@@ -307,16 +318,22 @@ export default function ContactPage() {
                         <social.icon size={16} />
                       </div>
                       <div>
-                        <div className="text-xs font-semibold text-black">{social.label}</div>
-                        <div className="text-xs text-neutral-400">{social.handle}</div>
+                        <div className="text-xs font-semibold text-black">
+                          {social.label}
+                        </div>
+                        <div className="text-xs text-neutral-400">
+                          {social.handle}
+                        </div>
                       </div>
                     </a>
                   ))}
                 </div>
               </div>
-
-              {/* Map */}
-              <div id="map" className="rounded-2xl overflow-hidden border border-border h-56">
+              {}
+              <div
+                id="map"
+                className="rounded-2xl overflow-hidden border border-border h-56"
+              >
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.3!2d90.26!3d23.86!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDUxJzM2LjAiTiA5MMKwMTUnMzYuMCJF!5e0!3m2!1sen!2sbd!4v1234567890"
                   width="100%"
@@ -328,13 +345,12 @@ export default function ContactPage() {
                   title="GBCDC Location"
                 />
               </div>
-
-              {/* Quick Join CTA */}
+              {}
               <div className="bg-primary rounded-2xl p-6 text-white">
                 <h4 className="text-lg font-bold mb-2">Want to join GBCDC?</h4>
                 <p className="text-sm text-white/80 mb-4 leading-relaxed">
-                  Membership is open to all students. Get access to exclusive events,
-                  workshops, mentorship, and more.
+                  Membership is open to all students. Get access to exclusive
+                  events, workshops, mentorship, and more.
                 </p>
                 <Link
                   href="/about-us"
@@ -348,8 +364,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
-      {/* FAQ Section */}
+      {}
       <section className="py-20 md:py-28 bg-neutral-50">
         <div className="section-container">
           <div className="text-center mb-14">
@@ -363,7 +378,6 @@ export default function ContactPage() {
               Quick answers to the most common questions about GBCDC.
             </p>
           </div>
-
           <div className="max-w-3xl mx-auto space-y-3">
             {faqs.map((faq, i) => (
               <motion.div
@@ -377,8 +391,12 @@ export default function ContactPage() {
                   onClick={() => setExpandedFaq(expandedFaq === i ? null : i)}
                   className="w-full flex items-center justify-between p-5 text-left cursor-pointer"
                 >
-                  <span className="text-sm font-semibold text-black pr-4">{faq.q}</span>
-                  <span className={`shrink-0 w-6 h-6 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-500 transition-transform duration-300 ${expandedFaq === i ? "rotate-45" : ""}`}>
+                  <span className="text-sm font-semibold text-black pr-4">
+                    {faq.q}
+                  </span>
+                  <span
+                    className={`shrink-0 w-6 h-6 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-500 transition-transform duration-300 ${expandedFaq === i ? "rotate-45" : ""}`}
+                  >
                     +
                   </span>
                 </button>

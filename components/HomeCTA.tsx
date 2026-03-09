@@ -1,14 +1,11 @@
 "use client";
-
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
 import { ArrowRight, Users, Calendar, BookOpen, Sparkles } from "lucide-react";
-
 export default function HomeCTA() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
     <section className="py-24 md:py-32 bg-white" ref={ref}>
       <div className="section-container">
@@ -18,28 +15,35 @@ export default function HomeCTA() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="relative overflow-hidden rounded-3xl bg-[#020617] p-12 md:p-20"
         >
-          {/* Gradient orbs */}
+          {}
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4" />
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-emerald-500/15 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-cyan-500/10 rounded-full blur-[80px]" />
-
-          {/* Grid pattern */}
+          {}
           <div className="absolute inset-0">
             <svg className="w-full h-full opacity-[0.03]">
               <defs>
-                <pattern id="ctaGrid" width="40" height="40" patternUnits="userSpaceOnUse">
-                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="1" />
+                <pattern
+                  id="ctaGrid"
+                  width="40"
+                  height="40"
+                  patternUnits="userSpaceOnUse"
+                >
+                  <path
+                    d="M 40 0 L 0 0 0 40"
+                    fill="none"
+                    stroke="white"
+                    strokeWidth="1"
+                  />
                 </pattern>
               </defs>
               <rect width="100%" height="100%" fill="url(#ctaGrid)" />
             </svg>
           </div>
-
-          {/* Top border glow */}
+          {}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-
           <div className="relative z-10 text-center">
-            {/* Badge */}
+            {}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -49,7 +53,6 @@ export default function HomeCTA() {
               <Sparkles size={14} />
               <span>Start Your Journey</span>
             </motion.div>
-
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -61,7 +64,6 @@ export default function HomeCTA() {
                 Future?
               </span>
             </motion.h2>
-
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -71,8 +73,7 @@ export default function HomeCTA() {
               Join 500+ students who are building the skills, network, and
               confidence for a successful career. Your journey starts here.
             </motion.p>
-
-            {/* Stats row */}
+            {}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -89,12 +90,13 @@ export default function HomeCTA() {
                   className="flex items-center gap-2.5 px-5 py-2.5 bg-white/5 rounded-full border border-white/10"
                 >
                   <item.icon size={16} className="text-primary" />
-                  <span className="text-sm font-medium text-neutral-300">{item.label}</span>
+                  <span className="text-sm font-medium text-neutral-300">
+                    {item.label}
+                  </span>
                 </div>
               ))}
             </motion.div>
-
-            {/* CTA Buttons */}
+            {}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -106,7 +108,10 @@ export default function HomeCTA() {
                 className="group inline-flex items-center gap-2 px-8 py-4 bg-primary text-white text-base font-semibold rounded-full hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/30 transition-all duration-200 active:scale-95 cursor-pointer"
               >
                 Join GBCDC Now
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                <ArrowRight
+                  size={18}
+                  className="group-hover:translate-x-1 transition-transform"
+                />
               </Link>
               <Link
                 href="/executive"

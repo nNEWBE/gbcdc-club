@@ -5,7 +5,6 @@ import HomeEvents from "@/components/HomeEvents";
 import GallerySection from "@/components/GallerySection";
 import HomeCTA from "@/components/HomeCTA";
 import TestimonialsSection from "@/components/TestimonialsSection";
-
 export default function Home() {
   return (
     <>

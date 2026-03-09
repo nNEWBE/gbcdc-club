@@ -1,10 +1,16 @@
 "use client";
-
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Calendar, MapPin, ArrowUpRight } from "lucide-react";
+import {
+  Calendar,
+  MapPin,
+  ArrowUpRight,
+  Sparkles,
+  Timer,
+  CheckCircle2,
+} from "lucide-react";
 import Image from "next/image";
-
+import Badge from "./Badge";
 const events = [
   {
     title: "Career Bootcamp 2025",
@@ -43,24 +49,22 @@ const events = [
     status: "Completed",
   },
 ];
-
 export default function EventsSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
     <section id="events" className="py-24 md:py-32 bg-white" ref={ref}>
       <div className="section-container">
-        {/* Section Header */}
+        {}
         <div className="text-center mb-16">
-          <motion.span
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="inline-block px-4 py-1.5 bg-neutral-100 text-neutral-600 text-xs font-semibold uppercase tracking-widest rounded-full mb-4"
+            className="mb-4 flex justify-center"
           >
-            Events
-          </motion.span>
+            <Badge label="Events" icon={Sparkles} variant="primary" />
+          </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -79,8 +83,7 @@ export default function EventsSection() {
             grow and connect.
           </motion.p>
         </div>
-
-        {/* Events Grid */}
+        {}
         <div className="grid md:grid-cols-2 gap-8">
           {events.map((event, i) => (
             <motion.div
@@ -90,7 +93,7 @@ export default function EventsSection() {
               transition={{ duration: 0.6, delay: 0.3 + i * 0.15 }}
               className="group relative bg-white rounded-2xl border border-border overflow-hidden hover:shadow-2xl hover:shadow-primary/8 transition-all duration-500"
             >
-              {/* Event Image */}
+              {}
               <div className="relative aspect-[16/9] overflow-hidden">
                 <Image
                   src={event.image}
@@ -100,19 +103,21 @@ export default function EventsSection() {
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                {/* Status Badge */}
-                <div
-                  className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-semibold ${
-                    event.status === "Upcoming"
-                      ? "bg-black text-white"
-                      : "bg-white/90 text-neutral-700"
-                  }`}
-                >
-                  {event.status}
+                {}
+                <div className="absolute top-4 right-4 scale-90 origin-top-right">
+                  <Badge
+                    label={event.status}
+                    icon={event.status === "Upcoming" ? Timer : CheckCircle2}
+                    variant={event.status === "Upcoming" ? "primary" : "ghost"}
+                    className={
+                      event.status === "Upcoming"
+                        ? "bg-primary text-white border-transparent"
+                        : ""
+                    }
+                  />
                 </div>
               </div>
-
-              {/* Event Content */}
+              {}
               <div className="p-6">
                 <div className="flex items-center gap-4 text-sm text-neutral-500 mb-3">
                   <span className="flex items-center gap-1.5">
@@ -130,7 +135,6 @@ export default function EventsSection() {
                 <p className="text-neutral-500 text-sm leading-relaxed">
                   {event.description}
                 </p>
-
                 <button className="mt-4 flex items-center gap-1.5 text-sm font-semibold text-black hover:text-neutral-600 transition-colors">
                   View Details
                   <ArrowUpRight

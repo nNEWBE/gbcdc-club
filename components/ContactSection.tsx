@@ -1,5 +1,4 @@
 "use client";
-
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import {
@@ -12,7 +11,6 @@ import {
   Instagram,
   MessageCircle,
 } from "lucide-react";
-
 export default function ContactSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -23,21 +21,18 @@ export default function ContactSection() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
     setSubmitted(true);
     setTimeout(() => {
       setSubmitted(false);
       setFormState({ name: "", email: "", subject: "", message: "" });
     }, 3000);
   };
-
   return (
     <section id="contact" className="py-24 md:py-32 bg-neutral-50" ref={ref}>
       <div className="section-container">
-        {/* Section Header */}
+        {}
         <div className="text-center mb-16">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
@@ -65,16 +60,15 @@ export default function ContactSection() {
             Reach out through any of the channels below.
           </motion.p>
         </div>
-
         <div className="grid lg:grid-cols-5 gap-12">
-          {/* Contact Info */}
+          {}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
             className="lg:col-span-2 space-y-8"
           >
-            {/* Contact Cards */}
+            {}
             <div className="space-y-4">
               {[
                 {
@@ -115,8 +109,7 @@ export default function ContactSection() {
                 </a>
               ))}
             </div>
-
-            {/* Social Links */}
+            {}
             <div>
               <h4 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-4">
                 Follow Us
@@ -139,8 +132,7 @@ export default function ContactSection() {
                 ))}
               </div>
             </div>
-
-            {/* Map */}
+            {}
             <div className="rounded-xl overflow-hidden border border-border h-48">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.3!2d90.26!3d23.86!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDUxJzM2LjAiTiA5MMKwMTUnMzYuMCJF!5e0!3m2!1sen!2sbd!4v1234567890"
@@ -154,8 +146,7 @@ export default function ContactSection() {
               />
             </div>
           </motion.div>
-
-          {/* Contact Form */}
+          {}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -169,7 +160,6 @@ export default function ContactSection() {
               <h3 className="text-xl font-bold text-black mb-6">
                 Send us a message
               </h3>
-
               <div className="grid sm:grid-cols-2 gap-5 mb-5">
                 <div>
                   <label
@@ -210,7 +200,6 @@ export default function ContactSection() {
                   />
                 </div>
               </div>
-
               <div className="mb-5">
                 <label
                   htmlFor="contact-subject"
@@ -230,7 +219,6 @@ export default function ContactSection() {
                   required
                 />
               </div>
-
               <div className="mb-6">
                 <label
                   htmlFor="contact-message"
@@ -250,7 +238,6 @@ export default function ContactSection() {
                   required
                 />
               </div>
-
               <button
                 type="submit"
                 disabled={submitted}
@@ -262,8 +249,18 @@ export default function ContactSection() {
               >
                 {submitted ? (
                   <>
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
                     </svg>
                     Message Sent!
                   </>

@@ -1,11 +1,9 @@
 "use client";
-
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import Image from "next/image";
 import { X } from "lucide-react";
 import { AnimatePresence } from "framer-motion";
-
 const galleryImages = [
   {
     src: "/gallery-1.png",
@@ -38,16 +36,14 @@ const galleryImages = [
     category: "Activity",
   },
 ];
-
 export default function GallerySection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-
   return (
     <section id="gallery" className="py-24 md:py-32 bg-white" ref={ref}>
       <div className="section-container">
-        {/* Section Header */}
+        {}
         <div className="text-center mb-16">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
@@ -75,8 +71,7 @@ export default function GallerySection() {
             create together.
           </motion.p>
         </div>
-
-        {/* Masonry Grid */}
+        {}
         <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
           {galleryImages.map((image, i) => (
             <motion.div
@@ -92,8 +87,8 @@ export default function GallerySection() {
                   i % 3 === 0
                     ? "aspect-[4/5]"
                     : i % 3 === 1
-                    ? "aspect-[4/3]"
-                    : "aspect-square"
+                      ? "aspect-[4/3]"
+                      : "aspect-square"
                 }`}
               >
                 <Image
@@ -103,7 +98,7 @@ export default function GallerySection() {
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                {/* Overlay */}
+                {}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-500 flex items-end">
                   <div className="p-5 w-full translate-y-full group-hover:translate-y-0 transition-transform duration-500">
                     <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm text-white text-xs font-medium rounded-full mb-2">
@@ -119,8 +114,7 @@ export default function GallerySection() {
           ))}
         </div>
       </div>
-
-      {/* Lightbox */}
+      {}
       <AnimatePresence>
         {selectedImage && (
           <motion.div

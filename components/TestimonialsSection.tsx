@@ -1,9 +1,8 @@
 "use client";
-
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
-
+import { Quote, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
+import Badge from "./Badge";
 const testimonials = [
   {
     name: "Aminul Islam",
@@ -41,21 +40,18 @@ const testimonials = [
     rating: 5,
   },
 ];
-
 export default function TestimonialsSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [currentIndex, setCurrentIndex] = useState(0);
-
   const next = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
   };
   const prev = () => {
     setCurrentIndex(
-      (prev) => (prev - 1 + testimonials.length) % testimonials.length
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length,
     );
   };
-
   return (
     <section
       id="testimonials"
@@ -63,16 +59,16 @@ export default function TestimonialsSection() {
       ref={ref}
     >
       <div className="section-container">
-        {/* Section Header */}
+        {}
         <div className="text-center mb-16">
-          <motion.span
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/20 text-primary text-xs font-semibold uppercase tracking-widest rounded-full mb-4"
+            className="mb-4"
           >
-            Impact
-          </motion.span>
+            <Badge label="Impact" icon={Sparkles} variant="primary" />
+          </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -91,8 +87,7 @@ export default function TestimonialsSection() {
             GBCDC.
           </motion.p>
         </div>
-
-        {/* Testimonial Carousel */}
+        {}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -100,12 +95,11 @@ export default function TestimonialsSection() {
           className="max-w-3xl mx-auto"
         >
           <div className="relative bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10 p-8 md:p-12">
-            {/* Quote Icon */}
+            {}
             <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-6">
               <Quote size={20} className="text-primary" />
             </div>
-
-            {/* Testimonial Content */}
+            {}
             <motion.div
               key={currentIndex}
               initial={{ opacity: 0, x: 20 }}
@@ -116,9 +110,8 @@ export default function TestimonialsSection() {
               <blockquote className="text-lg md:text-xl text-white/90 leading-relaxed mb-8">
                 &ldquo;{testimonials[currentIndex].quote}&rdquo;
               </blockquote>
-
               <div className="flex items-center gap-4">
-                {/* Avatar */}
+                {}
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-emerald-400 flex items-center justify-center text-white font-bold text-sm">
                   {testimonials[currentIndex].name
                     .split(" ")
@@ -135,8 +128,7 @@ export default function TestimonialsSection() {
                 </div>
               </div>
             </motion.div>
-
-            {/* Navigation */}
+            {}
             <div className="flex items-center justify-between mt-8 pt-6 border-t border-white/10">
               <div className="flex items-center gap-2">
                 {testimonials.map((_, i) => (

@@ -1,35 +1,189 @@
 "use client";
-
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
-
+import { ArrowRight, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect, useCallback, useRef } from "react";
+import Badge from "./Badge";
+const slides = [
+  {
+    image: "/hero-bg.png",
+    subtitle: "Empowering Future Leaders",
+    title: "Gono Bishwabidyalay",
+    highlight: "Career Development Club",
+    description:
+      "Empowering students with skills, leadership, and career opportunities for a brighter future.",
+    cta: { label: "Join the Club", href: "/contact" },
+    ctaSecondary: { label: "Explore Courses", href: "/courses" },
+  },
+  {
+    image: "/gallery-1.png",
+    subtitle: "Workshops & Training",
+    title: "Learn From the",
+    highlight: "Industry Experts",
+    description:
+      "Hands-on workshops, bootcamps, and training sessions designed to build real-world professional skills.",
+    cta: { label: "View Courses", href: "/courses" },
+    ctaSecondary: { label: "See Events", href: "/events" },
+  },
+  {
+    image: "/gallery-4.png",
+    subtitle: "Events & Seminars",
+    title: "Connect, Grow &",
+    highlight: "Build Your Network",
+    description:
+      "Networking events, career fairs, and seminars with industry leaders and successful alumni.",
+    cta: { label: "Upcoming Events", href: "/events" },
+    ctaSecondary: { label: "About Us", href: "/about-us" },
+  },
+  {
+    image: "/gallery-2.png",
+    subtitle: "Community & Impact",
+    title: "500+ Members",
+    highlight: "One Mission",
+    description:
+      "A thriving community of ambitious students committed to professional growth and mutual success.",
+    cta: { label: "Join GBCDC", href: "/contact" },
+    ctaSecondary: { label: "Meet Our Team", href: "/executive" },
+  },
+];
+const kenBurns = [
+  {
+    initial: { scale: 1.15, x: "2%", y: "2%" },
+    animate: { scale: 1, x: "-1%", y: "-1%" },
+  },
+  {
+    initial: { scale: 1.2, x: "-2%", y: "1%" },
+    animate: { scale: 1.05, x: "1%", y: "-1%" },
+  },
+  {
+    initial: { scale: 1.1, x: "1%", y: "-2%" },
+    animate: { scale: 1.18, x: "-1%", y: "1%" },
+  },
+  {
+    initial: { scale: 1.18, x: "-1%", y: "-1%" },
+    animate: { scale: 1.05, x: "2%", y: "2%" },
+  },
+];
 export default function Hero() {
+  const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const resetTimer = useCallback(() => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      setDirection(1);
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }, 6000);
+  }, []);
+  const goTo = useCallback(
+    (index: number) => {
+      setDirection(index > current ? 1 : -1);
+      setCurrent(index);
+      resetTimer();
+    },
+    [current, resetTimer],
+  );
+  const next = useCallback(() => {
+    setDirection(1);
+    setCurrent((prev) => (prev + 1) % slides.length);
+    resetTimer();
+  }, [resetTimer]);
+  const prev = useCallback(() => {
+    setDirection(-1);
+    setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
+    resetTimer();
+  }, [resetTimer]);
+  useEffect(() => {
+    resetTimer();
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [resetTimer]);
+  const slide = slides[current];
+  const kb = kenBurns[current];
+  const bgVariants = {
+    enter: (dir: number) => ({
+      opacity: 0,
+      x: dir > 0 ? "8%" : "-8%",
+    }),
+    center: {
+      opacity: 1,
+      x: "0%",
+      transition: { duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] as const },
+    },
+    exit: (dir: number) => ({
+      opacity: 0,
+      x: dir > 0 ? "-5%" : "5%",
+      transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const },
+    }),
+  };
+  const contentContainer = {
+    enter: { opacity: 0 },
+    center: {
+      opacity: 1,
+      transition: { staggerChildren: 0.12, delayChildren: 0.3 },
+    },
+    exit: {
+      opacity: 0,
+      transition: { duration: 0.3, ease: "easeIn" as const },
+    },
+  };
+  const contentChild = {
+    enter: { opacity: 0, y: 40, filter: "blur(6px)" },
+    center: {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] as const },
+    },
+    exit: {
+      opacity: 0,
+      y: -20,
+      filter: "blur(4px)",
+      transition: { duration: 0.3 },
+    },
+  };
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/hero-bg.png"
-          alt="GBCDC Hero Background"
-          fill
-          sizes="100vw"
-          className="object-cover"
-          priority
-          quality={90}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-primary/30" />
-        {/* Animated grain overlay */}
-        <div className="absolute inset-0 opacity-[0.03] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNhKSIvPjwvc3ZnPg==')]" />
-      </div>
-
-      {/* Grid pattern overlay */}
-      <div className="absolute inset-0 z-[1]">
-        <svg className="w-full h-full opacity-[0.04]">
+      {}
+      <AnimatePresence initial={false} custom={direction} mode="popLayout">
+        <motion.div
+          key={current}
+          custom={direction}
+          variants={bgVariants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          className="absolute inset-0 z-0"
+        >
+          {}
+          <motion.div
+            initial={kb.initial}
+            animate={kb.animate}
+            transition={{ duration: 7, ease: "linear" }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={slide.image}
+              alt={slide.highlight}
+              fill
+              sizes="100vw"
+              className="object-cover"
+              priority={current === 0}
+              quality={90}
+            />
+          </motion.div>
+          {}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/75" />
+        </motion.div>
+      </AnimatePresence>
+      {}
+      <div className="absolute inset-0 z-[1] pointer-events-none">
+        <svg className="w-full h-full opacity-[0.03]">
           <defs>
             <pattern
               id="heroGrid"
@@ -48,76 +202,73 @@ export default function Hero() {
           <rect width="100%" height="100%" fill="url(#heroGrid)" />
         </svg>
       </div>
-
-      <div className="relative z-10 section-container text-center pt-20">
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="inline-flex items-center gap-2 px-4 py-2 mb-8 bg-primary/20 backdrop-blur-md rounded-full border border-primary/30 text-white/90 text-sm"
-        >
-          <Sparkles size={14} className="text-primary" />
-          <span>Empowering Future Leaders</span>
-        </motion.div>
-
-        {/* Title */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight max-w-5xl mx-auto"
-        >
-          Gono Bishwabidyalay
-          <br />
-          <span className="bg-gradient-to-r from-primary via-emerald-300 to-cyan-300 bg-clip-text text-transparent">
-            Career Development Club
-          </span>
-        </motion.h1>
-
-        {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
-          className="mt-6 text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed"
-        >
-          Empowering students with skills, leadership, and career opportunities
-          for a brighter future. Join us in building the next generation of
-          professionals.
-        </motion.p>
-
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.7 }}
-          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          <Link
-            href="/contact"
-            className="group flex items-center gap-2 px-8 py-4 bg-primary text-white text-base font-semibold rounded-full hover:bg-primary/90 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 active:scale-95"
+      {}
+      <div className="relative z-10 section-container text-center">
+        <AnimatePresence mode="wait" custom={direction}>
+          <motion.div
+            key={current}
+            variants={contentContainer}
+            initial="enter"
+            animate="center"
+            exit="exit"
           >
-            Join the Club
-            <ArrowRight
-              size={18}
-              className="group-hover:translate-x-1 transition-transform"
-            />
-          </Link>
-          <Link
-            href="/courses"
-            className="flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-sm text-white text-base font-medium rounded-full border border-white/20 hover:bg-white/20 transition-all duration-300 active:scale-95"
-          >
-            Explore Courses
-          </Link>
-        </motion.div>
-
-        {/* Stats */}
+            {}
+            <motion.div variants={contentChild} className="mb-8">
+              <Badge
+                label={slide.subtitle}
+                icon={Sparkles}
+                variant="primary"
+                className="bg-primary/20 backdrop-blur-md border-primary/30 text-white animate-pulse-slow"
+              />
+            </motion.div>
+            {}
+            <motion.h1
+              variants={contentChild}
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight max-w-5xl mx-auto"
+            >
+              {slide.title}
+              <br />
+              <span className="bg-gradient-to-r from-primary via-emerald-300 to-cyan-300 bg-clip-text text-transparent">
+                {slide.highlight}
+              </span>
+            </motion.h1>
+            {}
+            <motion.p
+              variants={contentChild}
+              className="mt-6 text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed"
+            >
+              {slide.description}
+            </motion.p>
+            {}
+            <motion.div
+              variants={contentChild}
+              className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+            >
+              <Link
+                href={slide.cta.href}
+                className="group flex items-center gap-2 px-8 py-4 bg-primary text-white text-base font-semibold rounded-full hover:bg-primary/90 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 active:scale-95 cursor-pointer"
+              >
+                {slide.cta.label}
+                <ArrowRight
+                  size={18}
+                  className="group-hover:translate-x-1 transition-transform"
+                />
+              </Link>
+              <Link
+                href={slide.ctaSecondary.href}
+                className="flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-sm text-white text-base font-medium rounded-full border border-white/20 hover:bg-white/20 transition-all duration-300 active:scale-95 cursor-pointer"
+              >
+                {slide.ctaSecondary.label}
+              </Link>
+            </motion.div>
+          </motion.div>
+        </AnimatePresence>
+        {}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.0 }}
-          className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto"
+          className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto pb-16"
         >
           {[
             { value: "500+", label: "Members" },
@@ -136,25 +287,52 @@ export default function Hero() {
           ))}
         </motion.div>
       </div>
-
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent z-10" />
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-20"
+      {}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => goTo(i)}
+            className="relative h-1 rounded-full overflow-hidden cursor-pointer group"
+            style={{ width: i === current ? 48 : 12 }}
+            aria-label={`Go to slide ${i + 1}`}
+          >
+            <div
+              className={`absolute inset-0 rounded-full transition-all duration-500 ${
+                i === current
+                  ? "bg-white/30"
+                  : "bg-white/20 group-hover:bg-white/40"
+              }`}
+            />
+            {i === current && (
+              <motion.div
+                className="absolute inset-0 rounded-full bg-primary"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 6, ease: "linear" }}
+                style={{ transformOrigin: "left" }}
+              />
+            )}
+          </button>
+        ))}
+      </div>
+      {}
+      <button
+        onClick={prev}
+        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-black/20 backdrop-blur-md border border-white/10 text-white/70 flex items-center justify-center hover:bg-black/40 hover:text-white transition-all duration-200 cursor-pointer active:scale-90"
+        aria-label="Previous slide"
       >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="w-6 h-10 rounded-full border-2 border-primary/50 flex items-start justify-center pt-2"
-        >
-          <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-        </motion.div>
-      </motion.div>
+        <ChevronLeft size={22} />
+      </button>
+      <button
+        onClick={next}
+        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-black/20 backdrop-blur-md border border-white/10 text-white/70 flex items-center justify-center hover:bg-black/40 hover:text-white transition-all duration-200 cursor-pointer active:scale-90"
+        aria-label="Next slide"
+      >
+        <ChevronRight size={22} />
+      </button>
+      {}
+      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent z-10" />
     </section>
   );
 }

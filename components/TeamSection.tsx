@@ -1,9 +1,7 @@
 "use client";
-
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Linkedin, Facebook, Mail } from "lucide-react";
-
 const teamMembers = [
   {
     name: "Md. Rakibul Hasan",
@@ -78,15 +76,13 @@ const teamMembers = [
     },
   },
 ];
-
 export default function TeamSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
     <section id="team" className="py-24 md:py-32 bg-neutral-50" ref={ref}>
       <div className="section-container">
-        {/* Section Header */}
+        {}
         <div className="text-center mb-16">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
@@ -114,8 +110,7 @@ export default function TeamSection() {
             opportunities for every member.
           </motion.p>
         </div>
-
-        {/* Team Grid */}
+        {}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {teamMembers.map((member, i) => (
             <motion.div
@@ -125,14 +120,13 @@ export default function TeamSection() {
               transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
               className="group relative bg-white rounded-2xl p-8 text-center border border-border hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500"
             >
-              {/* Avatar */}
+              {}
               <div className="relative w-24 h-24 mx-auto mb-5 rounded-full bg-gradient-to-br from-neutral-800 to-neutral-600 flex items-center justify-center text-white text-2xl font-bold group-hover:scale-110 transition-transform duration-500 shadow-lg shadow-black/10">
                 {member.initials}
-                {/* Ring decoration */}
+                {}
                 <div className="absolute inset-0 rounded-full border-2 border-neutral-300/50 group-hover:border-black/20 transition-colors duration-500 scale-110" />
               </div>
-
-              {/* Info */}
+              {}
               <h3 className="text-lg font-bold text-black">{member.name}</h3>
               <p className="text-sm font-medium text-neutral-500 mt-1 uppercase tracking-wider">
                 {member.position}
@@ -140,8 +134,7 @@ export default function TeamSection() {
               <p className="text-sm text-neutral-400 mt-3 leading-relaxed">
                 {member.bio}
               </p>
-
-              {/* Social Links */}
+              {}
               <div className="mt-5 flex items-center justify-center gap-3">
                 <a
                   href={member.social.linkedin}

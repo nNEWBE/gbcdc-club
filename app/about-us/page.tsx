@@ -1,5 +1,4 @@
 "use client";
-
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
@@ -20,7 +19,6 @@ import {
   Lightbulb,
   Shield,
 } from "lucide-react";
-
 const highlights = [
   {
     icon: Target,
@@ -47,32 +45,88 @@ const highlights = [
       "Career development is essential for students to transition from academia to the professional world. GBCDC makes that transition seamless and empowering.",
   },
 ];
-
 const milestones = [
-  { year: "2021", title: "Club Founded", description: "GBCDC was established by a group of passionate students with a vision for career empowerment." },
-  { year: "2022", title: "First Career Fair", description: "Successfully organized the first Career Fair with 15 employers and 200+ attendees." },
-  { year: "2023", title: "500 Members Milestone", description: "The club reached 500 active members across 12 departments of the university." },
-  { year: "2024", title: "Industry Partnerships", description: "Established partnerships with 10 leading organizations for internship and mentorship programs." },
-  { year: "2025", title: "Best Club Award", description: "Recognized as the Best Career Development Club by the National University Clubs Association." },
-  { year: "2026", title: "Digital Expansion", description: "Launched online learning platform, alumni network portal, and expanded to cross-university collaborations." },
+  {
+    year: "2021",
+    title: "Club Founded",
+    description:
+      "GBCDC was established by a group of passionate students with a vision for career empowerment.",
+  },
+  {
+    year: "2022",
+    title: "First Career Fair",
+    description:
+      "Successfully organized the first Career Fair with 15 employers and 200+ attendees.",
+  },
+  {
+    year: "2023",
+    title: "500 Members Milestone",
+    description:
+      "The club reached 500 active members across 12 departments of the university.",
+  },
+  {
+    year: "2024",
+    title: "Industry Partnerships",
+    description:
+      "Established partnerships with 10 leading organizations for internship and mentorship programs.",
+  },
+  {
+    year: "2025",
+    title: "Best Club Award",
+    description:
+      "Recognized as the Best Career Development Club by the National University Clubs Association.",
+  },
+  {
+    year: "2026",
+    title: "Digital Expansion",
+    description:
+      "Launched online learning platform, alumni network portal, and expanded to cross-university collaborations.",
+  },
 ];
-
 const values = [
-  { icon: Heart, title: "Empowerment", description: "We believe in empowering every student to reach their full potential." },
-  { icon: Shield, title: "Integrity", description: "We uphold the highest standards of honesty and transparency in all operations." },
-  { icon: Users, title: "Inclusivity", description: "Every student, regardless of background, has equal access to opportunities." },
-  { icon: Lightbulb, title: "Innovation", description: "We continuously evolve our programs to stay relevant in a changing world." },
-  { icon: Globe, title: "Community", description: "We foster a strong sense of belonging and mutual support among members." },
-  { icon: BookOpen, title: "Learning", description: "We promote lifelong learning as the foundation for professional success." },
+  {
+    icon: Heart,
+    title: "Empowerment",
+    description:
+      "We believe in empowering every student to reach their full potential.",
+  },
+  {
+    icon: Shield,
+    title: "Integrity",
+    description:
+      "We uphold the highest standards of honesty and transparency in all operations.",
+  },
+  {
+    icon: Users,
+    title: "Inclusivity",
+    description:
+      "Every student, regardless of background, has equal access to opportunities.",
+  },
+  {
+    icon: Lightbulb,
+    title: "Innovation",
+    description:
+      "We continuously evolve our programs to stay relevant in a changing world.",
+  },
+  {
+    icon: Globe,
+    title: "Community",
+    description:
+      "We foster a strong sense of belonging and mutual support among members.",
+  },
+  {
+    icon: BookOpen,
+    title: "Learning",
+    description:
+      "We promote lifelong learning as the foundation for professional success.",
+  },
 ];
-
 export default function AboutUsPage() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
-
   return (
     <main className="min-h-screen pt-28 pb-20" ref={ref}>
-      {/* Hero Section */}
+      {}
       <section className="py-16 md:py-24 bg-white">
         <div className="section-container">
           <div className="text-center mb-16">
@@ -99,13 +153,13 @@ export default function AboutUsPage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="mt-4 text-neutral-500 text-lg max-w-3xl mx-auto leading-relaxed"
             >
-              GBCDC is the premier student-led career development organization at
-              Gono Bishwabidyalay, dedicated to shaping future leaders through
-              mentorship, skill-building, and real-world professional experiences.
+              GBCDC is the premier student-led career development organization
+              at Gono Bishwabidyalay, dedicated to shaping future leaders
+              through mentorship, skill-building, and real-world professional
+              experiences.
             </motion.p>
           </div>
-
-          {/* Two-Column Layout */}
+          {}
           <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -126,7 +180,6 @@ export default function AboutUsPage() {
               <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/5 rounded-2xl -z-10" />
               <div className="absolute -top-6 -left-6 w-24 h-24 border-2 border-primary/20 rounded-2xl -z-10" />
             </motion.div>
-
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -137,32 +190,41 @@ export default function AboutUsPage() {
               </h2>
               <div className="space-y-4 text-neutral-600 leading-relaxed">
                 <p>
-                  The <strong className="text-black">Gono Bishwabidyalay Career Development Club (GBCDC)</strong> is
-                  a student-led organization committed to fostering professional
-                  growth and career readiness among university students.
+                  The{" "}
+                  <strong className="text-black">
+                    Gono Bishwabidyalay Career Development Club (GBCDC)
+                  </strong>{" "}
+                  is a student-led organization committed to fostering
+                  professional growth and career readiness among university
+                  students.
                 </p>
                 <p>
-                  Founded with a vision to empower students beyond the classroom,
-                  GBCDC organizes workshops, seminars, networking events, and
-                  skill development programs that prepare students for the
-                  competitive job market.
+                  Founded with a vision to empower students beyond the
+                  classroom, GBCDC organizes workshops, seminars, networking
+                  events, and skill development programs that prepare students
+                  for the competitive job market.
                 </p>
                 <p>
                   Our club serves as a bridge between academic knowledge and
-                  real-world professional skills, helping students discover their
-                  potential and chart their career paths with confidence and purpose.
+                  real-world professional skills, helping students discover
+                  their potential and chart their career paths with confidence
+                  and purpose.
                 </p>
               </div>
-
-              {/* Quick Stats */}
+              {}
               <div className="mt-8 grid grid-cols-3 gap-4">
                 {[
                   { num: "5+", label: "Years Active" },
                   { num: "500+", label: "Members" },
                   { num: "100+", label: "Programs" },
                 ].map((stat) => (
-                  <div key={stat.label} className="text-center p-4 bg-neutral-50 rounded-xl border border-border">
-                    <div className="text-2xl font-bold text-primary">{stat.num}</div>
+                  <div
+                    key={stat.label}
+                    className="text-center p-4 bg-neutral-50 rounded-xl border border-border"
+                  >
+                    <div className="text-2xl font-bold text-primary">
+                      {stat.num}
+                    </div>
                     <div className="text-xs font-medium text-neutral-500 mt-1 uppercase tracking-wider">
                       {stat.label}
                     </div>
@@ -171,8 +233,7 @@ export default function AboutUsPage() {
               </div>
             </motion.div>
           </div>
-
-          {/* Mission/Vision/Goal Cards */}
+          {}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {highlights.map((item, i) => (
               <motion.div
@@ -194,8 +255,7 @@ export default function AboutUsPage() {
           </div>
         </div>
       </section>
-
-      {/* Core Values Section */}
+      {}
       <section className="py-20 md:py-28 bg-neutral-50">
         <div className="section-container">
           <div className="text-center mb-14">
@@ -209,7 +269,6 @@ export default function AboutUsPage() {
               The principles that guide everything we do at GBCDC.
             </p>
           </div>
-
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {values.map((value, i) => (
               <motion.div
@@ -224,15 +283,16 @@ export default function AboutUsPage() {
                 </div>
                 <div>
                   <h4 className="font-bold text-black mb-1">{value.title}</h4>
-                  <p className="text-sm text-neutral-500 leading-relaxed">{value.description}</p>
+                  <p className="text-sm text-neutral-500 leading-relaxed">
+                    {value.description}
+                  </p>
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
-
-      {/* Timeline Section */}
+      {}
       <section className="py-20 md:py-28 bg-white">
         <div className="section-container">
           <div className="text-center mb-14">
@@ -246,7 +306,6 @@ export default function AboutUsPage() {
               A timeline of growth, achievements, and impact since our founding.
             </p>
           </div>
-
           <div className="max-w-3xl mx-auto">
             {milestones.map((milestone, i) => (
               <motion.div
@@ -256,7 +315,7 @@ export default function AboutUsPage() {
                 transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
                 className="flex gap-6 mb-8 last:mb-0"
               >
-                {/* Year Marker */}
+                {}
                 <div className="flex flex-col items-center">
                   <div className="w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center text-sm font-bold shrink-0 shadow-lg shadow-primary/20">
                     {milestone.year}
@@ -265,10 +324,11 @@ export default function AboutUsPage() {
                     <div className="w-px flex-1 bg-primary/20 mt-2" />
                   )}
                 </div>
-
-                {/* Content */}
+                {}
                 <div className="pb-8">
-                  <h4 className="text-lg font-bold text-black mb-1">{milestone.title}</h4>
+                  <h4 className="text-lg font-bold text-black mb-1">
+                    {milestone.title}
+                  </h4>
                   <p className="text-sm text-neutral-500 leading-relaxed">
                     {milestone.description}
                   </p>
@@ -278,16 +338,15 @@ export default function AboutUsPage() {
           </div>
         </div>
       </section>
-
-      {/* CTA Section */}
+      {}
       <section className="py-20 md:py-28 bg-primary/5">
         <div className="section-container text-center">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-black mb-4">
             Ready to Shape Your Future?
           </h2>
           <p className="text-neutral-500 text-lg max-w-xl mx-auto mb-8 leading-relaxed">
-            Join 500+ students who are building the skills and network for
-            a successful career. Your journey starts here.
+            Join 500+ students who are building the skills and network for a
+            successful career. Your journey starts here.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link

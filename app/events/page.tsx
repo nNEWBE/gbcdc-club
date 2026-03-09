@@ -1,10 +1,16 @@
 "use client";
-
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Calendar, MapPin, ArrowUpRight, Clock, Users, Filter, Search } from "lucide-react";
+import {
+  Calendar,
+  MapPin,
+  ArrowUpRight,
+  Clock,
+  Users,
+  Filter,
+  Search,
+} from "lucide-react";
 import Image from "next/image";
-
 const allEvents = [
   {
     title: "Career Bootcamp 2026",
@@ -79,23 +85,18 @@ const allEvents = [
     category: "Workshop",
   },
 ];
-
 export default function EventsPage() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
   const [filter, setFilter] = useState<"all" | "upcoming" | "completed">("all");
-
   const filteredEvents =
     filter === "all"
       ? allEvents
-      : allEvents.filter(
-          (e) => e.status.toLowerCase() === filter
-        );
-
+      : allEvents.filter((e) => e.status.toLowerCase() === filter);
   return (
     <main className="min-h-screen pt-28 pb-20 bg-white" ref={ref}>
       <div className="section-container">
-        {/* Page Header */}
+        {}
         <div className="text-center mb-12">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
@@ -120,12 +121,11 @@ export default function EventsPage() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-4 text-neutral-500 text-lg max-w-2xl mx-auto leading-relaxed"
           >
-            From career bootcamps to industry talks, explore our events
-            designed to accelerate your professional growth.
+            From career bootcamps to industry talks, explore our events designed
+            to accelerate your professional growth.
           </motion.p>
         </div>
-
-        {/* Stats Bar */}
+        {}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -142,15 +142,16 @@ export default function EventsPage() {
               key={stat.label}
               className="text-center p-5 bg-neutral-50 rounded-2xl border border-border"
             >
-              <div className="text-2xl font-bold text-primary">{stat.value}</div>
+              <div className="text-2xl font-bold text-primary">
+                {stat.value}
+              </div>
               <div className="text-xs font-medium text-neutral-500 mt-1 uppercase tracking-wider">
                 {stat.label}
               </div>
             </div>
           ))}
         </motion.div>
-
-        {/* Filter Bar */}
+        {}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -174,11 +175,11 @@ export default function EventsPage() {
             ))}
           </div>
           <span className="text-sm text-neutral-400">
-            Showing {filteredEvents.length} event{filteredEvents.length !== 1 ? "s" : ""}
+            Showing {filteredEvents.length} event
+            {filteredEvents.length !== 1 ? "s" : ""}
           </span>
         </motion.div>
-
-        {/* Events Grid */}
+        {}
         <div className="grid md:grid-cols-2 gap-8">
           {filteredEvents.map((event, i) => (
             <motion.div
@@ -188,7 +189,7 @@ export default function EventsPage() {
               transition={{ duration: 0.6, delay: 0.35 + i * 0.1 }}
               className="group relative bg-white rounded-2xl border border-border overflow-hidden hover:shadow-2xl hover:shadow-primary/8 transition-all duration-500"
             >
-              {/* Event Image */}
+              {}
               <div className="relative aspect-[16/9] overflow-hidden">
                 <Image
                   src={event.image}
@@ -198,7 +199,7 @@ export default function EventsPage() {
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                {/* Status Badge */}
+                {}
                 <div
                   className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-semibold ${
                     event.status === "Upcoming"
@@ -208,18 +209,17 @@ export default function EventsPage() {
                 >
                   {event.status}
                 </div>
-                {/* Category Badge */}
+                {}
                 <div className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-black/50 text-white backdrop-blur-sm">
                   {event.category}
                 </div>
-                {/* Date overlay on bottom of image */}
+                {}
                 <div className="absolute bottom-4 left-4 px-3 py-1.5 rounded-lg bg-white/90 backdrop-blur-sm text-xs font-semibold text-black flex items-center gap-1.5">
                   <Calendar size={12} />
                   {event.date}
                 </div>
               </div>
-
-              {/* Event Content */}
+              {}
               <div className="p-6">
                 <div className="flex items-center gap-4 text-xs text-neutral-500 mb-3">
                   <span className="flex items-center gap-1.5">
@@ -241,7 +241,6 @@ export default function EventsPage() {
                 <p className="text-neutral-500 text-sm leading-relaxed">
                   {event.description}
                 </p>
-
                 <div className="mt-5 flex items-center justify-between">
                   <button className="flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/80 transition-colors cursor-pointer">
                     View Details

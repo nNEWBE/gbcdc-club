@@ -1,10 +1,8 @@
 "use client";
-
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 import { Target, Eye, Rocket, GraduationCap } from "lucide-react";
-
 const highlights = [
   {
     icon: Target,
@@ -31,15 +29,13 @@ const highlights = [
       "Career development is essential for students to transition from academia to the professional world with confidence.",
   },
 ];
-
 export default function AboutSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
     <section id="about" className="py-24 md:py-32 bg-white" ref={ref}>
       <div className="section-container">
-        {/* Section Header */}
+        {}
         <div className="text-center mb-16">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
@@ -67,10 +63,9 @@ export default function AboutSection() {
             Bishwabidyalay, dedicated to shaping future leaders.
           </motion.p>
         </div>
-
-        {/* Two-Column Layout */}
+        {}
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
-          {/* Image */}
+          {}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -87,12 +82,11 @@ export default function AboutSection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
             </div>
-            {/* Decorative element */}
+            {}
             <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-neutral-100 rounded-2xl -z-10" />
             <div className="absolute -top-6 -left-6 w-24 h-24 border-2 border-border rounded-2xl -z-10" />
           </motion.div>
-
-          {/* Text Content */}
+          {}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -103,9 +97,13 @@ export default function AboutSection() {
             </h3>
             <div className="space-y-4 text-neutral-600 leading-relaxed">
               <p>
-                The <strong className="text-black">Gono Bishwabidyalay Career Development Club (GBCDC)</strong> is
-                a student-led organization committed to fostering professional
-                growth and career readiness among university students.
+                The{" "}
+                <strong className="text-black">
+                  Gono Bishwabidyalay Career Development Club (GBCDC)
+                </strong>{" "}
+                is a student-led organization committed to fostering
+                professional growth and career readiness among university
+                students.
               </p>
               <p>
                 Founded with a vision to empower students beyond the classroom,
@@ -119,16 +117,20 @@ export default function AboutSection() {
                 potential and chart their career paths with confidence.
               </p>
             </div>
-
-            {/* Quick Stats */}
+            {}
             <div className="mt-8 grid grid-cols-3 gap-6">
               {[
                 { num: "5+", label: "Years Active" },
                 { num: "500+", label: "Members" },
                 { num: "100+", label: "Programs" },
               ].map((stat) => (
-                <div key={stat.label} className="text-center p-4 bg-neutral-50 rounded-xl">
-                  <div className="text-2xl font-bold text-black">{stat.num}</div>
+                <div
+                  key={stat.label}
+                  className="text-center p-4 bg-neutral-50 rounded-xl"
+                >
+                  <div className="text-2xl font-bold text-black">
+                    {stat.num}
+                  </div>
                   <div className="text-xs font-medium text-neutral-500 mt-1 uppercase tracking-wider">
                     {stat.label}
                   </div>
@@ -137,8 +139,7 @@ export default function AboutSection() {
             </div>
           </motion.div>
         </div>
-
-        {/* Highlights Grid */}
+        {}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {highlights.map((item, i) => (
             <motion.div

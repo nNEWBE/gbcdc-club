@@ -1,5 +1,4 @@
 "use client";
-
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
@@ -11,18 +10,21 @@ import {
   Lightbulb,
   Award,
   ArrowRight,
+  Rocket,
 } from "lucide-react";
-
+import Badge from "./Badge";
 const activities = [
   {
     icon: Briefcase,
     title: "Career Workshops",
-    description: "Resume writing, interview preparation, and professional etiquette.",
+    description:
+      "Resume writing, interview preparation, and professional etiquette.",
   },
   {
     icon: BookOpen,
     title: "Skill Development",
-    description: "Leadership, communication, digital skills, and project management.",
+    description:
+      "Leadership, communication, digital skills, and project management.",
   },
   {
     icon: Users,
@@ -32,7 +34,8 @@ const activities = [
   {
     icon: Mic2,
     title: "Industry Talks",
-    description: "Guest lectures from industry experts sharing career insights.",
+    description:
+      "Guest lectures from industry experts sharing career insights.",
   },
   {
     icon: Lightbulb,
@@ -45,24 +48,22 @@ const activities = [
     description: "Case studies, hackathons, and inter-university competitions.",
   },
 ];
-
 export default function HomeActivities() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
     <section className="py-24 md:py-32 bg-neutral-50" ref={ref}>
       <div className="section-container">
-        {/* Section Header */}
+        {}
         <div className="text-center mb-16">
-          <motion.span
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary text-white text-xs font-semibold uppercase tracking-widest rounded-full mb-4"
+            className="mb-4"
           >
-            What We Do
-          </motion.span>
+            <Badge label="What We Do" icon={Rocket} variant="primary" />
+          </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -77,12 +78,11 @@ export default function HomeActivities() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-4 text-neutral-500 text-lg max-w-2xl mx-auto"
           >
-            Programs designed to equip students with skills and experience
-            for professional excellence.
+            Programs designed to equip students with skills and experience for
+            professional excellence.
           </motion.p>
         </div>
-
-        {/* Activities Grid */}
+        {}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {activities.map((activity, i) => (
             <motion.div
@@ -95,17 +95,23 @@ export default function HomeActivities() {
               <div className="w-14 h-14 rounded-2xl bg-primary text-white flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-500 shadow-lg shadow-primary/20">
                 <activity.icon size={24} />
               </div>
-              <h3 className="text-xl font-bold text-black mb-3">{activity.title}</h3>
-              <p className="text-neutral-500 text-sm leading-relaxed">{activity.description}</p>
+              <h3 className="text-xl font-bold text-black mb-3">
+                {activity.title}
+              </h3>
+              <p className="text-neutral-500 text-sm leading-relaxed">
+                {activity.description}
+              </p>
               <div className="mt-5 flex items-center gap-2 text-sm font-medium text-neutral-400 group-hover:text-primary transition-colors duration-300">
                 <span>Learn more</span>
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
+                <ArrowRight
+                  size={14}
+                  className="group-hover:translate-x-1 transition-transform duration-300"
+                />
               </div>
             </motion.div>
           ))}
         </div>
-
-        {/* CTA */}
+        {}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}

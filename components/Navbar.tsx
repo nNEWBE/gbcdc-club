@@ -1,12 +1,10 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronRight } from "lucide-react";
 import Logo from "./Logo";
-
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/notices", label: "Notices" },
@@ -16,138 +14,182 @@ const navLinks = [
   { href: "/executive", label: "Executive" },
   { href: "/advisory", label: "Advisory" },
   { href: "/about-us", label: "About Us" },
-  { href: "/contact", label: "Contact" },
 ];
-
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-
+  const isHome = pathname === "/";
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const handleNavClick = () => {
+  useEffect(() => {
     setIsOpen(false);
-  };
-
+  }, [pathname]);
+  const isDark = isHome && !scrolled;
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled || pathname !== "/"
-          ? "glass shadow-sm"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="section-container">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link
-            href="/"
-            className="flex items-center gap-3 group"
-            onClick={handleNavClick}
-          >
-            <Logo />
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Link
-                href={link.href}
-                key={link.href}
-                className={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
-                  pathname === link.href
-                    ? scrolled || pathname !== "/" ? "text-black" : "text-white"
-                    : scrolled || pathname !== "/" ? "text-neutral-500 hover:text-black" : "text-white/70 hover:text-white"
-                }`}
-              >
-                {link.label}
-                {pathname === link.href && (
-                  <motion.div
-                    layoutId="activeNav"
-                    className={`absolute inset-0 rounded-full -z-10 ${scrolled || pathname !== "/" ? "bg-neutral-100" : "bg-white/10"}`}
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                  />
-                )}
-              </Link>
-            ))}
-          </div>
-
-          {/* CTA Button - Desktop */}
-          <div className="hidden lg:flex items-center gap-3">
-            <Link
-              href="/contact"
-              className="px-6 py-2.5 bg-primary text-white text-sm font-medium rounded-full hover:bg-primary/90 transition-all duration-200 hover:shadow-lg hover:shadow-primary/20 active:scale-95"
-            >
-              Join GBCDC
+    <>
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className={`fixed top-0 left-0 right-0 z-50 border-b transition-[background-color,box-shadow] duration-200 ${
+          scrolled
+            ? "bg-white/80 backdrop-blur-xl shadow-lg shadow-black/[0.04] border-border/50"
+            : isHome
+              ? "bg-transparent border-transparent"
+              : "bg-white/80 backdrop-blur-xl border-border/50"
+        }`}
+      >
+        <div className="section-container">
+          <div className="flex items-center justify-between h-[88px]">
+            {}
+            <Link href="/" className="flex items-center gap-3 group shrink-0">
+              <Logo className="h-16 w-16 sm:h-20 sm:w-20" />
             </Link>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className={`lg:hidden p-2 rounded-full transition-colors ${scrolled || pathname !== "/" ? "hover:bg-neutral-100 text-black" : "hover:bg-white/10 text-white"}`}
-            aria-label="Toggle navigation menu"
-          >
-            {isOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="lg:hidden glass border-t border-border/50 overflow-hidden"
-          >
-            <div className="section-container py-6 flex flex-col gap-1">
-              {navLinks.map((link, i) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={handleNavClick}
-                >
-                  <motion.button
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05 }}
-                    className={`w-full text-left px-4 py-3 text-base font-medium rounded-xl transition-colors ${
-                      pathname === link.href
-                        ? "bg-neutral-100 text-black"
-                        : "text-neutral-600 hover:bg-neutral-50 hover:text-black"
+            {}
+            <div className="hidden lg:flex items-center gap-0.5 bg-black/[0.03] backdrop-blur-sm rounded-full px-1.5 py-1.5 border border-border/40">
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href;
+                return (
+                  <Link
+                    href={link.href}
+                    key={link.href}
+                    className={`relative px-3.5 py-2 text-[13px] font-medium rounded-full transition-all duration-300 cursor-pointer ${
+                      isActive
+                        ? isDark
+                          ? "text-white"
+                          : "text-black"
+                        : isDark
+                          ? "text-white/65 hover:text-white"
+                          : "text-neutral-500 hover:text-black"
                     }`}
                   >
                     {link.label}
-                  </motion.button>
-                </Link>
-              ))}
-              <div className="pt-4 mt-2 border-t border-border">
+                    {isActive && (
+                      <motion.div
+                        layoutId="navPill"
+                        className={`absolute inset-0 rounded-full -z-10 ${
+                          isDark
+                            ? "bg-white/15 shadow-inner"
+                            : "bg-white shadow-sm shadow-black/[0.06]"
+                        }`}
+                        transition={{
+                          type: "spring",
+                          stiffness: 400,
+                          damping: 30,
+                        }}
+                      />
+                    )}
+                  </Link>
+                );
+              })}
+            </div>
+            {}
+            <div className="flex items-center gap-3 shrink-0">
+              <Link
+                href="/contact"
+                className="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white text-sm font-semibold rounded-full hover:bg-primary/90 transition-all duration-200 hover:shadow-lg hover:shadow-primary/20 active:scale-95 cursor-pointer"
+              >
+                Contact Us
+              </Link>
+              {}
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className={`lg:hidden p-2.5 rounded-xl transition-all duration-200 cursor-pointer ${
+                  isDark
+                    ? "hover:bg-white/10 text-white"
+                    : "hover:bg-neutral-100 text-black"
+                }`}
+                aria-label="Toggle navigation menu"
+              >
+                {isOpen ? <X size={22} /> : <Menu size={22} />}
+              </button>
+            </div>
+          </div>
+        </div>
+      </motion.nav>
+      {}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            {}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm lg:hidden"
+              onClick={() => setIsOpen(false)}
+            />
+            {}
+            <motion.div
+              initial={{ opacity: 0, x: "100%" }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: "100%" }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="fixed top-0 right-0 bottom-0 z-50 w-[85%] max-w-sm bg-white shadow-2xl shadow-black/10 lg:hidden overflow-y-auto"
+            >
+              {}
+              <div className="flex items-center justify-between p-6 border-b border-border">
+                <Logo className="h-16 w-16" />
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="p-2 rounded-xl hover:bg-neutral-100 transition-colors cursor-pointer"
+                  aria-label="Close navigation menu"
+                >
+                  <X size={22} />
+                </button>
+              </div>
+              {}
+              <div className="p-4 space-y-1">
+                {navLinks.map((link, i) => (
+                  <motion.div
+                    key={link.href}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.05 + i * 0.03 }}
+                  >
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className={`flex items-center justify-between px-4 py-3.5 rounded-xl text-[15px] font-medium transition-all duration-200 cursor-pointer ${
+                        pathname === link.href
+                          ? "bg-primary/10 text-primary"
+                          : "text-neutral-600 hover:bg-neutral-50 hover:text-black"
+                      }`}
+                    >
+                      {link.label}
+                      <ChevronRight
+                        size={16}
+                        className={`transition-all duration-200 ${
+                          pathname === link.href
+                            ? "text-primary"
+                            : "text-neutral-300"
+                        }`}
+                      />
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+              {}
+              <div className="p-4 mt-2 border-t border-border">
                 <Link
                   href="/contact"
-                  onClick={handleNavClick}
-                  className="block text-center w-full px-6 py-3 bg-primary text-white text-sm font-medium rounded-full hover:bg-primary/90 transition-all"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center justify-center gap-2 w-full px-6 py-3.5 bg-primary text-white text-sm font-semibold rounded-xl hover:bg-primary/90 transition-all cursor-pointer"
                 >
-                  Join GBCDC
+                  Contact Us
                 </Link>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </>
   );
 }

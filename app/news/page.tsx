@@ -1,10 +1,16 @@
 "use client";
-
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Newspaper, Clock, ArrowUpRight, TrendingUp, Award, Users, BookOpen } from "lucide-react";
+import {
+  Newspaper,
+  Clock,
+  ArrowUpRight,
+  TrendingUp,
+  Award,
+  Users,
+  BookOpen,
+} from "lucide-react";
 import Image from "next/image";
-
 const featuredNews = {
   title: "GBCDC Hosts Largest Career Fair in University History",
   date: "March 8, 2026",
@@ -14,7 +20,6 @@ const featuredNews = {
   image: "/gallery-3.png",
   readTime: "5 min read",
 };
-
 const newsArticles = [
   {
     title: "GBCDC Members Secure Top Internships at Leading Tech Firms",
@@ -71,7 +76,6 @@ const newsArticles = [
     readTime: "2 min read",
   },
 ];
-
 const categoryIcon: Record<string, typeof Award> = {
   Achievement: TrendingUp,
   "Member Success": Users,
@@ -81,15 +85,13 @@ const categoryIcon: Record<string, typeof Award> = {
   Program: BookOpen,
   Innovation: TrendingUp,
 };
-
 export default function NewsPage() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
-
   return (
     <main className="min-h-screen pt-28 pb-20 bg-neutral-50" ref={ref}>
       <div className="section-container">
-        {/* Page Header */}
+        {}
         <div className="text-center mb-16">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
@@ -118,8 +120,7 @@ export default function NewsPage() {
             community.
           </motion.p>
         </div>
-
-        {/* Featured Article */}
+        {}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -157,7 +158,9 @@ export default function NewsPage() {
                 {featuredNews.description}
               </p>
               <div className="flex items-center justify-between">
-                <span className="text-sm text-neutral-400">{featuredNews.date}</span>
+                <span className="text-sm text-neutral-400">
+                  {featuredNews.date}
+                </span>
                 <span className="flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:gap-2.5 transition-all duration-300">
                   Read Article
                   <ArrowUpRight size={16} />
@@ -166,8 +169,7 @@ export default function NewsPage() {
             </div>
           </div>
         </motion.div>
-
-        {/* News Grid */}
+        {}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {newsArticles.map((article, i) => {
             const Icon = categoryIcon[article.category] || Newspaper;
@@ -208,7 +210,10 @@ export default function NewsPage() {
                   </p>
                   <div className="mt-4 flex items-center gap-1.5 text-sm font-semibold text-primary">
                     <span>Read more</span>
-                    <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    <ArrowUpRight
+                      size={14}
+                      className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                    />
                   </div>
                 </div>
               </motion.article>

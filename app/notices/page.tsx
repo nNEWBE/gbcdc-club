@@ -1,9 +1,16 @@
 "use client";
-
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Bell, Pin, Clock, ChevronRight, FileText, AlertCircle, Calendar, Megaphone } from "lucide-react";
-
+import {
+  Bell,
+  Pin,
+  Clock,
+  ChevronRight,
+  FileText,
+  AlertCircle,
+  Calendar,
+  Megaphone,
+} from "lucide-react";
 const pinnedNotices = [
   {
     title: "Annual General Meeting 2026",
@@ -22,7 +29,6 @@ const pinnedNotices = [
       "The deadline for membership renewal has been extended to April 15, 2026. Members who fail to renew will lose access to club events, workshops, and exclusive resources. Renew through the club office or online portal.",
   },
 ];
-
 const recentNotices = [
   {
     title: "New Workshop Series: Professional Communication",
@@ -67,7 +73,6 @@ const recentNotices = [
       "The GBCDC club room will now operate from 9:00 AM to 6:00 PM on weekdays and 10:00 AM to 2:00 PM on Saturdays. Closed on Sundays and public holidays.",
   },
 ];
-
 const categoryColors: Record<string, string> = {
   General: "bg-primary/10 text-primary",
   Membership: "bg-amber-50 text-amber-600",
@@ -77,15 +82,13 @@ const categoryColors: Record<string, string> = {
   Resource: "bg-cyan-50 text-cyan-600",
   Volunteer: "bg-rose-50 text-rose-600",
 };
-
 export default function NoticesPage() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
-
   return (
     <main className="min-h-screen pt-28 pb-20 bg-neutral-50" ref={ref}>
       <div className="section-container">
-        {/* Page Header */}
+        {}
         <div className="text-center mb-16">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
@@ -114,8 +117,7 @@ export default function NoticesPage() {
             and official updates from GBCDC.
           </motion.p>
         </div>
-
-        {/* Pinned Notices */}
+        {}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -139,7 +141,9 @@ export default function NoticesPage() {
                   <AlertCircle size={20} className="text-primary" />
                 </div>
                 <div className="flex items-center gap-3 mb-4">
-                  <span className={`px-3 py-1 rounded-full text-xs font-semibold ${categoryColors[notice.category]}`}>
+                  <span
+                    className={`px-3 py-1 rounded-full text-xs font-semibold ${categoryColors[notice.category]}`}
+                  >
                     {notice.category}
                   </span>
                   <span className="flex items-center gap-1 text-xs text-neutral-400 font-medium">
@@ -155,14 +159,16 @@ export default function NoticesPage() {
                 </p>
                 <div className="mt-5 flex items-center gap-2 text-sm font-semibold text-primary">
                   <span>Read full notice</span>
-                  <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
+                  <ChevronRight
+                    size={16}
+                    className="group-hover:translate-x-1 transition-transform duration-300"
+                  />
                 </div>
               </motion.div>
             ))}
           </div>
         </motion.div>
-
-        {/* Recent Notices */}
+        {}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -187,7 +193,9 @@ export default function NoticesPage() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-3 mb-2">
-                      <span className={`px-2.5 py-0.5 rounded-full text-xs font-semibold ${categoryColors[notice.category]}`}>
+                      <span
+                        className={`px-2.5 py-0.5 rounded-full text-xs font-semibold ${categoryColors[notice.category]}`}
+                      >
                         {notice.category}
                       </span>
                       <span className="flex items-center gap-1 text-xs text-neutral-400">
@@ -202,7 +210,10 @@ export default function NoticesPage() {
                       {notice.description}
                     </p>
                   </div>
-                  <ChevronRight size={20} className="hidden sm:block shrink-0 text-neutral-300 group-hover:text-primary group-hover:translate-x-1 transition-all duration-300 mt-3" />
+                  <ChevronRight
+                    size={20}
+                    className="hidden sm:block shrink-0 text-neutral-300 group-hover:text-primary group-hover:translate-x-1 transition-all duration-300 mt-3"
+                  />
                 </div>
               </motion.div>
             ))}

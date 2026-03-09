@@ -1,5 +1,4 @@
 "use client";
-
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import {
@@ -9,8 +8,9 @@ import {
   Mic2,
   Lightbulb,
   Award,
+  Rocket,
 } from "lucide-react";
-
+import Badge from "./Badge";
 const activities = [
   {
     icon: Briefcase,
@@ -55,24 +55,22 @@ const activities = [
     color: "bg-primary/80",
   },
 ];
-
 export default function ActivitiesSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
     <section id="activities" className="py-24 md:py-32 bg-neutral-50" ref={ref}>
       <div className="section-container">
-        {/* Section Header */}
+        {}
         <div className="text-center mb-16">
-          <motion.span
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="inline-block px-4 py-1.5 bg-primary text-white text-xs font-semibold uppercase tracking-widest rounded-full mb-4"
+            className="mb-4 flex justify-center"
           >
-            What We Do
-          </motion.span>
+            <Badge label="What We Do" icon={Rocket} variant="primary" />
+          </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -91,8 +89,7 @@ export default function ActivitiesSection() {
             the skills and experience needed for professional excellence.
           </motion.p>
         </div>
-
-        {/* Activities Grid */}
+        {}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {activities.map((activity, i) => (
             <motion.div
@@ -102,20 +99,20 @@ export default function ActivitiesSection() {
               transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
               className="group relative p-8 bg-white rounded-2xl border border-border hover:border-primary/40 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1"
             >
-              {/* Icon */}
-              <div className={`w-14 h-14 rounded-2xl ${activity.color} text-white flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-500`}>
+              {}
+              <div
+                className={`w-14 h-14 rounded-2xl ${activity.color} text-white flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-500`}
+              >
                 <activity.icon size={24} />
               </div>
-
-              {/* Content */}
+              {}
               <h3 className="text-xl font-bold text-black mb-3 group-hover:text-neutral-800">
                 {activity.title}
               </h3>
               <p className="text-neutral-500 text-sm leading-relaxed">
                 {activity.description}
               </p>
-
-              {/* Hover arrow */}
+              {}
               <div className="mt-5 flex items-center gap-2 text-sm font-medium text-neutral-400 group-hover:text-primary transition-colors duration-300">
                 <span>Learn more</span>
                 <svg
@@ -132,8 +129,7 @@ export default function ActivitiesSection() {
                   />
                 </svg>
               </div>
-
-              {/* Decorative gradient on hover */}
+              {}
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-neutral-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
             </motion.div>
           ))}
