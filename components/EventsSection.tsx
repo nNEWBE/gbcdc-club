@@ -5,7 +5,7 @@ import {
   Calendar,
   MapPin,
   ArrowUpRight,
-  Sparkles,
+  Bell,
   Timer,
   CheckCircle2,
 } from "lucide-react";
@@ -63,7 +63,7 @@ export default function EventsSection() {
             transition={{ duration: 0.5 }}
             className="mb-4 flex justify-center"
           >
-            <Badge label="Events" icon={Sparkles} variant="primary" />
+            <Badge label="Events" icon={Bell} variant="primary" />
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}

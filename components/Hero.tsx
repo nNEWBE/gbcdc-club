@@ -2,7 +2,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, Compass, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect, useCallback, useRef } from "react";
 import Badge from "./Badge";
 const slides = [
@@ -214,10 +214,10 @@ export default function Hero() {
           >
             {}
             <motion.div variants={contentChild} className="mb-8">
-              <Badge
-                label={slide.subtitle}
-                icon={Sparkles}
-                variant="primary"
+              <Badge 
+                label={slide.subtitle} 
+                icon={Compass} 
+                variant="primary" 
                 className="bg-primary/20 backdrop-blur-md border-primary/30 text-white animate-pulse-slow"
               />
             </motion.div>
@@ -251,7 +251,7 @@ export default function Hero() {
                 {slide.cta.label}
                 <ArrowRight
                   size={18}
-                  className="group-hover:translate-x-1 transition-transform"
+                  className="-rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300"
                 />
               </Link>
               <Link

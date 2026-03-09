@@ -1,7 +1,8 @@
 "use client";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Linkedin, Facebook, Mail } from "lucide-react";
+import { Linkedin, Facebook, Mail, Users } from "lucide-react";
+import Badge from "./Badge";
 const teamMembers = [
   {
     name: "Md. Rakibul Hasan",
@@ -84,14 +85,18 @@ export default function TeamSection() {
       <div className="section-container">
         {}
         <div className="text-center mb-16">
-          <motion.span
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="inline-block px-4 py-1.5 bg-black text-white text-xs font-semibold uppercase tracking-widest rounded-full mb-4"
+            className="mb-4 flex justify-center"
           >
-            Our Team
-          </motion.span>
+            <Badge 
+              label="Our Team" 
+              icon={Users} 
+              variant="primary" 
+            />
+          </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}

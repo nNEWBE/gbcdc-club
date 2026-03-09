@@ -2,7 +2,8 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
-import { ArrowRight, Users, Calendar, BookOpen, Sparkles } from "lucide-react";
+import { ArrowRight, Users, Calendar, BookOpen, Rocket } from "lucide-react";
+import Badge from "./Badge";
 export default function HomeCTA() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -48,10 +49,14 @@ export default function HomeCTA() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="inline-flex items-center gap-2 px-4 py-2 mb-8 bg-primary/10 backdrop-blur-sm rounded-full border border-primary/20 text-primary text-sm font-medium"
+              className="mb-8"
             >
-              <Sparkles size={14} />
-              <span>Start Your Journey</span>
+              <Badge 
+                label="Start Your Journey" 
+                icon={Rocket} 
+                variant="primary" 
+                className="bg-primary/10 backdrop-blur-sm border-primary/20 text-primary"
+              />
             </motion.div>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -110,7 +115,7 @@ export default function HomeCTA() {
                 Join GBCDC Now
                 <ArrowRight
                   size={18}
-                  className="group-hover:translate-x-1 transition-transform"
+                  className="-rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300"
                 />
               </Link>
               <Link

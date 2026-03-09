@@ -105,7 +105,7 @@ export default function HomeActivities() {
                 <span>Learn more</span>
                 <ArrowRight
                   size={14}
-                  className="group-hover:translate-x-1 transition-transform duration-300"
+                  className="-rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300"
                 />
               </div>
             </motion.div>
@@ -119,11 +119,11 @@ export default function HomeActivities() {
           className="text-center mt-12"
         >
           <Link
-            href="/courses"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-primary/10 text-primary text-sm font-semibold rounded-full hover:bg-primary hover:text-white transition-all duration-300 cursor-pointer"
+            href="/events"
+            className="group inline-flex items-center gap-2 px-6 py-3 bg-primary/10 text-primary text-sm font-semibold rounded-full hover:bg-primary hover:text-white transition-all duration-300 cursor-pointer"
           >
-            Explore All Courses
-            <ArrowRight size={16} />
+            View All Events
+            <ArrowRight size={16} className="-rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
           </Link>
         </motion.div>
       </div>

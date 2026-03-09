@@ -315,9 +315,9 @@ export default function CoursesPage() {
                   </motion.ul>
                 )}
                 {}
-                <button className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-primary/10 text-primary text-sm font-semibold hover:bg-primary hover:text-white transition-all duration-300 cursor-pointer">
+                <button className="group w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-primary/10 text-primary text-sm font-semibold hover:bg-primary hover:text-white transition-all duration-300 cursor-pointer">
                   Enroll Now
-                  <ArrowRight size={16} />
+                  <ArrowRight size={16} className="-rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
                 </button>
               </div>
             </motion.div>

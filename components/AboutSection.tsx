@@ -2,7 +2,8 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
-import { Target, Eye, Rocket, GraduationCap } from "lucide-react";
+import { Target, Eye, Rocket, GraduationCap, Users } from "lucide-react";
+import Badge from "./Badge";
 const highlights = [
   {
     icon: Target,
@@ -37,14 +38,18 @@ export default function AboutSection() {
       <div className="section-container">
         {}
         <div className="text-center mb-16">
-          <motion.span
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="inline-block px-4 py-1.5 bg-primary/10 text-primary text-xs font-semibold uppercase tracking-widest rounded-full mb-4"
+            className="mb-4 flex justify-center"
           >
-            About Us
-          </motion.span>
+            <Badge 
+              label="About Us" 
+              icon={Users} 
+              variant="primary" 
+            />
+          </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}

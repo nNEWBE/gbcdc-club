@@ -3,7 +3,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Calendar, MapPin, ArrowUpRight, Sparkles, Timer } from "lucide-react";
+import { Calendar, MapPin, ArrowUpRight, Bell, Timer } from "lucide-react";
 import Badge from "./Badge";
 const upcomingEvents = [
   {
@@ -49,7 +49,7 @@ export default function HomeEvents() {
               transition={{ duration: 0.5 }}
               className="mb-4"
             >
-              <Badge label="Upcoming" icon={Sparkles} variant="primary" />
+              <Badge label="Upcoming" icon={Bell} variant="primary" />
             </motion.div>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}

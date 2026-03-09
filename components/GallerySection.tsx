@@ -2,8 +2,9 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import Image from "next/image";
-import { X } from "lucide-react";
+import { X, Aperture } from "lucide-react";
 import { AnimatePresence } from "framer-motion";
+import Badge from "./Badge";
 const galleryImages = [
   {
     src: "/gallery-1.png",
@@ -45,14 +46,18 @@ export default function GallerySection() {
       <div className="section-container">
         {}
         <div className="text-center mb-16">
-          <motion.span
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary text-xs font-semibold uppercase tracking-widest rounded-full mb-4"
+            className="mb-4 flex justify-center"
           >
-            Gallery
-          </motion.span>
+            <Badge 
+              label="Gallery" 
+              icon={Aperture} 
+              variant="primary" 
+            />
+          </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -101,9 +106,13 @@ export default function GallerySection() {
                 {}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-500 flex items-end">
                   <div className="p-5 w-full translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                    <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm text-white text-xs font-medium rounded-full mb-2">
-                      {image.category}
-                    </span>
+                    <div className="mb-2 scale-90 origin-left">
+                      <Badge 
+                        label={image.category} 
+                        variant="ghost" 
+                        className="bg-white/20 backdrop-blur-md text-white border-white/20" 
+                      />
+                    </div>
                     <p className="text-white font-medium text-sm">
                       {image.alt}
                     </p>
