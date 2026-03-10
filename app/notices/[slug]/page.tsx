@@ -89,7 +89,7 @@ export default async function NoticeDetailPage({ params }: { params: Promise<{ s
               </span>
               {notice.priority === "high" && (
                 <span className="px-4 py-1.5 rounded-full text-sm font-bold bg-red-50 text-red-600 border border-red-200 flex items-center gap-1.5">
-                  <Badge label="" icon={Clock} variant="ghost" className="p-0 border-none bg-transparent !text-red-600" />
+                  <Clock size={16} strokeWidth={2.5} />
                   High Priority
                 </span>
               )}
