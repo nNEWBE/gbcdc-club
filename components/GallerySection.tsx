@@ -44,11 +44,11 @@ export default function GallerySection() {
   return (
     <section id="gallery" className="py-24 md:py-32 bg-white" ref={ref}>
       <div className="section-container">
-        {}
+        
         <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : {} }
             transition={{ duration: 0.5 }}
             className="mb-4 flex justify-center"
           >
@@ -56,7 +56,7 @@ export default function GallerySection() {
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : {} }
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-black"
           >
@@ -64,7 +64,7 @@ export default function GallerySection() {
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : {} }
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-4 text-neutral-500 text-lg max-w-2xl mx-auto"
           >
@@ -72,13 +72,13 @@ export default function GallerySection() {
             create together.
           </motion.p>
         </div>
-        {}
+        
         <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
           {galleryImages.map((image, i) => (
             <motion.div
               key={image.src}
               initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              animate={isInView ? { opacity: 1, y: 0 } : {} }
               transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
               className="group relative break-inside-avoid rounded-2xl overflow-hidden cursor-pointer"
               onClick={() => setSelectedImage(image.src)}
@@ -99,7 +99,7 @@ export default function GallerySection() {
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                {}
+                
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-500 flex items-end">
                   <div className="p-5 w-full translate-y-full group-hover:translate-y-0 transition-transform duration-500">
                     <div className="mb-2 scale-90 origin-left">
@@ -119,7 +119,7 @@ export default function GallerySection() {
           ))}
         </div>
       </div>
-      {}
+      
       <AnimatePresence>
         {selectedImage && (
           <motion.div

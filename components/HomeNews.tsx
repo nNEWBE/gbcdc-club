@@ -45,7 +45,7 @@ export default function HomeNews() {
           <div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              animate={isInView ? { opacity: 1, y: 0 } : {} }
               transition={{ duration: 0.5 }}
               className="mb-4"
             >
@@ -53,7 +53,7 @@ export default function HomeNews() {
             </motion.div>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              animate={isInView ? { opacity: 1, y: 0 } : {} }
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-black"
             >
@@ -62,7 +62,7 @@ export default function HomeNews() {
           </div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : {} }
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <ActionLink href="/news" className="text-sm font-semibold group">
@@ -80,7 +80,7 @@ export default function HomeNews() {
             <motion.div
               key={news.title}
               initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              animate={isInView ? { opacity: 1, y: 0 } : {} }
               transition={{ duration: 0.6, delay: 0.2 + i * 0.1 }}
               className="group flex flex-col h-full bg-white rounded-3xl border border-primary/50 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-500 overflow-hidden"
             >

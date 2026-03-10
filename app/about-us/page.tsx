@@ -127,13 +127,13 @@ export default function AboutUsPage() {
   const isInView = useInView(ref, { once: true, margin: "-50px" });
   return (
     <main className="min-h-screen pt-12 pb-20" ref={ref}>
-      {}
+      
       <section className="py-16 md:py-24 bg-white">
         <div className="section-container">
           <div className="text-center mb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              animate={isInView ? { opacity: 1, y: 0 } : {} }
               transition={{ duration: 0.5 }}
               className="mb-4"
             >
@@ -141,7 +141,7 @@ export default function AboutUsPage() {
             </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              animate={isInView ? { opacity: 1, y: 0 } : {} }
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-black"
             >
@@ -149,7 +149,7 @@ export default function AboutUsPage() {
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              animate={isInView ? { opacity: 1, y: 0 } : {} }
               transition={{ duration: 0.5, delay: 0.2 }}
               className="mt-4 text-neutral-500 text-lg max-w-3xl mx-auto leading-relaxed"
             >
@@ -159,11 +159,11 @@ export default function AboutUsPage() {
               experiences.
             </motion.p>
           </div>
-          {}
+          
           <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              animate={isInView ? { opacity: 1, x: 0 } : {} }
               transition={{ duration: 0.7, delay: 0.3 }}
               className="relative"
             >
@@ -182,7 +182,7 @@ export default function AboutUsPage() {
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              animate={isInView ? { opacity: 1, x: 0 } : {} }
               transition={{ duration: 0.7, delay: 0.4 }}
             >
               <h2 className="text-2xl md:text-3xl font-bold text-black mb-6">
@@ -211,7 +211,7 @@ export default function AboutUsPage() {
                   and purpose.
                 </p>
               </div>
-              {}
+              
               <div className="mt-8 grid grid-cols-3 gap-4">
                 {[
                   { num: "5+", label: "Years Active" },
@@ -233,13 +233,13 @@ export default function AboutUsPage() {
               </div>
             </motion.div>
           </div>
-          {}
+          
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {highlights.map((item, i) => (
               <motion.div
                 key={item.title}
                 initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                animate={isInView ? { opacity: 1, y: 0 } : {} }
                 transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
                 className="group p-6 bg-neutral-50 rounded-2xl border border-border hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 cursor-default"
               >
@@ -255,7 +255,7 @@ export default function AboutUsPage() {
           </div>
         </div>
       </section>
-      {}
+      
       <section className="py-20 md:py-28 bg-neutral-50">
         <div className="section-container">
           <div className="text-center mb-14">
@@ -272,7 +272,7 @@ export default function AboutUsPage() {
               <motion.div
                 key={value.title}
                 initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                animate={isInView ? { opacity: 1, y: 0 } : {} }
                 transition={{ duration: 0.5, delay: 0.2 + i * 0.08 }}
                 className="group flex items-start gap-4 p-6 bg-white rounded-xl border border-border hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
               >
@@ -290,7 +290,7 @@ export default function AboutUsPage() {
           </div>
         </div>
       </section>
-      {}
+      
       <section className="py-20 md:py-28 bg-white">
         <div className="section-container">
           <div className="text-center mb-14">
@@ -307,11 +307,11 @@ export default function AboutUsPage() {
               <motion.div
                 key={milestone.year}
                 initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                animate={isInView ? { opacity: 1, x: 0 } : {} }
                 transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
                 className="flex gap-6 mb-8 last:mb-0"
               >
-                {}
+                
                 <div className="flex flex-col items-center">
                   <div className="w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center text-sm font-bold shrink-0 shadow-lg shadow-primary/20">
                     {milestone.year}
@@ -320,7 +320,7 @@ export default function AboutUsPage() {
                     <div className="w-px flex-1 bg-primary/20 mt-2" />
                   )}
                 </div>
-                {}
+                
                 <div className="pb-8">
                   <h4 className="text-lg font-bold text-black mb-1">
                     {milestone.title}
@@ -334,7 +334,7 @@ export default function AboutUsPage() {
           </div>
         </div>
       </section>
-      {}
+      
       <section className="py-20 md:py-28 bg-primary/5">
         <div className="section-container text-center">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-black mb-4">

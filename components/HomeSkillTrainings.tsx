@@ -12,16 +12,16 @@ export default function HomeSkillTrainings() {
 
   return (
     <section className="py-24 md:py-32 bg-white overflow-hidden relative" ref={ref}>
-      {/* Background Decor */}
+      
       <div className="absolute inset-0 pointer-events-none opacity-[0.03]" 
         style={{ backgroundImage: 'radial-gradient(#3aa869 0.5px, transparent 0.5px)', backgroundSize: '24px 24px' }} 
       />
       <div className="section-container relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Content Left */}
+          
           <motion.div
             initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            animate={isInView ? { opacity: 1, x: 0 } : {} }
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
             <div className="mb-4">
@@ -67,10 +67,10 @@ export default function HomeSkillTrainings() {
             </Link>
           </motion.div>
 
-          {/* Image Right */}
+          
           <motion.div
             initial={{ opacity: 0, x: 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            animate={isInView ? { opacity: 1, x: 0 } : {} }
             transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
             className="relative"
           >
@@ -85,10 +85,10 @@ export default function HomeSkillTrainings() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
             </div>
             
-            {/* Floating Card */}
+            
             <motion.div
               initial={{ opacity: 0, scale: 0.8, y: 20 }}
-              animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
+              animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {} }
               transition={{ duration: 0.5, delay: 0.6 }}
               className="absolute -bottom-6 -left-6 md:bottom-10 md:-left-10 bg-white p-5 rounded-2xl shadow-2xl border border-primary/50 flex items-center gap-4 max-w-[200px]"
             >
@@ -103,7 +103,7 @@ export default function HomeSkillTrainings() {
               </div>
             </motion.div>
 
-            {/* Decorative background shape */}
+            
             <div className="absolute -z-10 -top-6 -right-6 w-32 h-32 bg-primary/5 rounded-3xl rotate-12" />
             <div className="absolute -z-10 -bottom-10 -right-10 w-64 h-64 bg-primary/5 rounded-full blur-[80px]" />
           </motion.div>

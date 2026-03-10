@@ -75,7 +75,7 @@ export default function EventDetails({ params }: { params: { id: string } }) {
           </div>
         </nav>
 
-        {/* Hero Section */}
+        
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-24">
           <div className="order-2 lg:order-1">
             <Badge
@@ -169,7 +169,7 @@ export default function EventDetails({ params }: { params: { id: string } }) {
 
         <div className="border-t border-neutral-200/60 pt-20" />
 
-        {/* Content Section */}
+        
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
           <div className="lg:col-span-7">
             <h2 className="text-3xl font-bold tracking-tight text-neutral-900 mb-8">

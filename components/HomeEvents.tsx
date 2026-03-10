@@ -45,12 +45,12 @@ export default function HomeEvents() {
   return (
     <section className="py-24 md:py-32 bg-white" ref={ref}>
       <div className="section-container">
-        {}
+        
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              animate={isInView ? { opacity: 1, y: 0 } : {} }
               transition={{ duration: 0.5 }}
               className="mb-4"
             >
@@ -58,7 +58,7 @@ export default function HomeEvents() {
             </motion.div>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              animate={isInView ? { opacity: 1, y: 0 } : {} }
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-black"
             >
@@ -67,7 +67,7 @@ export default function HomeEvents() {
           </div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : {} }
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <ActionLink href="/events" className="text-sm font-semibold group">
@@ -79,7 +79,7 @@ export default function HomeEvents() {
             </ActionLink>
           </motion.div>
         </div>
-        {}
+        
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {upcomingEvents.map((event, i) => (
             <EventCard

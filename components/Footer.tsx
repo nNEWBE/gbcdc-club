@@ -35,7 +35,7 @@ const socialLinks = [
 export default function Footer() {
   return (
     <footer className="relative bg-[#020617] text-white overflow-hidden border-t border-white/5">
-      {}
+      
       <div
         className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,rgba(58,168,105,0.1),transparent_50%)]"
         aria-hidden="true"
@@ -44,12 +44,12 @@ export default function Footer() {
         className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(6,182,212,0.05),transparent_40%)]"
         aria-hidden="true"
       />
-      {}
+      
       <div
         className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-70"
         aria-hidden="true"
       />
-      {}
+      
       <div
         className="absolute -top-24 -left-20 w-[500px] h-[500px] bg-primary/15 rounded-full blur-[120px] pointer-events-none animate-pulse"
         aria-hidden="true"
@@ -58,10 +58,10 @@ export default function Footer() {
         className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none -z-10"
         aria-hidden="true"
       />
-      {}
+      
       <div className="section-container relative z-10 pt-12 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-16 items-center">
-          {}
+          
           <div className="md:col-span-12 lg:col-span-5 flex flex-col items-start px-2">
             <Link
               href="/"
@@ -78,7 +78,7 @@ export default function Footer() {
               Empowering students with skills and leadership for a brighter
               future. Building the next generation of professionals.
             </p>
-            {}
+            
             <form
               className="w-full max-w-[360px] relative"
               onSubmit={(e) => e.preventDefault()}
@@ -97,7 +97,7 @@ export default function Footer() {
               </button>
             </form>
           </div>
-          {}
+          
           <div className="md:col-span-4 lg:col-span-2">
             <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500 mb-8 flex items-center gap-2">
               <Users size={16} className="text-primary/60" strokeWidth={2.5} />
@@ -121,7 +121,7 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-          {}
+          
           <div className="md:col-span-4 lg:col-span-2">
             <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500 mb-8 flex items-center gap-2">
               <BellRing
@@ -149,7 +149,7 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-          {}
+          
           <div className="md:col-span-4 lg:col-span-3">
             <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500 mb-8 flex items-center gap-2">
               <MessageSquare
@@ -203,7 +203,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      {}
+      
       <div className="relative z-10">
         <div className="section-container">
           <div className="border-t border-white/10 py-8 flex flex-col md:flex-row items-center justify-between gap-6">
@@ -213,7 +213,7 @@ export default function Footer() {
               rights reserved.
             </p>
             <div className="flex items-center">
-              {}
+              
               <div className="flex items-center gap-3 sm:gap-4">
                 {socialLinks.map((social) => (
                   <a

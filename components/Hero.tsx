@@ -125,7 +125,7 @@ export default function Hero() {
   };
 
   const contentContainer = {
-    enter: {},
+    enter: ,
     center: {
       transition: { staggerChildren: 0.1, delayChildren: 0.1 },
     },
@@ -161,7 +161,7 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {}
+      
       <AnimatePresence initial={false} custom={direction} mode="popLayout">
         <motion.div
           key={current}
@@ -172,7 +172,7 @@ export default function Hero() {
           exit="exit"
           className="absolute inset-0 z-0"
         >
-          {}
+          
           <motion.div
             initial={kb.initial}
             animate={kb.animate}
@@ -189,11 +189,11 @@ export default function Hero() {
               quality={90}
             />
           </motion.div>
-          {}
+          
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/75" />
         </motion.div>
       </AnimatePresence>
-      {}
+      
       <div className="absolute inset-0 z-[1] pointer-events-none">
         <svg className="w-full h-full opacity-[0.03]">
           <defs>
@@ -214,7 +214,7 @@ export default function Hero() {
           <rect width="100%" height="100%" fill="url(#heroGrid)" />
         </svg>
       </div>
-      {}
+      
       <div className="relative z-10 section-container text-center">
         <AnimatePresence mode="popLayout" custom={direction}>
           <motion.div
@@ -226,7 +226,7 @@ export default function Hero() {
             exit="exit"
             className="w-full flex flex-col items-center"
           >
-            {}
+            
             <motion.div variants={contentChild} className="mb-8">
               <Badge
                 label={slide.subtitle}
@@ -235,7 +235,7 @@ export default function Hero() {
                 className="bg-primary/20 backdrop-blur-md border-primary/30 text-white animate-pulse-slow"
               />
             </motion.div>
-            {}
+            
             <motion.h1
               variants={contentChild}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight max-w-5xl mx-auto"
@@ -246,14 +246,14 @@ export default function Hero() {
                 {slide.highlight}
               </span>
             </motion.h1>
-            {}
+            
             <motion.p
               variants={contentChild}
               className="mt-6 text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed"
             >
               {slide.description}
             </motion.p>
-            {}
+            
             <motion.div
               variants={contentChild}
               className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
@@ -277,7 +277,7 @@ export default function Hero() {
             </motion.div>
           </motion.div>
         </AnimatePresence>
-        {}
+        
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -301,8 +301,8 @@ export default function Hero() {
           ))}
         </motion.div>
       </div>
-      {}
-      {}
+      
+      
       <button
         onClick={prev}
         className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-black/20 backdrop-blur-md border border-white/10 text-white/70 flex items-center justify-center hover:bg-black/40 hover:text-white transition-all duration-200 cursor-pointer active:scale-90"
@@ -317,10 +317,10 @@ export default function Hero() {
       >
         <ChevronRight size={22} />
       </button>
-      {/* Notices Marquee */}
+      
       <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-auto select-none overflow-hidden">
         <div className="bg-white/5 backdrop-blur-md border-t border-white/10 py-3.5 relative">
-          {/* Label Tag */}
+          
           <div className="absolute left-0 top-0 bottom-0 z-30 flex items-center bg-primary px-4 md:px-6 shadow-[10px_0_20px_rgba(0,0,0,0.3)]">
             <BellRing size={16} className="text-white mr-2.5 animate-bounce-slow" />
             <span className="text-[10px] md:text-xs font-black uppercase tracking-widest text-white whitespace-nowrap">
@@ -328,7 +328,7 @@ export default function Hero() {
             </span>
           </div>
           
-          {/* Marquee Content */}
+          
           <motion.div 
             className="flex items-center gap-12 md:gap-24 whitespace-nowrap pl-[140px] md:pl-[180px]"
             animate={{ x: [0, -1000] }}
@@ -353,7 +353,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {}
+      
     </section>
   );
 }

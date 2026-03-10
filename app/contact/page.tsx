@@ -58,13 +58,13 @@ export default function ContactPage() {
   };
   return (
     <main className="min-h-screen pt-36 pb-20" ref={ref}>
-      {}
+      
       <section className="pb-16 bg-white">
         <div className="section-container">
           <div className="text-center mb-16">
             <motion.span
               initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              animate={isInView ? { opacity: 1, y: 0 } : {} }
               transition={{ duration: 0.5 }}
               className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary text-xs font-semibold uppercase tracking-widest rounded-full mb-4"
             >
@@ -73,7 +73,7 @@ export default function ContactPage() {
             </motion.span>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              animate={isInView ? { opacity: 1, y: 0 } : {} }
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-black"
             >
@@ -81,7 +81,7 @@ export default function ContactPage() {
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              animate={isInView ? { opacity: 1, y: 0 } : {} }
               transition={{ duration: 0.5, delay: 0.2 }}
               className="mt-4 text-neutral-500 text-lg max-w-2xl mx-auto leading-relaxed"
             >
@@ -89,10 +89,10 @@ export default function ContactPage() {
               love to hear from you.
             </motion.p>
           </div>
-          {}
+          
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : {} }
             transition={{ duration: 0.6, delay: 0.25 }}
             className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16"
           >
@@ -148,12 +148,12 @@ export default function ContactPage() {
               </a>
             ))}
           </motion.div>
-          {}
+          
           <div className="grid lg:grid-cols-5 gap-12">
-            {}
+            
             <motion.div
               initial={{ opacity: 0, x: -40 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              animate={isInView ? { opacity: 1, x: 0 } : {} }
               transition={{ duration: 0.6, delay: 0.3 }}
               className="lg:col-span-3"
             >
@@ -269,14 +269,14 @@ export default function ContactPage() {
                 </button>
               </form>
             </motion.div>
-            {}
+            
             <motion.div
               initial={{ opacity: 0, x: 40 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              animate={isInView ? { opacity: 1, x: 0 } : {} }
               transition={{ duration: 0.6, delay: 0.4 }}
               className="lg:col-span-2 space-y-6"
             >
-              {}
+              
               <div className="bg-neutral-50 rounded-2xl border border-border p-6">
                 <h4 className="text-sm font-bold text-black uppercase tracking-wider mb-4">
                   Follow Us
@@ -329,7 +329,7 @@ export default function ContactPage() {
                   ))}
                 </div>
               </div>
-              {}
+              
               <div
                 id="map"
                 className="rounded-2xl overflow-hidden border border-border h-56"
@@ -345,7 +345,7 @@ export default function ContactPage() {
                   title="GBCDC Location"
                 />
               </div>
-              {}
+              
               <div className="bg-primary rounded-2xl p-6 text-white">
                 <h4 className="text-lg font-bold mb-2">Want to join GBCDC?</h4>
                 <p className="text-sm text-white/80 mb-4 leading-relaxed">
@@ -367,7 +367,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-      {}
+      
       <section className="py-20 md:py-28 bg-neutral-50">
         <div className="section-container">
           <div className="text-center mb-14">
@@ -386,7 +386,7 @@ export default function ContactPage() {
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                animate={isInView ? { opacity: 1, y: 0 } : {} }
                 transition={{ duration: 0.4, delay: 0.2 + i * 0.05 }}
                 className="bg-white rounded-xl border border-border overflow-hidden"
               >

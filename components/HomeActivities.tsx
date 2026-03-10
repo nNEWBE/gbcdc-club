@@ -67,11 +67,11 @@ export default function HomeActivities() {
   return (
     <section className="py-12 md:py-16 bg-neutral-50" ref={ref}>
       <div className="max-w-[1200px] mx-auto px-4 md:px-6">
-        {}
+        
         <div className="text-center mb-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : {} }
             transition={{ duration: 0.5 }}
             className="mb-4"
           >
@@ -79,7 +79,7 @@ export default function HomeActivities() {
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : {} }
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-black"
           >
@@ -87,7 +87,7 @@ export default function HomeActivities() {
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : {} }
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-3 text-neutral-500 text-base max-w-xl mx-auto"
           >
@@ -95,13 +95,13 @@ export default function HomeActivities() {
             professional excellence.
           </motion.p>
         </div>
-        {}
+        
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 grid-flow-row-dense">
           {activities.map((activity, i) => (
             <motion.div
               key={activity.title}
               initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              animate={isInView ? { opacity: 1, y: 0 } : {} }
               transition={{
                 duration: 0.7,
                 delay: 0.1 + i * 0.1,
@@ -147,10 +147,10 @@ export default function HomeActivities() {
             </motion.div>
           ))}
         </div>
-        {}
+        
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          animate={isInView ? { opacity: 1, y: 0 } : {} }
           transition={{ duration: 0.5, delay: 0.7 }}
           className="text-center mt-8"
         >

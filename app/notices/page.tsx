@@ -89,11 +89,11 @@ export default function NoticesPage() {
   return (
     <main className="min-h-screen pt-36 pb-20 bg-neutral-50" ref={ref}>
       <div className="section-container">
-        {}
+        
         <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : {} }
             transition={{ duration: 0.5 }}
             className="mb-4"
           >
@@ -101,7 +101,7 @@ export default function NoticesPage() {
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : {} }
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-black"
           >
@@ -109,7 +109,7 @@ export default function NoticesPage() {
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : {} }
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-4 text-neutral-500 text-lg max-w-2xl mx-auto leading-relaxed"
           >
@@ -117,10 +117,10 @@ export default function NoticesPage() {
             and official updates from GBCDC.
           </motion.p>
         </div>
-        {}
+        
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          animate={isInView ? { opacity: 1, y: 0 } : {} }
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mb-12"
         >
@@ -133,7 +133,7 @@ export default function NoticesPage() {
               <motion.div
                 key={notice.title}
                 initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                animate={isInView ? { opacity: 1, y: 0 } : {} }
                 transition={{ duration: 0.5, delay: 0.4 + i * 0.1 }}
                 className="group relative bg-white rounded-2xl border-2 border-primary/20 p-6 md:p-8 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 cursor-pointer"
               >
@@ -168,10 +168,10 @@ export default function NoticesPage() {
             ))}
           </div>
         </motion.div>
-        {}
+        
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          animate={isInView ? { opacity: 1, y: 0 } : {} }
           transition={{ duration: 0.6, delay: 0.5 }}
         >
           <div className="flex items-center gap-2 mb-6">
@@ -183,7 +183,7 @@ export default function NoticesPage() {
               <motion.div
                 key={notice.title}
                 initial={{ opacity: 0, x: -20 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                animate={isInView ? { opacity: 1, x: 0 } : {} }
                 transition={{ duration: 0.4, delay: 0.6 + i * 0.08 }}
                 className="group bg-white rounded-xl border border-border p-6 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all duration-400 cursor-pointer"
               >

@@ -32,11 +32,11 @@ export default function ContactSection() {
   return (
     <section id="contact" className="py-24 md:py-32 bg-neutral-50" ref={ref}>
       <div className="section-container">
-        {}
+        
         <div className="text-center mb-16">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : {} }
             transition={{ duration: 0.5 }}
             className="inline-block px-4 py-1.5 bg-primary text-white text-xs font-semibold uppercase tracking-widest rounded-full mb-4"
           >
@@ -44,7 +44,7 @@ export default function ContactSection() {
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : {} }
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-black"
           >
@@ -52,7 +52,7 @@ export default function ContactSection() {
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : {} }
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-4 text-neutral-500 text-lg max-w-2xl mx-auto"
           >
@@ -61,14 +61,14 @@ export default function ContactSection() {
           </motion.p>
         </div>
         <div className="grid lg:grid-cols-5 gap-12">
-          {}
+          
           <motion.div
             initial={{ opacity: 0, x: -40 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            animate={isInView ? { opacity: 1, x: 0 } : {} }
             transition={{ duration: 0.6, delay: 0.3 }}
             className="lg:col-span-2 space-y-8"
           >
-            {}
+            
             <div className="space-y-4">
               {[
                 {
@@ -109,7 +109,7 @@ export default function ContactSection() {
                 </a>
               ))}
             </div>
-            {}
+            
             <div>
               <h4 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-4">
                 Follow Us
@@ -132,7 +132,7 @@ export default function ContactSection() {
                 ))}
               </div>
             </div>
-            {}
+            
             <div className="rounded-xl overflow-hidden border border-border h-48">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.3!2d90.26!3d23.86!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDUxJzM2LjAiTiA5MMKwMTUnMzYuMCJF!5e0!3m2!1sen!2sbd!4v1234567890"
@@ -146,10 +146,10 @@ export default function ContactSection() {
               />
             </div>
           </motion.div>
-          {}
+          
           <motion.div
             initial={{ opacity: 0, x: 40 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            animate={isInView ? { opacity: 1, x: 0 } : {} }
             transition={{ duration: 0.6, delay: 0.4 }}
             className="lg:col-span-3"
           >

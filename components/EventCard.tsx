@@ -27,10 +27,7 @@ export default function EventCard({ event, index, isInView }: EventCardProps) {
   const slug = event.title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: 0.3 + index * 0.12 }}
+    <div
       className="group relative bg-white flex flex-col h-full rounded-[24px] border border-primary/50 overflow-hidden hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-500"
     >
       <div className="p-2 sm:p-2.5 pb-0">
@@ -117,6 +114,6 @@ export default function EventCard({ event, index, isInView }: EventCardProps) {
           )}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

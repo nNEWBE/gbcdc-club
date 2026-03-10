@@ -83,11 +83,11 @@ export default function TeamSection() {
   return (
     <section id="team" className="py-24 md:py-32 bg-neutral-50" ref={ref}>
       <div className="section-container">
-        {}
+        
         <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : {} }
             transition={{ duration: 0.5 }}
             className="mb-4 flex justify-center"
           >
@@ -95,7 +95,7 @@ export default function TeamSection() {
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : {} }
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-black"
           >
@@ -103,7 +103,7 @@ export default function TeamSection() {
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : {} }
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-4 text-neutral-500 text-lg max-w-2xl mx-auto"
           >
@@ -111,23 +111,23 @@ export default function TeamSection() {
             opportunities for every member.
           </motion.p>
         </div>
-        {}
+        
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {teamMembers.map((member, i) => (
             <motion.div
               key={member.name}
               initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              animate={isInView ? { opacity: 1, y: 0 } : {} }
               transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
               className="group relative bg-white rounded-2xl p-8 text-center border border-border hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500"
             >
-              {}
+              
               <div className="relative w-24 h-24 mx-auto mb-5 rounded-full bg-gradient-to-br from-neutral-800 to-neutral-600 flex items-center justify-center text-white text-2xl font-bold group-hover:scale-110 transition-transform duration-500 shadow-lg shadow-black/10">
                 {member.initials}
-                {}
+                
                 <div className="absolute inset-0 rounded-full border-2 border-neutral-300/50 group-hover:border-black/20 transition-colors duration-500 scale-110" />
               </div>
-              {}
+              
               <h3 className="text-lg font-bold text-black">{member.name}</h3>
               <p className="text-sm font-medium text-neutral-500 mt-1 uppercase tracking-wider">
                 {member.position}
@@ -135,7 +135,7 @@ export default function TeamSection() {
               <p className="text-sm text-neutral-400 mt-3 leading-relaxed">
                 {member.bio}
               </p>
-              {}
+              
               <div className="mt-5 flex items-center justify-center gap-3">
                 <a
                   href={member.social.linkedin}

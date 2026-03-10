@@ -1,11 +1,22 @@
 "use client";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Linkedin, Facebook, Mail, Shield, Crown, Star } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { 
+  Linkedin, 
+  Facebook, 
+  Mail, 
+  Crown, 
+  Star, 
+  User,
+  ArrowRight
+} from "lucide-react";
 import Badge from "@/components/Badge";
+
 const executiveMembers = [
   {
     name: "Md. Rakibul Hasan",
+    slug: "md-rakibul-hasan",
     position: "President",
     initials: "RH",
     department: "Business Administration",
@@ -21,6 +32,7 @@ const executiveMembers = [
   },
   {
     name: "Fatima Akter",
+    slug: "fatima-akter",
     position: "Vice President",
     initials: "FA",
     department: "CSE",
@@ -36,6 +48,7 @@ const executiveMembers = [
   },
   {
     name: "Sadia Islam",
+    slug: "sadia-islam",
     position: "General Secretary",
     initials: "SI",
     department: "English",
@@ -51,6 +64,7 @@ const executiveMembers = [
   },
   {
     name: "Tanvir Ahmed",
+    slug: "tanvir-ahmed",
     position: "Treasurer",
     initials: "TA",
     department: "Accounting",
@@ -66,6 +80,7 @@ const executiveMembers = [
   },
   {
     name: "Nusrat Jahan",
+    slug: "nusrat-jahan",
     position: "Director of Events",
     initials: "NJ",
     department: "Marketing",
@@ -81,6 +96,7 @@ const executiveMembers = [
   },
   {
     name: "Ariful Islam",
+    slug: "ariful-islam",
     position: "Director of Marketing",
     initials: "AI",
     department: "Mass Communication",
@@ -96,6 +112,7 @@ const executiveMembers = [
   },
   {
     name: "Mahmudul Haque",
+    slug: "mahmudul-haque",
     position: "Director of Training",
     initials: "MH",
     department: "BBA",
@@ -111,6 +128,7 @@ const executiveMembers = [
   },
   {
     name: "Rafia Sultan",
+    slug: "rafia-sultan",
     position: "Director of PR",
     initials: "RS",
     department: "Journalism",
@@ -124,40 +142,123 @@ const executiveMembers = [
     social: { linkedin: "#", facebook: "#", email: "pr@gbcdc.edu.bd" },
     tier: "director",
   },
+  {
+    name: "Ahsan Habib",
+    slug: "ahsan-habib",
+    position: "Executive Member",
+    initials: "AH",
+    department: "CSE",
+    year: "2nd Year",
+    bio: "Active contributor to technical initiatives and workshop coordination. Dedicated to building a strong tech culture within GBCDC.",
+    achievements: [
+      "Technical Lead for Career Fair",
+      "Organized 5 coding workshops",
+    ],
+    social: { linkedin: "#", facebook: "#", email: "ahsan@gbcdc.edu.bd" },
+    tier: "executive_member",
+  },
+  {
+    name: "Tahmina Akter",
+    slug: "tahmina-akter",
+    position: "Executive Member",
+    initials: "TA",
+    department: "BBA",
+    year: "2nd Year",
+    bio: "Passionate about marketing strategies and student outreach. Plays a key role in member recruitment and club branding.",
+    achievements: [
+      "Led design for Annual Gala",
+      "Recruited 100+ new members",
+    ],
+    social: { linkedin: "#", facebook: "#", email: "tahmina@gbcdc.edu.bd" },
+    tier: "executive_member",
+  },
+  {
+    name: "Maruf Hasan",
+    slug: "maruf-hasan",
+    position: "Executive Member",
+    initials: "MH",
+    department: "Law",
+    year: "2nd Year",
+    bio: "Ensures legal compliance and organizational transparency. Actively participates in policy-making and club ethics.",
+    achievements: [
+      "Drafted new club constitution",
+      "Legal advisor for partnerships",
+    ],
+    social: { linkedin: "#", facebook: "#", email: "maruf@gbcdc.edu.bd" },
+    tier: "executive_member",
+  },
+  {
+    name: "Nishat Mazumder",
+    slug: "nishat-mazumder",
+    position: "Executive Member",
+    initials: "NM",
+    department: "Pharmacy",
+    year: "2nd Year",
+    bio: "Coordinates health and wellness programs for club members. Strong advocate for work-life balance in career growth.",
+    achievements: [
+      "Led university-wide health drive",
+      "Wellness workshop coordinator",
+    ],
+    social: { linkedin: "#", facebook: "#", email: "nishat@gbcdc.edu.bd" },
+    tier: "executive_member",
+  },
+  {
+    name: "Sultan Ahmed",
+    slug: "sultan-ahmed",
+    position: "Executive Member",
+    initials: "SA",
+    department: "English",
+    year: "2nd Year",
+    bio: "Contributes to club documentation and editorial projects. Skilled in professional communication and report writing.",
+    achievements: [
+      "Chief Editor for Career Guide",
+      "Managed annual report 2024",
+    ],
+    social: { linkedin: "#", facebook: "#", email: "sultan@gbcdc.edu.bd" },
+    tier: "executive_member",
+  },
 ];
-const tierConfig = {
-  president: {
-    gradient: "from-primary to-emerald-400",
-    ring: "border-primary/30",
-    badge: "President",
-  },
-  vp: {
-    gradient: "from-neutral-800 to-neutral-600",
-    ring: "border-neutral-400/30",
-    badge: "Vice President",
-  },
-  executive: {
-    gradient: "from-neutral-700 to-neutral-500",
-    ring: "border-neutral-300/30",
-    badge: null,
-  },
-  director: {
-    gradient: "from-neutral-600 to-neutral-400",
-    ring: "border-neutral-300/20",
-    badge: null,
-  },
-};
+
 export default function ExecutivePage() {
   const ref = useRef(null);
+  const router = useRouter();
   const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+  const config = {
+    president: {
+      color: "bg-primary",
+      icon: Crown,
+      badge: "President"
+    },
+    vp: {
+      color: "bg-primary",
+      icon: Crown,
+      badge: "Vice President"
+    },
+    director: {
+      color: "bg-primary/80",
+      icon: Star,
+      badge: "Director"
+    },
+    executive: {
+      color: "bg-primary/70",
+      icon: User,
+      badge: "Executive"
+    },
+    executive_member: {
+      color: "bg-primary/60",
+      icon: User,
+      badge: "Executive Member"
+    }
+  };
+
   return (
     <main className="min-h-screen pt-36 pb-20 bg-neutral-50" ref={ref}>
       <div className="section-container">
-        {}
         <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : {} }
             transition={{ duration: 0.5 }}
             className="mb-4"
           >
@@ -165,7 +266,7 @@ export default function ExecutivePage() {
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : {} }
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-black"
           >
@@ -173,7 +274,7 @@ export default function ExecutivePage() {
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : {} }
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-4 text-neutral-500 text-lg max-w-2xl mx-auto leading-relaxed"
           >
@@ -181,165 +282,137 @@ export default function ExecutivePage() {
             empower the next generation of professionals.
           </motion.p>
         </div>
-        {}
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
-          {executiveMembers.slice(0, 2).map((member, i) => {
-            const config = tierConfig[member.tier as keyof typeof tierConfig];
-            return (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 40 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.3 + i * 0.15 }}
-                className="group relative bg-white rounded-2xl border border-border p-8 md:p-10 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 overflow-hidden"
-              >
-                {}
-                <div
-                  className={`absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl ${config.gradient} opacity-5 rounded-bl-full`}
-                />
-                <div className="relative z-10 flex flex-col items-center text-center">
-                  {}
-                  <div
-                    className={`relative w-28 h-28 rounded-full bg-gradient-to-br ${config.gradient} flex items-center justify-center text-white text-3xl font-bold mb-5 group-hover:scale-105 transition-transform duration-500 shadow-xl shadow-black/10`}
-                  >
-                    {member.initials}
-                    <div
-                      className={`absolute inset-0 rounded-full border-2 ${config.ring} scale-[1.15]`}
-                    />
-                    {member.tier === "president" && (
-                      <div className="absolute -top-2 -right-2 w-8 h-8 bg-primary rounded-full flex items-center justify-center shadow-lg">
-                        <Crown size={14} className="text-white" />
+
+        
+        <div className="mb-20">
+          <div className="flex items-center gap-4 mb-10">
+            <h2 className="text-2xl font-bold text-neutral-900 whitespace-nowrap">Board of Directors</h2>
+            <div className="h-px w-full bg-primary/10" />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {executiveMembers.filter(m => m.tier !== "executive_member").map((member, i) => {
+              const memberConfig = config[member.tier as keyof typeof config];
+              return (
+                <motion.div
+                  key={member.name}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {} }
+                  transition={{ duration: 0.4, delay: i * 0.05 }}
+                  onClick={() => router.push(`/executive/${member.slug}`)}
+                  className="group flex flex-col items-center bg-white p-6 py-6 rounded-[2rem] border border-primary/50 hover:border-primary hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.06)] transition-all duration-500 cursor-pointer text-center relative"
+                >
+                  <div className="relative mb-4">
+                    <div className="p-1.5 border border-primary/5 rounded-full group-hover:border-primary/20 transition-colors duration-500">
+                      <div className={`w-24 h-24 rounded-full ${memberConfig.color} flex items-center justify-center text-white text-2xl font-bold shadow-xl shadow-primary/10 group-hover:scale-105 transition-transform duration-500`}>
+                        {member.initials}
                       </div>
-                    )}
+                    </div>
+                    <div className="absolute -bottom-1 -right-1 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg border border-neutral-100">
+                      <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white">
+                        <memberConfig.icon size={12} />
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold text-black">
-                    {member.name}
-                  </h3>
-                  <p className="text-sm font-semibold text-primary mt-1 uppercase tracking-wider">
-                    {member.position}
-                  </p>
-                  <p className="text-xs text-neutral-400 mt-1">
-                    {member.department} | {member.year}
-                  </p>
-                  <p className="text-sm text-neutral-500 mt-4 leading-relaxed max-w-sm">
-                    {member.bio}
-                  </p>
-                  {}
-                  <div className="mt-5 w-full">
-                    <p className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-3">
-                      Key Achievements
+
+                  <div className="flex flex-col items-center flex-1">
+                    <h3 className="text-[17px] font-bold text-neutral-900 group-hover:text-primary transition-colors duration-300 leading-tight mb-1">
+                      {member.name}
+                    </h3>
+                    <p className="text-[10px] font-bold text-primary uppercase tracking-[0.1em] mb-1.5">
+                      {member.position}
                     </p>
-                    <ul className="space-y-2">
-                      {member.achievements.map((a) => (
-                        <li
-                          key={a}
-                          className="flex items-center gap-2 text-sm text-neutral-600"
-                        >
-                          <Star
-                            size={12}
-                            className="text-primary shrink-0 fill-primary"
-                          />
-                          {a}
-                        </li>
-                      ))}
-                    </ul>
+                    <div className="text-[11px] text-neutral-400 font-medium leading-tight">
+                      {member.department}
+                    </div>
                   </div>
-                  {}
-                  <div className="mt-6 flex items-center gap-3">
-                    <a
-                      href={member.social.linkedin}
-                      className="w-10 h-10 rounded-full bg-neutral-100 hover:bg-primary hover:text-white flex items-center justify-center transition-all duration-300 cursor-pointer"
-                      aria-label={`${member.name}'s LinkedIn`}
-                    >
-                      <Linkedin size={16} />
-                    </a>
-                    <a
-                      href={member.social.facebook}
-                      className="w-10 h-10 rounded-full bg-neutral-100 hover:bg-primary hover:text-white flex items-center justify-center transition-all duration-300 cursor-pointer"
-                      aria-label={`${member.name}'s Facebook`}
-                    >
-                      <Facebook size={16} />
-                    </a>
-                    <a
-                      href={`mailto:${member.social.email}`}
-                      className="w-10 h-10 rounded-full bg-neutral-100 hover:bg-primary hover:text-white flex items-center justify-center transition-all duration-300 cursor-pointer"
-                      aria-label={`Email ${member.name}`}
-                    >
-                      <Mail size={16} />
-                    </a>
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-        {}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {executiveMembers.slice(2).map((member, i) => {
-            const config = tierConfig[member.tier as keyof typeof tierConfig];
-            return (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 40 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.5 + i * 0.08 }}
-                className="group bg-white rounded-2xl p-6 md:p-7 border border-border hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500"
-              >
-                <div className="flex flex-col items-center text-center">
-                  <div
-                    className={`relative w-20 h-20 rounded-full bg-gradient-to-br ${config.gradient} flex items-center justify-center text-white text-xl font-bold mb-4 group-hover:scale-110 transition-transform duration-500 shadow-lg shadow-black/10`}
-                  >
-                    {member.initials}
-                    <div
-                      className={`absolute inset-0 rounded-full border-2 ${config.ring} scale-110`}
-                    />
-                  </div>
-                  <h3 className="text-base font-bold text-black">
-                    {member.name}
-                  </h3>
-                  <p className="text-xs font-semibold text-primary mt-1 uppercase tracking-wider">
-                    {member.position}
-                  </p>
-                  <p className="text-xs text-neutral-400 mt-0.5">
-                    {member.department} | {member.year}
-                  </p>
-                  <p className="text-sm text-neutral-500 mt-3 leading-relaxed">
-                    {member.bio}
-                  </p>
-                  {}
-                  <div className="mt-4 flex flex-wrap justify-center gap-2">
-                    {member.achievements.slice(0, 2).map((a) => (
-                      <Badge key={a} label={a} variant="ghost" className="bg-neutral-50 border-neutral-100 text-[10px] py-1" />
-                    ))}
-                  </div>
-                  {}
-                  <div className="mt-5 flex items-center gap-2">
-                    <a
-                      href={member.social.linkedin}
-                      className="w-9 h-9 rounded-full bg-neutral-100 hover:bg-primary hover:text-white flex items-center justify-center transition-all duration-300 cursor-pointer"
-                      aria-label={`${member.name}'s LinkedIn`}
-                    >
+
+                  <div className="flex items-center gap-2.5 mt-4">
+                    <a href={member.social.linkedin} onClick={(e) => e.stopPropagation()} className="w-8 h-8 rounded-xl bg-primary/5 border border-primary/50 flex items-center justify-center text-primary/60 hover:bg-primary hover:text-white transition-all duration-300">
                       <Linkedin size={14} />
                     </a>
-                    <a
-                      href={member.social.facebook}
-                      className="w-9 h-9 rounded-full bg-neutral-100 hover:bg-primary hover:text-white flex items-center justify-center transition-all duration-300 cursor-pointer"
-                      aria-label={`${member.name}'s Facebook`}
-                    >
+                    <a href={member.social.facebook} onClick={(e) => e.stopPropagation()} className="w-8 h-8 rounded-xl bg-primary/5 border border-primary/50 flex items-center justify-center text-primary/60 hover:bg-primary hover:text-white transition-all duration-300">
                       <Facebook size={14} />
                     </a>
-                    <a
-                      href={`mailto:${member.social.email}`}
-                      className="w-9 h-9 rounded-full bg-neutral-100 hover:bg-primary hover:text-white flex items-center justify-center transition-all duration-300 cursor-pointer"
-                      aria-label={`Email ${member.name}`}
-                    >
+                    <a href={`mailto:${member.social.email}`} onClick={(e) => e.stopPropagation()} className="w-8 h-8 rounded-xl bg-primary/5 border border-primary/50 flex items-center justify-center text-primary/60 hover:bg-primary hover:text-white transition-all duration-300">
                       <Mail size={14} />
                     </a>
                   </div>
-                </div>
-              </motion.div>
-            );
-          })}
+
+                  <div className="mt-4 pt-3.5 border-t border-neutral-100 w-full group-hover:border-primary/10 transition-all duration-300">
+                    <div className="flex items-center justify-center gap-1 text-[10px] font-bold text-primary/70 group-hover:text-primary uppercase tracking-widest">
+                      Profile <ArrowRight size={10} className="-rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+
+        
+        <div>
+          <div className="flex items-center gap-4 mb-10">
+            <h2 className="text-2xl font-bold text-neutral-900 whitespace-nowrap">Executive Members</h2>
+            <div className="h-px w-full bg-primary/10" />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {executiveMembers.filter(m => m.tier === "executive_member").map((member, i) => {
+              const memberConfig = config[member.tier as keyof typeof config];
+              return (
+                <motion.div
+                  key={member.name}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {} }
+                  transition={{ duration: 0.4, delay: i * 0.05 }}
+                  onClick={() => router.push(`/executive/${member.slug}`)}
+                  className="group flex flex-col items-center bg-white p-6 py-6 rounded-[2rem] border border-primary/50 hover:border-primary hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.06)] transition-all duration-500 cursor-pointer text-center relative"
+                >
+                  <div className="relative mb-4">
+                    <div className="p-1 border border-primary/5 rounded-full group-hover:border-primary/20 transition-colors duration-500">
+                      <div className={`w-24 h-24 rounded-full ${memberConfig.color} flex items-center justify-center text-white text-2xl font-bold shadow-xl shadow-primary/10 group-hover:scale-105 transition-transform duration-500`}>
+                        {member.initials}
+                      </div>
+                    </div>
+                    <div className="absolute -bottom-1 -right-1 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg border border-neutral-100">
+                      <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white">
+                        <memberConfig.icon size={12} />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col items-center flex-1">
+                    <h3 className="text-[17px] font-bold text-neutral-900 group-hover:text-primary transition-colors duration-300 leading-tight mb-1">
+                      {member.name}
+                    </h3>
+                    <p className="text-[10px] font-bold text-primary uppercase tracking-[0.1em] mb-1.5">
+                      {member.position}
+                    </p>
+                    <div className="text-[11px] text-neutral-400 font-medium leading-tight line-clamp-2">
+                      {member.department}
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2.5 mt-4">
+                    <a href={member.social.linkedin} onClick={(e) => e.stopPropagation()} className="w-8 h-8 rounded-xl bg-primary/5 border border-primary/50 flex items-center justify-center text-primary/60 hover:bg-primary hover:text-white transition-all duration-300">
+                      <Linkedin size={14} />
+                    </a>
+                    <a href={member.social.facebook} onClick={(e) => e.stopPropagation()} className="w-8 h-8 rounded-xl bg-primary/5 border border-primary/50 flex items-center justify-center text-primary/60 hover:bg-primary hover:text-white transition-all duration-300">
+                      <Facebook size={14} />
+                    </a>
+                    <a href={`mailto:${member.social.email}`} onClick={(e) => e.stopPropagation()} className="w-8 h-8 rounded-xl bg-primary/5 border border-primary/50 flex items-center justify-center text-primary/60 hover:bg-primary hover:text-white transition-all duration-300">
+                      <Mail size={14} />
+                    </a>
+                  </div>
+
+                  <div className="mt-4 pt-3.5 border-t border-neutral-100 w-full group-hover:border-primary/10 transition-all duration-300">
+                    <div className="flex items-center justify-center gap-1 text-[10px] font-bold text-primary/70 group-hover:text-primary uppercase tracking-widest">
+                      Profile <ArrowRight size={10} className="-rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </main>

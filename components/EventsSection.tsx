@@ -48,11 +48,11 @@ export default function EventsSection() {
   return (
     <section id="events" className="py-24 md:py-32 bg-white" ref={ref}>
       <div className="section-container">
-        {}
+        
         <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : {} }
             transition={{ duration: 0.5 }}
             className="mb-4 flex justify-center"
           >
@@ -60,7 +60,7 @@ export default function EventsSection() {
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : {} }
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-black"
           >
@@ -68,7 +68,7 @@ export default function EventsSection() {
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : {} }
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-4 text-neutral-500 text-lg max-w-2xl mx-auto"
           >
@@ -76,7 +76,7 @@ export default function EventsSection() {
             grow and connect.
           </motion.p>
         </div>
-        {}
+        
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {events.map((event, i) => (
             <EventCard

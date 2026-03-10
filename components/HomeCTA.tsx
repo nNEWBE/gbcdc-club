@@ -12,15 +12,15 @@ export default function HomeCTA() {
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          animate={isInView ? { opacity: 1, y: 0 } : {} }
           transition={{ duration: 0.7, delay: 0.2 }}
           className="relative overflow-hidden rounded-3xl bg-[#020617] p-12 md:p-20"
         >
-          {}
+          
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4" />
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-emerald-500/15 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-cyan-500/10 rounded-full blur-[80px]" />
-          {}
+          
           <div className="absolute inset-0">
             <svg className="w-full h-full opacity-[0.03]">
               <defs>
@@ -41,13 +41,13 @@ export default function HomeCTA() {
               <rect width="100%" height="100%" fill="url(#ctaGrid)" />
             </svg>
           </div>
-          {}
+          
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
           <div className="relative z-10 text-center">
-            {}
+            
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              animate={isInView ? { opacity: 1, y: 0 } : {} }
               transition={{ duration: 0.5, delay: 0.3 }}
               className="mb-8"
             >
@@ -60,7 +60,7 @@ export default function HomeCTA() {
             </motion.div>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              animate={isInView ? { opacity: 1, y: 0 } : {} }
               transition={{ duration: 0.5, delay: 0.35 }}
               className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-5"
             >
@@ -71,17 +71,17 @@ export default function HomeCTA() {
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              animate={isInView ? { opacity: 1, y: 0 } : {} }
               transition={{ duration: 0.5, delay: 0.4 }}
               className="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto mb-10 leading-relaxed"
             >
               Join 500+ students who are building the skills, network, and
               confidence for a successful career. Your journey starts here.
             </motion.p>
-            {}
+            
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              animate={isInView ? { opacity: 1, y: 0 } : {} }
               transition={{ duration: 0.5, delay: 0.45 }}
               className="flex flex-wrap items-center justify-center gap-4 md:gap-6 mb-10"
             >
@@ -99,10 +99,10 @@ export default function HomeCTA() {
                 />
               ))}
             </motion.div>
-            {}
+            
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              animate={isInView ? { opacity: 1, y: 0 } : {} }
               transition={{ duration: 0.5, delay: 0.5 }}
               className="flex flex-col sm:flex-row items-center justify-center gap-4"
             >
