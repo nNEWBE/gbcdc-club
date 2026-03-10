@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronRight } from "lucide-react";
+import { Menu, X, ChevronRight, MessageCircle } from "lucide-react";
 import Logo from "./Logo";
 const navLinks = [
   { href: "/", label: "Home" },
@@ -93,9 +93,13 @@ export default function Navbar() {
             <div className="flex items-center gap-3 shrink-0">
               <Link
                 href="/contact"
-                className="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white text-sm font-semibold rounded-full hover:bg-primary/90 transition-all duration-200 hover:shadow-lg hover:shadow-primary/20 active:scale-95 cursor-pointer"
+                className="group hidden lg:inline-flex items-center gap-2 px-6 py-2.5 bg-primary text-white text-[15px] font-medium rounded-full hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
               >
-                Contact Us
+                <MessageCircle
+                  size={16}
+                  className="transition-transform duration-300 group-hover:scale-110"
+                />
+                Contact
               </Link>
               {}
               <button
@@ -181,9 +185,13 @@ export default function Navbar() {
                 <Link
                   href="/contact"
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center justify-center gap-2 w-full px-6 py-3.5 bg-primary text-white text-sm font-semibold rounded-xl hover:bg-primary/90 transition-all cursor-pointer"
+                  className="group flex items-center justify-center gap-2 w-full px-6 py-3.5 bg-primary text-white text-[15px] font-medium rounded-xl hover:bg-primary/90 transition-all cursor-pointer"
                 >
-                  Contact Us
+                  <MessageCircle
+                    size={18}
+                    className="transition-transform duration-300 group-hover:scale-110"
+                  />
+                  Contact
                 </Link>
               </div>
             </motion.div>

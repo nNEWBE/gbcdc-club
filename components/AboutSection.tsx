@@ -44,11 +44,7 @@ export default function AboutSection() {
             transition={{ duration: 0.5 }}
             className="mb-4 flex justify-center"
           >
-            <Badge 
-              label="About Us" 
-              icon={Users} 
-              variant="primary" 
-            />
+            <Badge label="About Us" icon={Users} variant="primary" />
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}

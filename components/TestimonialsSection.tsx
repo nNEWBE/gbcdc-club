@@ -71,7 +71,6 @@ export default function TestimonialsSection() {
       className="py-24 md:py-32 bg-neutral-50 relative overflow-hidden"
       ref={ref}
     >
-
       <div className="section-container relative z-10">
         <div className="text-center mb-20">
           <motion.div
@@ -96,17 +95,16 @@ export default function TestimonialsSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-4 text-neutral-500 text-lg max-w-2xl mx-auto leading-relaxed"
           >
-            Real stories from students whose university journeys were 
+            Real stories from students whose university journeys were
             transformed through the GBCDC community.
           </motion.p>
         </div>
 
         <div className="relative group max-w-[1400px] mx-auto">
-          {/* Navigation Arrows */}
           <div className="absolute top-1/2 -translate-y-1/2 -left-4 md:-left-8 z-20">
             <button
               onClick={prev}
-              className="w-12 h-12 rounded-full border border-neutral-200 bg-white flex items-center justify-center text-primary hover:bg-neutral-50 transition-all duration-300 cursor-pointer shadow-lg"
+              className="w-12 h-12 rounded-full border border-primary/50 bg-white flex items-center justify-center text-primary hover:bg-neutral-50 transition-all duration-300 cursor-pointer shadow-lg"
               aria-label="Previous testimonial"
             >
               <ChevronLeft size={20} />
@@ -115,60 +113,82 @@ export default function TestimonialsSection() {
           <div className="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-8 z-20">
             <button
               onClick={next}
-              className="w-12 h-12 rounded-full border border-neutral-200 bg-white flex items-center justify-center text-primary hover:bg-neutral-50 transition-all duration-300 cursor-pointer shadow-lg"
+              className="w-12 h-12 rounded-full border border-primary/50 bg-white flex items-center justify-center text-primary hover:bg-neutral-50 transition-all duration-300 cursor-pointer shadow-lg"
               aria-label="Next testimonial"
             >
               <ChevronRight size={20} />
             </button>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
+          <motion.div
+            className="grid gap-6 xl:grid-cols-3 max-w-4xl xl:max-w-none mx-auto"
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0}
+            onDragEnd={(e, { offset, velocity }) => {
+              if (offset.x < -40 || velocity.x < -300) {
+                next();
+              } else if (offset.x > 40 || velocity.x > 300) {
+                prev();
+              }
+            }}
+          >
             {[-1, 0, 1].map((offset) => {
-              const index = (currentIndex + offset + testimonials.length) % testimonials.length;
+              const index =
+                (currentIndex + offset + testimonials.length) %
+                testimonials.length;
               const testimonial = testimonials[index];
               const isCenter = offset === 0;
 
               return (
                 <div
                   key={`card-slot-${offset}`}
-                  className={`relative flex flex-col h-full rounded-[24px] p-8 md:p-10 transition-all duration-500 border overflow-hidden
+                  className={`relative flex-col h-full rounded-[24px] p-8 lg:p-10 xl:p-8 2xl:p-10 transition-all duration-500 border overflow-hidden
+                    ${!isCenter ? "hidden xl:flex" : "flex"}
                     ${
                       isCenter
-                        ? "bg-white border-neutral-200 opacity-100 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] z-10"
-                        : "bg-neutral-100/50 border-transparent opacity-60 hover:opacity-100 hover:bg-white hover:border-neutral-200 hover:shadow-lg"
+                        ? "bg-white border-primary/40 opacity-100 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] z-10"
+                        : "bg-neutral-50/50 border-transparent opacity-50"
                     }
                   `}
                 >
-                  <AnimatePresence mode="wait" initial={false} custom={direction}>
+                  <AnimatePresence
+                    mode="wait"
+                    initial={false}
+                    custom={direction}
+                  >
                     <motion.div
                       key={currentIndex}
                       custom={direction}
-                      initial={isCenter ? { opacity: 0, x: direction > 0 ? 30 : -30 } : { opacity: 0 }}
+                      initial={
+                        isCenter
+                          ? { opacity: 0, x: direction > 0 ? 30 : -30 }
+                          : { opacity: 0 }
+                      }
                       animate={{ opacity: 1, x: 0 }}
-                      exit={isCenter ? { opacity: 0, x: direction > 0 ? -30 : 30 } : { opacity: 0 }}
+                      exit={
+                        isCenter
+                          ? { opacity: 0, x: direction > 0 ? -30 : 30 }
+                          : { opacity: 0 }
+                      }
                       transition={{ duration: 0.25, ease: "easeOut" }}
                       className="flex flex-col h-full w-full"
                     >
-                      {/* Quote Marker */}
                       <div className="mb-8 w-full">
                         {isCenter ? (
                           <div className="flex items-center justify-center gap-4 w-full">
-                            <div className="h-[1px] flex-1 bg-neutral-200" />
-                            <div className="text-primary font-black text-xl tracking-tighter italic">
-                              //
-                            </div>
-                            <div className="h-[1px] flex-1 bg-neutral-200" />
+                            <div className="h-[1px] flex-1 bg-primary/40" />
+                            <div className="text-primary font-black text-xl tracking-tighter italic"></div>
+                            <div className="h-[1px] flex-1 bg-primary/40" />
                           </div>
                         ) : (
                           <div className="flex justify-center w-full">
-                            <div className="text-primary font-black text-xl tracking-tighter italic">
-                              //
-                            </div>
+                            <div className="text-primary font-black text-xl tracking-tighter italic"></div>
                           </div>
                         )}
                       </div>
 
-                      <p 
+                      <p
                         className={`text-base md:text-lg font-medium leading-relaxed mb-10 text-left ${
                           isCenter ? "text-neutral-900" : "text-neutral-500"
                         }`}
@@ -199,9 +219,8 @@ export default function TestimonialsSection() {
                 </div>
               );
             })}
-          </div>
+          </motion.div>
 
-          {/* Indicators */}
           <div className="flex justify-center gap-2 mt-12">
             {testimonials.map((_, i) => (
               <button
@@ -222,6 +241,5 @@ export default function TestimonialsSection() {
         </div>
       </div>
     </section>
-
   );
 }

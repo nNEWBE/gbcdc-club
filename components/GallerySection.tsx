@@ -52,11 +52,7 @@ export default function GallerySection() {
             transition={{ duration: 0.5 }}
             className="mb-4 flex justify-center"
           >
-            <Badge 
-              label="Gallery" 
-              icon={Aperture} 
-              variant="primary" 
-            />
+            <Badge label="Gallery" icon={Aperture} variant="primary" />
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -107,10 +103,10 @@ export default function GallerySection() {
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-500 flex items-end">
                   <div className="p-5 w-full translate-y-full group-hover:translate-y-0 transition-transform duration-500">
                     <div className="mb-2 scale-90 origin-left">
-                      <Badge 
-                        label={image.category} 
-                        variant="ghost" 
-                        className="bg-white/20 backdrop-blur-md text-white border-white/20" 
+                      <Badge
+                        label={image.category}
+                        variant="ghost"
+                        className="bg-white/20 backdrop-blur-md text-white border-white/20"
                       />
                     </div>
                     <p className="text-white font-medium text-sm">

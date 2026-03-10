@@ -93,7 +93,10 @@ export default function HomeAbout() {
               className="group inline-flex items-center gap-2 mt-8 px-6 py-3 bg-primary text-white text-sm font-semibold rounded-full hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20 transition-all duration-200 active:scale-95 cursor-pointer"
             >
               Learn More About Us
-              <ArrowRight size={16} className="-rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+              <ArrowRight
+                size={16}
+                className="-rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300"
+              />
             </Link>
           </motion.div>
         </div>

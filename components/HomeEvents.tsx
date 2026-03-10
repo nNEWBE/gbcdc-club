@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Calendar, MapPin, ArrowUpRight, Bell, Timer } from "lucide-react";
 import Badge from "./Badge";
+import ActionLink from "./ActionLink";
 const upcomingEvents = [
   {
     title: "Career Bootcamp 2026",
@@ -65,13 +66,13 @@ export default function HomeEvents() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <Link
-              href="/events"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary/10 text-primary text-sm font-semibold rounded-full hover:bg-primary hover:text-white transition-all duration-300 cursor-pointer"
-            >
+            <ActionLink href="/events" className="text-sm font-semibold group">
               View All Events
-              <ArrowUpRight size={16} />
-            </Link>
+              <ArrowUpRight
+                size={16}
+                className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
+            </ActionLink>
           </motion.div>
         </div>
         {}

@@ -51,10 +51,10 @@ export default function HomeCTA() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="mb-8"
             >
-              <Badge 
-                label="Start Your Journey" 
-                icon={Rocket} 
-                variant="primary" 
+              <Badge
+                label="Start Your Journey"
+                icon={Rocket}
+                variant="primary"
                 className="bg-primary/10 backdrop-blur-sm border-primary/20 text-primary"
               />
             </motion.div>

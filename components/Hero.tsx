@@ -103,45 +103,49 @@ export default function Hero() {
   const slide = slides[current];
   const kb = kenBurns[current];
   const bgVariants = {
-    enter: (dir: number) => ({
+    enter: {
       opacity: 0,
-      x: dir > 0 ? "8%" : "-8%",
-    }),
-    center: {
-      opacity: 1,
-      x: "0%",
-      transition: { duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] as const },
     },
-    exit: (dir: number) => ({
-      opacity: 0,
-      x: dir > 0 ? "-5%" : "5%",
-      transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const },
-    }),
-  };
-  const contentContainer = {
-    enter: { opacity: 0 },
     center: {
       opacity: 1,
-      transition: { staggerChildren: 0.12, delayChildren: 0.3 },
+      transition: { duration: 1.2, ease: "easeInOut" as const },
     },
     exit: {
       opacity: 0,
-      transition: { duration: 0.3, ease: "easeIn" as const },
+      transition: { duration: 1.2, ease: "easeInOut" as const },
     },
   };
+
+  const contentContainer = {
+    enter: {},
+    center: {
+      transition: { staggerChildren: 0.1, delayChildren: 0.1 },
+    },
+    exit: {
+      transition: { staggerChildren: 0.05, staggerDirection: -1 as const },
+    },
+  };
+
   const contentChild = {
-    enter: { opacity: 0, y: 40, filter: "blur(6px)" },
+    enter: {
+      opacity: 0,
+      y: 30,
+      filter: "blur(8px)",
+      scale: 0.98,
+    },
     center: {
       opacity: 1,
       y: 0,
       filter: "blur(0px)",
-      transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] as const },
+      scale: 1,
+      transition: { duration: 1, ease: [0.16, 1, 0.3, 1] as const },
     },
     exit: {
       opacity: 0,
       y: -20,
-      filter: "blur(4px)",
-      transition: { duration: 0.3 },
+      filter: "blur(8px)",
+      scale: 1.02,
+      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const },
     },
   };
   return (
@@ -204,20 +208,22 @@ export default function Hero() {
       </div>
       {}
       <div className="relative z-10 section-container text-center">
-        <AnimatePresence mode="wait" custom={direction}>
+        <AnimatePresence mode="popLayout" custom={direction}>
           <motion.div
             key={current}
+            custom={direction}
             variants={contentContainer}
             initial="enter"
             animate="center"
             exit="exit"
+            className="w-full flex flex-col items-center"
           >
             {}
             <motion.div variants={contentChild} className="mb-8">
-              <Badge 
-                label={slide.subtitle} 
-                icon={Compass} 
-                variant="primary" 
+              <Badge
+                label={slide.subtitle}
+                icon={Compass}
+                variant="primary"
                 className="bg-primary/20 backdrop-blur-md border-primary/30 text-white animate-pulse-slow"
               />
             </motion.div>

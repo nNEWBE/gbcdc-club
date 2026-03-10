@@ -91,11 +91,7 @@ export default function TeamSection() {
             transition={{ duration: 0.5 }}
             className="mb-4 flex justify-center"
           >
-            <Badge 
-              label="Our Team" 
-              icon={Users} 
-              variant="primary" 
-            />
+            <Badge label="Our Team" icon={Users} variant="primary" />
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
