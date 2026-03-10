@@ -36,7 +36,7 @@ export default function HomeAbout() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: 0.6 }}
-              className="absolute -bottom-4 -left-4 md:bottom-6 md:-left-8 bg-white rounded-xl shadow-xl shadow-black/10 p-4 border border-border"
+              className="absolute -bottom-4 -left-4 md:bottom-6 md:-left-8 bg-white rounded-xl shadow-xl shadow-black/10 p-4 border border-primary/50"
             >
               <div className="text-2xl font-bold text-primary">5+</div>
               <div className="text-xs font-medium text-neutral-500 uppercase tracking-wider">
@@ -58,16 +58,14 @@ export default function HomeAbout() {
               <span className="text-primary">Leaders</span> Today
             </h2>
             <div className="space-y-4 text-neutral-600 leading-relaxed">
-              <p>
+              <p className="line-clamp-3">
                 The{" "}
                 <strong className="text-black">
                   Gono Bishwabidyalay Career Development Club (GBCDC)
                 </strong>{" "}
                 is a student-led organization committed to fostering
-                professional growth and career readiness.
-              </p>
-              <p>
-                We organize workshops, seminars, networking events, and skill
+                professional growth and career readiness. We organize
+                workshops, seminars, networking events, and skill
                 development programs that bridge the gap between academic
                 knowledge and real-world professional success.
               </p>
@@ -78,7 +76,6 @@ export default function HomeAbout() {
                 "Industry-aligned skill development programs",
                 "Professional networking opportunities",
                 "Career guidance and mentorship",
-                "Hands-on workshops and bootcamps",
               ].map((point) => (
                 <div key={point} className="flex items-center gap-3">
                   <CheckCircle2 size={18} className="text-primary shrink-0" />

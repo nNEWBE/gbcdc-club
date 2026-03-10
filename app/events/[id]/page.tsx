@@ -16,7 +16,6 @@ import {
 } from "lucide-react";
 import Badge from "@/components/Badge";
 
-// Dummy details since we don't have a real database hooked up yet.
 const eventDetails = {
   title: "Career Bootcamp 2026",
   status: "Upcoming",
@@ -39,12 +38,10 @@ Whether you're looking for your first internship or preparing to launch your ful
 };
 
 export default function EventDetails({ params }: { params: { id: string } }) {
-  // Normally you'd fetch the event by `params.id` here!
 
   return (
     <div className="bg-white min-h-screen pt-32 pb-24 selection:bg-primary/20">
       <div className="max-w-6xl mx-auto px-6 md:px-8">
-        {/* Navigation Breadcrumb */}
         <nav className="flex items-center gap-2 mb-10 overflow-x-auto whitespace-nowrap pb-2 select-none">
           <Link
             href="/"

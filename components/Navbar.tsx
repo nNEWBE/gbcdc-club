@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronRight, MessageCircle } from "lucide-react";
+import { X, ChevronRight, MessageCircle } from "lucide-react";
 import Logo from "./Logo";
 const navLinks = [
   { href: "/", label: "Home" },
@@ -46,12 +46,11 @@ export default function Navbar() {
         }`}
       >
         <div className="section-container">
-          <div className="flex items-center justify-between h-[88px]">
-            {}
+          <div className="flex items-center justify-between h-[96px]">
+
             <Link href="/" className="flex items-center gap-3 group shrink-0">
-              <Logo className="h-16 w-16 sm:h-20 sm:w-20" />
+              <Logo className="h-20 w-20 sm:h-24 sm:w-24 transform transition-transform duration-500 group-hover:scale-105" />
             </Link>
-            {}
             <div className="hidden lg:flex items-center gap-0.5 bg-black/[0.03] backdrop-blur-sm rounded-full px-1.5 py-1.5 border border-border/40">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
@@ -89,7 +88,6 @@ export default function Navbar() {
                 );
               })}
             </div>
-            {}
             <div className="flex items-center gap-3 shrink-0">
               <Link
                 href="/contact"
@@ -101,101 +99,108 @@ export default function Navbar() {
                 />
                 Contact
               </Link>
-              {}
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className={`lg:hidden p-2.5 rounded-xl transition-all duration-200 cursor-pointer ${
+                className={`lg:hidden relative w-10 h-10 flex items-center justify-center rounded-xl transition-all duration-300 cursor-pointer overflow-hidden group ${
                   isDark
-                    ? "hover:bg-white/10 text-white"
-                    : "hover:bg-neutral-100 text-black"
+                    ? "bg-white/10 text-white border border-white/15 hover:bg-white/20 shadow-lg shadow-black/10"
+                    : "bg-primary/10 text-primary border border-primary/50 hover:bg-primary/20"
                 }`}
                 aria-label="Toggle navigation menu"
               >
-                {isOpen ? <X size={22} /> : <Menu size={22} />}
+                <div className="relative w-5 h-4 flex flex-col items-center justify-center">
+                  <motion.span
+                    animate={isOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -6 }}
+                    className={`absolute w-full h-[1.5px] rounded-full ${
+                      isDark ? "bg-white" : "bg-primary"
+                    }`}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                  <motion.span
+                    animate={isOpen ? { opacity: 0, x: -10 } : { opacity: 1, x: 0 }}
+                    className={`absolute w-full h-[1.5px] scale-x-75 origin-right rounded-full ${
+                      isDark ? "bg-white" : "bg-primary"
+                    }`}
+                    transition={{ duration: 0.2 }}
+                  />
+                  <motion.span
+                    animate={isOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 6 }}
+                    className={`absolute w-full h-[1.5px] rounded-full ${
+                      isDark ? "bg-white" : "bg-primary"
+                    }`}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                </div>
               </button>
             </div>
           </div>
         </div>
       </motion.nav>
-      {}
       <AnimatePresence>
         {isOpen && (
-          <>
-            {}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm lg:hidden"
-              onClick={() => setIsOpen(false)}
-            />
-            {}
-            <motion.div
-              initial={{ opacity: 0, x: "100%" }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: "100%" }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="fixed top-0 right-0 bottom-0 z-50 w-[85%] max-w-sm bg-white shadow-2xl shadow-black/10 lg:hidden overflow-y-auto"
-            >
-              {}
-              <div className="flex items-center justify-between p-6 border-b border-border">
-                <Logo className="h-16 w-16" />
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="p-2 rounded-xl hover:bg-neutral-100 transition-colors cursor-pointer"
-                  aria-label="Close navigation menu"
-                >
-                  <X size={22} />
-                </button>
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20, transition: { duration: 0.2 } }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-[100] bg-white flex flex-col lg:hidden"
+          >
+            <div className="flex items-center justify-between px-6 sm:px-8 h-[96px] shrink-0">
+              <div className="flex items-center justify-center origin-left">
+                <Logo className="h-20 w-20 sm:h-24 sm:w-24" />
               </div>
-              {}
-              <div className="p-4 space-y-1">
-                {navLinks.map((link, i) => (
+              <button
+                onClick={() => setIsOpen(false)}
+                className="w-10 h-10 flex items-center justify-center rounded-xl bg-primary/10 text-primary hover:bg-primary/20 transition-colors cursor-pointer border border-primary/50"
+                aria-label="Close navigation menu"
+              >
+                <X size={20} strokeWidth={2} />
+              </button>
+            </div>
+
+            <div className="flex-1 px-6 sm:px-8 py-4 space-y-1.5 overflow-y-auto">
+              {navLinks.map((link, i) => {
+                const isActive = pathname === link.href;
+                return (
                   <motion.div
                     key={link.href}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.05 + i * 0.03 }}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.03 + 0.1, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                   >
                     <Link
                       href={link.href}
                       onClick={() => setIsOpen(false)}
-                      className={`flex items-center justify-between px-4 py-3.5 rounded-xl text-[15px] font-medium transition-all duration-200 cursor-pointer ${
-                        pathname === link.href
-                          ? "bg-primary/10 text-primary"
-                          : "text-neutral-600 hover:bg-neutral-50 hover:text-black"
+                      className={`block px-6 py-3.5 rounded-xl text-[16px] tracking-tight transition-all duration-300 cursor-pointer border ${
+                        isActive
+                          ? "bg-primary/10 border-primary/50 text-primary font-semibold"
+                          : "border-transparent text-neutral-600 font-medium hover:text-neutral-900 hover:bg-neutral-50"
                       }`}
                     >
                       {link.label}
-                      <ChevronRight
-                        size={16}
-                        className={`transition-all duration-200 ${
-                          pathname === link.href
-                            ? "text-primary"
-                            : "text-neutral-300"
-                        }`}
-                      />
                     </Link>
                   </motion.div>
-                ))}
-              </div>
-              {}
-              <div className="p-4 mt-2 border-t border-border">
+                );
+              })}
+            </div>
+
+            <div className="px-6 sm:px-8 py-6 pb-8 border-t border-neutral-100/50 shrink-0">
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.4 }}
+              >
                 <Link
                   href="/contact"
                   onClick={() => setIsOpen(false)}
-                  className="group flex items-center justify-center gap-2 w-full px-6 py-3.5 bg-primary text-white text-[15px] font-medium rounded-xl hover:bg-primary/90 transition-all cursor-pointer"
+                  className="flex items-center justify-center gap-2 w-full py-4 bg-primary text-white rounded-2xl text-[16px] font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98]"
                 >
-                  <MessageCircle
-                    size={18}
-                    className="transition-transform duration-300 group-hover:scale-110"
-                  />
-                  Contact
+                  <MessageCircle size={20} />
+                  Contact Us
                 </Link>
-              </div>
-            </motion.div>
-          </>
+              </motion.div>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </>

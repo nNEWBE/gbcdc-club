@@ -31,11 +31,15 @@
   html {
     @apply scroll-smooth;
     scroll-padding-top: 5rem;
+    overflow-x: hidden;
   }
   body {
     @apply bg-background text-foreground font-sans;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
   }
   h1,
   h2,
