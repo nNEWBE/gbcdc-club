@@ -1,16 +1,9 @@
 "use client";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import {
-  Calendar,
-  MapPin,
-  ArrowUpRight,
-  Bell,
-  Timer,
-  CheckCircle2,
-} from "lucide-react";
-import Image from "next/image";
+import { Bell } from "lucide-react";
 import Badge from "./Badge";
+import EventCard from "./EventCard";
 const events = [
   {
     title: "Career Bootcamp 2025",
@@ -84,66 +77,14 @@ export default function EventsSection() {
           </motion.p>
         </div>
         {}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {events.map((event, i) => (
-            <motion.div
+            <EventCard
               key={event.title}
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.3 + i * 0.15 }}
-              className="group relative bg-white rounded-2xl border border-border overflow-hidden hover:shadow-2xl hover:shadow-primary/8 transition-all duration-500"
-            >
-              {}
-              <div className="relative aspect-[16/9] overflow-hidden">
-                <Image
-                  src={event.image}
-                  alt={event.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                {}
-                <div className="absolute top-4 right-4 scale-90 origin-top-right">
-                  <Badge
-                    label={event.status}
-                    icon={event.status === "Upcoming" ? Timer : CheckCircle2}
-                    variant={event.status === "Upcoming" ? "primary" : "ghost"}
-                    className={
-                      event.status === "Upcoming"
-                        ? "bg-primary text-white border-transparent"
-                        : ""
-                    }
-                  />
-                </div>
-              </div>
-              {}
-              <div className="p-6">
-                <div className="flex items-center gap-4 text-sm text-neutral-500 mb-3">
-                  <span className="flex items-center gap-1.5">
-                    <Calendar size={14} />
-                    {event.date}
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <MapPin size={14} />
-                    {event.location}
-                  </span>
-                </div>
-                <h3 className="text-xl font-bold text-black mb-2 group-hover:text-neutral-700 transition-colors">
-                  {event.title}
-                </h3>
-                <p className="text-neutral-500 text-sm leading-relaxed">
-                  {event.description}
-                </p>
-                <button className="mt-4 flex items-center gap-1.5 text-sm font-semibold text-black hover:text-neutral-600 transition-colors">
-                  View Details
-                  <ArrowUpRight
-                    size={16}
-                    className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
-                  />
-                </button>
-              </div>
-            </motion.div>
+              event={event}
+              index={i}
+              isInView={isInView}
+            />
           ))}
         </div>
       </div>

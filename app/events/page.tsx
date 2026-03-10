@@ -2,15 +2,10 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import {
-  Calendar,
-  MapPin,
-  ArrowUpRight,
-  Clock,
-  Users,
   Filter,
-  Search,
+  Calendar,
 } from "lucide-react";
-import Image from "next/image";
+import EventCard from "@/components/EventCard";
 const allEvents = [
   {
     title: "Career Bootcamp 2026",
@@ -180,83 +175,14 @@ export default function EventsPage() {
           </span>
         </motion.div>
         {}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredEvents.map((event, i) => (
-            <motion.div
+            <EventCard
               key={event.title}
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.35 + i * 0.1 }}
-              className="group relative bg-white rounded-2xl border border-border overflow-hidden hover:shadow-2xl hover:shadow-primary/8 transition-all duration-500"
-            >
-              {}
-              <div className="relative aspect-[16/9] overflow-hidden">
-                <Image
-                  src={event.image}
-                  alt={event.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                {}
-                <div
-                  className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-semibold ${
-                    event.status === "Upcoming"
-                      ? "bg-primary text-white"
-                      : "bg-white/90 text-neutral-700"
-                  }`}
-                >
-                  {event.status}
-                </div>
-                {}
-                <div className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-black/50 text-white backdrop-blur-sm">
-                  {event.category}
-                </div>
-                {}
-                <div className="absolute bottom-4 left-4 px-3 py-1.5 rounded-lg bg-white/90 backdrop-blur-sm text-xs font-semibold text-black flex items-center gap-1.5">
-                  <Calendar size={12} />
-                  {event.date}
-                </div>
-              </div>
-              {}
-              <div className="p-6">
-                <div className="flex items-center gap-4 text-xs text-neutral-500 mb-3">
-                  <span className="flex items-center gap-1.5">
-                    <Clock size={13} />
-                    {event.time}
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <MapPin size={13} />
-                    {event.location}
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <Users size={13} />
-                    {event.attendees} attending
-                  </span>
-                </div>
-                <h3 className="text-xl font-bold text-black mb-2 group-hover:text-primary transition-colors duration-300">
-                  {event.title}
-                </h3>
-                <p className="text-neutral-500 text-sm leading-relaxed">
-                  {event.description}
-                </p>
-                <div className="mt-5 flex items-center justify-between">
-                  <button className="flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/80 transition-colors cursor-pointer">
-                    View Details
-                    <ArrowUpRight
-                      size={16}
-                      className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
-                    />
-                  </button>
-                  {event.status === "Upcoming" && (
-                    <button className="px-4 py-2 rounded-full bg-primary/10 text-primary text-xs font-semibold hover:bg-primary hover:text-white transition-all duration-300 cursor-pointer">
-                      Register Now
-                    </button>
-                  )}
-                </div>
-              </div>
-            </motion.div>
+              event={event}
+              index={i}
+              isInView={isInView}
+            />
           ))}
         </div>
       </div>

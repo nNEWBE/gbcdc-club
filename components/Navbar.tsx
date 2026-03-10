@@ -24,6 +24,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -31,41 +32,62 @@ export default function Navbar() {
     setIsOpen(false);
   }, [pathname]);
   const isDark = isHome && !scrolled;
+  const showSolid = scrolled || !isHome;
+
   return (
     <>
       <motion.nav
         initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 border-b transition-[background-color,box-shadow] duration-200 ${
-          scrolled
-            ? "bg-white/80 backdrop-blur-xl shadow-lg shadow-black/[0.04] border-border/50"
-            : isHome
-              ? "bg-transparent border-transparent"
-              : "bg-white/80 backdrop-blur-xl border-border/50"
-        }`}
+        animate={{ 
+          y: 0,
+          backgroundColor: showSolid 
+            ? "rgba(255, 255, 255, 0.9)" 
+            : "rgba(255, 255, 255, 0)",
+          backdropFilter: showSolid 
+            ? "blur(16px)" 
+            : "blur(0px)",
+          borderColor: showSolid 
+            ? "rgba(var(--primary-rgb), 0.5)" 
+            : "rgba(255, 255, 255, 0)",
+          boxShadow: showSolid
+            ? "0 10px 15px -3px rgba(var(--primary-rgb), 0.03)"
+            : "0 0px 0px 0px rgba(0, 0, 0, 0)"
+        }}
+        transition={{ 
+          y: { duration: 0.6 },
+          default: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } 
+        }}
+        className="fixed top-0 left-0 right-0 z-50 border-b will-change-[transform,backdrop-filter]"
       >
         <div className="section-container">
           <div className="flex items-center justify-between h-[96px]">
 
             <Link href="/" className="flex items-center gap-3 group shrink-0">
-              <Logo className="h-20 w-20 sm:h-24 sm:w-24 transform transition-transform duration-500 group-hover:scale-105" />
+              <Logo className="h-20 w-20 sm:h-24 sm:w-24 transform transition-all duration-500 group-hover:scale-105" />
             </Link>
-            <div className="hidden lg:flex items-center gap-0.5 bg-black/[0.03] backdrop-blur-sm rounded-full px-1.5 py-1.5 border border-border/40">
+            <div className={`hidden lg:flex items-center gap-0.5 rounded-full px-1.5 py-1.5 border transition-colors duration-500 ${
+              showSolid 
+                ? "bg-primary/[0.02] border-primary/50" 
+                : "bg-black/[0.03] border-white/10"
+            }`}>
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
                 return (
                   <Link
                     href={link.href}
                     key={link.href}
-                    className={`relative px-3.5 py-2 text-[13px] font-medium rounded-full transition-all duration-300 cursor-pointer ${
+                    className={`relative px-4 py-2 text-[13px] font-bold rounded-full transition-all duration-300 cursor-pointer ${
                       isActive
-                        ? isDark
+                        ? showSolid
                           ? "text-white"
-                          : "text-black"
-                        : isDark
-                          ? "text-white/65 hover:text-white"
-                          : "text-neutral-500 hover:text-black"
+                          : isDark
+                            ? "text-white"
+                            : "text-primary"
+                        : showSolid
+                          ? "text-neutral-500 hover:text-primary"
+                          : isDark
+                            ? "text-white/65 hover:text-white"
+                            : "text-neutral-500 hover:text-black"
                     }`}
                   >
                     {link.label}
@@ -73,9 +95,11 @@ export default function Navbar() {
                       <motion.div
                         layoutId="navPill"
                         className={`absolute inset-0 rounded-full -z-10 ${
-                          isDark
-                            ? "bg-white/15 shadow-inner"
-                            : "bg-white shadow-sm shadow-black/[0.06]"
+                          showSolid
+                            ? "bg-primary shadow-[0_4px_12px_rgba(var(--primary-rgb),0.2)]"
+                            : isDark
+                              ? "bg-white/15 shadow-inner"
+                              : "bg-white shadow-sm shadow-black/[0.06]"
                         }`}
                         transition={{
                           type: "spring",

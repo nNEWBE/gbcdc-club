@@ -2,8 +2,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Compass, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState, useEffect, useCallback, useRef } from "react";
+import { ArrowRight, Compass, ChevronLeft, ChevronRight, BellRing } from "lucide-react";
+import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import Badge from "./Badge";
 const slides = [
   {
@@ -46,6 +46,14 @@ const slides = [
     cta: { label: "Join GBCDC", href: "/contact" },
     ctaSecondary: { label: "Meet Our Team", href: "/executive" },
   },
+];
+
+const notices = [
+  "Registration for Career Bootcamp 2026 is now open! Limited seats available.",
+  "Upcoming Talk: 'Tech Careers' by Industry Experts on April 5, 2026.",
+  "Entrepreneurship Summit 2026: Pitch your ideas and win exciting prizes!",
+  "New Member Orientation session scheduled for next Sunday at 10:00 AM.",
+  "Digital Skills Workshop: Certificates will be provided to all attendees.",
 ];
 const kenBurns = [
   {
@@ -294,34 +302,6 @@ export default function Hero() {
         </motion.div>
       </div>
       {}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => goTo(i)}
-            className="relative h-1 rounded-full overflow-hidden cursor-pointer group"
-            style={{ width: i === current ? 48 : 12 }}
-            aria-label={`Go to slide ${i + 1}`}
-          >
-            <div
-              className={`absolute inset-0 rounded-full transition-all duration-500 ${
-                i === current
-                  ? "bg-white/30"
-                  : "bg-white/20 group-hover:bg-white/40"
-              }`}
-            />
-            {i === current && (
-              <motion.div
-                className="absolute inset-0 rounded-full bg-primary"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 6, ease: "linear" }}
-                style={{ transformOrigin: "left" }}
-              />
-            )}
-          </button>
-        ))}
-      </div>
       {}
       <button
         onClick={prev}
@@ -337,8 +317,43 @@ export default function Hero() {
       >
         <ChevronRight size={22} />
       </button>
+      {/* Notices Marquee */}
+      <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-auto select-none overflow-hidden">
+        <div className="bg-white/5 backdrop-blur-md border-t border-white/10 py-3.5 relative">
+          {/* Label Tag */}
+          <div className="absolute left-0 top-0 bottom-0 z-30 flex items-center bg-primary px-4 md:px-6 shadow-[10px_0_20px_rgba(0,0,0,0.3)]">
+            <BellRing size={16} className="text-white mr-2.5 animate-bounce-slow" />
+            <span className="text-[10px] md:text-xs font-black uppercase tracking-widest text-white whitespace-nowrap">
+              Recent Notices
+            </span>
+          </div>
+          
+          {/* Marquee Content */}
+          <motion.div 
+            className="flex items-center gap-12 md:gap-24 whitespace-nowrap pl-[140px] md:pl-[180px]"
+            animate={{ x: [0, -1000] }}
+            transition={{ 
+              duration: 30, 
+              repeat: Infinity, 
+              ease: "linear",
+            }}
+          >
+            {[...notices, ...notices].map((notice, idx) => (
+              <div 
+                key={idx} 
+                className="flex items-center gap-3 group/notice cursor-default"
+              >
+                <div className="w-1.5 h-1.5 rounded-full bg-primary/60 group-hover/notice:scale-150 transition-transform duration-300" />
+                <span className="text-[13px] md:text-[14px] font-bold text-white/90 group-hover/notice:text-white transition-colors duration-300">
+                  {notice}
+                </span>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+
       {}
-      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent z-10" />
     </section>
   );
 }

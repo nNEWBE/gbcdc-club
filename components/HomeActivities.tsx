@@ -115,7 +115,7 @@ export default function HomeActivities() {
                   "md:col-span-1 lg:col-span-1 lg:row-span-1",
                   "md:col-span-1 lg:col-span-1 lg:row-span-1",
                   "md:col-span-1 lg:col-span-1 lg:row-span-1",
-                  "md:col-span-2 lg:col-span-2 lg:row-span-1",
+                  "md:col-span-1 lg:col-span-2 lg:row-span-1",
                   "md:col-span-2 lg:col-span-2 lg:row-span-1",
                 ][i % 8]
               }`}
