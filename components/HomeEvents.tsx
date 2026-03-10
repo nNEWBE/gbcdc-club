@@ -83,41 +83,50 @@ export default function HomeEvents() {
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 + i * 0.12 }}
-              className="group relative bg-white rounded-2xl border border-border overflow-hidden hover:shadow-2xl hover:shadow-primary/5 hover:border-primary/20 transition-all duration-500"
+              className="group relative bg-white flex flex-col h-full rounded-[24px] border border-primary/50 overflow-hidden hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-500"
             >
-              <div className="relative aspect-[16/10] overflow-hidden">
-                <Image
-                  src={event.image}
-                  alt={event.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                <div className="absolute top-3 right-3 scale-90 origin-top-right">
-                  <Badge
-                    label={event.status}
-                    icon={Timer}
-                    variant="primary"
-                    className="bg-primary text-white border-transparent"
+              <div className="p-2 sm:p-2.5 pb-0">
+                <div className="relative aspect-[4/3] sm:aspect-[16/10] overflow-hidden rounded-[18px]">
+                  <Image
+                    src={event.image}
+                    alt={event.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
-                </div>
-                <div className="absolute bottom-3 left-3 px-3 py-1.5 rounded-lg bg-white/90 backdrop-blur-sm text-xs font-semibold text-black flex items-center gap-1.5">
-                  <Calendar size={12} />
-                  {event.date}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/30 pointer-events-none opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
+                  
+                  <div className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/20 text-white text-[11px] font-bold uppercase tracking-widest shadow-sm">
+                    <Timer size={12} strokeWidth={2.5} />
+                    {event.status}
+                  </div>
+                  
+                  <div className="absolute bottom-4 left-4 px-4 py-2.5 rounded-[12px] bg-white shadow-lg flex items-center gap-2 text-neutral-900 group-hover:-translate-y-1 transition-transform duration-500 ease-out">
+                    <Calendar size={14} className="text-neutral-700" strokeWidth={2.5} />
+                    <span className="text-[13px] font-bold leading-none tracking-tight">
+                      {event.date}
+                    </span>
+                  </div>
                 </div>
               </div>
-              <div className="p-5">
-                <div className="flex items-center gap-1.5 text-xs text-neutral-400 mb-2">
-                  <MapPin size={12} />
-                  {event.location}
+              <div className="p-6 sm:p-7 md:p-8 flex flex-col flex-1 bg-white">
+                <div className="flex items-center gap-1.5 text-[13px] font-semibold text-neutral-400 mb-3">
+                  <MapPin size={14} strokeWidth={2.5} className="shrink-0" />
+                  <span className="truncate">{event.location}</span>
                 </div>
-                <h3 className="text-base font-bold text-black mb-2 group-hover:text-primary transition-colors duration-300">
+                <h3 className="text-[20px] md:text-[22px] font-bold text-neutral-900 tracking-tight mb-3 leading-snug group-hover:text-primary transition-colors duration-300">
                   {event.title}
                 </h3>
-                <p className="text-neutral-500 text-sm leading-relaxed line-clamp-2">
+                <p className="text-[15px] font-medium text-neutral-500 leading-relaxed line-clamp-2 mt-auto mb-6">
                   {event.description}
                 </p>
+                <Link
+                  href={`/events/${event.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                  className="inline-flex items-center gap-2 text-[14px] font-bold text-primary group/btn"
+                >
+                  View Details
+                  <ArrowUpRight size={16} className="transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                </Link>
               </div>
             </motion.div>
           ))}

@@ -1,7 +1,7 @@
 "use client";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
-import { ChevronLeft, ChevronRight, Activity } from "lucide-react";
+import { ChevronLeft, ChevronRight, Activity, Quote } from "lucide-react";
 import Badge from "./Badge";
 import Image from "next/image";
 
@@ -143,11 +143,11 @@ export default function TestimonialsSection() {
               return (
                 <div
                   key={`card-slot-${offset}`}
-                  className={`relative flex-col h-full rounded-[24px] p-8 lg:p-10 xl:p-8 2xl:p-10 transition-all duration-500 border overflow-hidden
+                  className={`relative flex-col h-full rounded-[24px] p-8 lg:p-10 xl:p-8 2xl:p-10 transition-all duration-500 border border-primary/50 overflow-hidden
                     ${!isCenter ? "hidden xl:flex" : "flex"}
                     ${
                       isCenter
-                        ? "bg-white border-primary/40 opacity-100 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] z-10"
+                        ? "bg-gradient-to-tr from-white from-60% to-primary/20 border-primary/40 opacity-100 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] z-10"
                         : "bg-neutral-50/50 border-transparent opacity-50"
                     }
                   `}
@@ -174,30 +174,29 @@ export default function TestimonialsSection() {
                       transition={{ duration: 0.25, ease: "easeOut" }}
                       className="flex flex-col h-full w-full"
                     >
-                      <div className="mb-8 w-full">
-                        {isCenter ? (
-                          <div className="flex items-center justify-center gap-4 w-full">
-                            <div className="h-[1px] flex-1 bg-primary/40" />
-                            <div className="text-primary font-black text-xl tracking-tighter italic"></div>
-                            <div className="h-[1px] flex-1 bg-primary/40" />
-                          </div>
-                        ) : (
-                          <div className="flex justify-center w-full">
-                            <div className="text-primary font-black text-xl tracking-tighter italic"></div>
+                      <div className="mb-10 w-full px-2">
+                        {isCenter && (
+                          <div className="flex items-center justify-center gap-5 w-full">
+                            <div className="h-px flex-1 bg-primary/50 rounded-full" />
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-primary shrink-0 translate-y-1">
+                              <path d="M9.75 7C9.75 5.34315 8.40685 4 6.75 4C5.09315 4 3.75 5.34315 3.75 7C3.75 8.76994 4.63147 10.334 5.97226 11.2339C5.26868 13.0645 3.75 14.5 3.75 14.5L5.25 16C5.25 16 8.25 14 9.25 9.5C9.5776 8.02534 9.75 7.5 9.75 7Z" fill="currentColor"/>
+                              <path d="M19.75 7C19.75 5.34315 18.4069 4 16.75 4C15.0931 4 13.75 5.34315 13.75 7C13.75 8.76994 14.6315 10.334 15.9723 11.2339C15.2687 13.0645 13.75 14.5 13.75 14.5L15.25 16C15.25 16 18.25 14 19.25 9.5C19.5776 8.02534 19.75 7.5 19.75 7Z" fill="currentColor"/>
+                            </svg>
+                            <div className="h-px flex-1 bg-primary/50 rounded-full" />
                           </div>
                         )}
                       </div>
 
                       <p
-                        className={`text-base md:text-lg font-medium leading-relaxed mb-10 text-left ${
+                        className={`text-lg md:text-xl font-medium leading-[1.65] tracking-tight mb-12 text-left ${
                           isCenter ? "text-neutral-900" : "text-neutral-500"
                         }`}
                       >
                         {testimonial.quote}
                       </p>
 
-                      <div className="mt-auto flex items-center gap-4 text-left">
-                        <div className="relative w-12 h-12 rounded-full overflow-hidden shrink-0 bg-neutral-100 border border-neutral-200">
+                      <div className="mt-auto flex items-center gap-4 text-left border-t border-primary/50 pt-6 w-full">
+                        <div className="relative w-[52px] h-[52px] rounded-full overflow-hidden shrink-0 bg-neutral-100 border border-primary/50 shadow-sm">
                           <Image
                             src={testimonial.image}
                             alt={testimonial.name}
@@ -206,10 +205,10 @@ export default function TestimonialsSection() {
                           />
                         </div>
                         <div>
-                          <h4 className="text-primary font-bold text-lg mb-0.5">
+                          <h4 className="text-primary font-bold text-[17px] tracking-tight mb-0.5">
                             {testimonial.name}
                           </h4>
-                          <p className="text-neutral-500 text-sm font-medium">
+                          <p className="text-neutral-500 text-[15px] font-medium tracking-tight">
                             {testimonial.role.split(",")[0]}
                           </p>
                         </div>
