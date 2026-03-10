@@ -39,7 +39,7 @@ export default function HomeNews() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 md:py-32 bg-white" ref={ref}>
+    <section className="py-24 md:py-32 bg-neutral-50" ref={ref}>
       <div className="section-container">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
@@ -92,9 +92,7 @@ export default function HomeNews() {
                   className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
                 <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1.5 text-[10px] font-black uppercase tracking-widest bg-white/20 backdrop-blur-md border border-white/30 rounded-full text-white shadow-lg">
-                    {news.category}
-                  </span>
+                  <Badge label={news.category} variant="glass" className="text-[10px] font-black" />
                 </div>
               </div>
 

@@ -19,6 +19,7 @@ import {
   Lightbulb,
   Shield,
 } from "lucide-react";
+import Badge from "@/components/Badge";
 const highlights = [
   {
     icon: Target,
@@ -125,20 +126,19 @@ export default function AboutUsPage() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
   return (
-    <main className="min-h-screen pt-28 pb-20" ref={ref}>
+    <main className="min-h-screen pt-12 pb-20" ref={ref}>
       {}
       <section className="py-16 md:py-24 bg-white">
         <div className="section-container">
           <div className="text-center mb-16">
-            <motion.span
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary text-xs font-semibold uppercase tracking-widest rounded-full mb-4"
+              className="mb-4"
             >
-              <GraduationCap size={14} />
-              About Us
-            </motion.span>
+              <Badge label="About Us" icon={GraduationCap} variant="primary" />
+            </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -259,9 +259,7 @@ export default function AboutUsPage() {
       <section className="py-20 md:py-28 bg-neutral-50">
         <div className="section-container">
           <div className="text-center mb-14">
-            <span className="inline-block px-4 py-1.5 bg-primary text-white text-xs font-semibold uppercase tracking-widest rounded-full mb-4">
-              Our Foundation
-            </span>
+            <Badge label="Our Foundation" icon={Shield} variant="primary" className="mb-4" />
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-black">
               Core Values
             </h2>
@@ -296,9 +294,7 @@ export default function AboutUsPage() {
       <section className="py-20 md:py-28 bg-white">
         <div className="section-container">
           <div className="text-center mb-14">
-            <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary text-xs font-semibold uppercase tracking-widest rounded-full mb-4">
-              Our Journey
-            </span>
+            <Badge label="Our Journey" icon={Rocket} variant="primary" className="mb-4 shadow-none" />
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-black">
               Key Milestones
             </h2>

@@ -11,6 +11,7 @@ import {
   Calendar,
   Megaphone,
 } from "lucide-react";
+import Badge from "@/components/Badge";
 const pinnedNotices = [
   {
     title: "Annual General Meeting 2026",
@@ -86,19 +87,18 @@ export default function NoticesPage() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
   return (
-    <main className="min-h-screen pt-28 pb-20 bg-neutral-50" ref={ref}>
+    <main className="min-h-screen pt-36 pb-20 bg-neutral-50" ref={ref}>
       <div className="section-container">
         {}
         <div className="text-center mb-16">
-          <motion.span
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary text-xs font-semibold uppercase tracking-widest rounded-full mb-4"
+            className="mb-4"
           >
-            <Bell size={14} />
-            Announcements
-          </motion.span>
+            <Badge label="Announcements" icon={Bell} variant="primary" />
+          </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -141,11 +141,11 @@ export default function NoticesPage() {
                   <AlertCircle size={20} className="text-primary" />
                 </div>
                 <div className="flex items-center gap-3 mb-4">
-                  <span
-                    className={`px-3 py-1 rounded-full text-xs font-semibold ${categoryColors[notice.category]}`}
-                  >
-                    {notice.category}
-                  </span>
+                  <Badge
+                    label={notice.category}
+                    variant="ghost"
+                    className={`border-none ${categoryColors[notice.category]}`}
+                  />
                   <span className="flex items-center gap-1 text-xs text-neutral-400 font-medium">
                     <Clock size={12} />
                     {notice.date}
@@ -193,11 +193,11 @@ export default function NoticesPage() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-3 mb-2">
-                      <span
-                        className={`px-2.5 py-0.5 rounded-full text-xs font-semibold ${categoryColors[notice.category]}`}
-                      >
-                        {notice.category}
-                      </span>
+                      <Badge
+                        label={notice.category}
+                        variant="ghost"
+                        className={`border-none ${categoryColors[notice.category]}`}
+                      />
                       <span className="flex items-center gap-1 text-xs text-neutral-400">
                         <Calendar size={12} />
                         {notice.date}

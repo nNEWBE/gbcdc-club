@@ -57,7 +57,7 @@ export default function ContactPage() {
     }, 3000);
   };
   return (
-    <main className="min-h-screen pt-28 pb-20" ref={ref}>
+    <main className="min-h-screen pt-36 pb-20" ref={ref}>
       {}
       <section className="pb-16 bg-white">
         <div className="section-container">

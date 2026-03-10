@@ -40,7 +40,7 @@ Whether you're looking for your first internship or preparing to launch your ful
 export default function EventDetails({ params }: { params: { id: string } }) {
 
   return (
-    <div className="bg-white min-h-screen pt-32 pb-24 selection:bg-primary/20">
+    <div className="bg-white min-h-screen pt-40 pb-24 selection:bg-primary/20">
       <div className="max-w-6xl mx-auto px-6 md:px-8">
         <nav className="flex items-center gap-2 mb-10 overflow-x-auto whitespace-nowrap pb-2 select-none">
           <Link

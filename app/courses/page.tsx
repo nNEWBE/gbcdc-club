@@ -17,6 +17,7 @@ import {
   Award,
   CheckCircle2,
 } from "lucide-react";
+import Badge from "@/components/Badge";
 const courses = [
   {
     icon: Monitor,
@@ -143,19 +144,18 @@ export default function CoursesPage() {
   const isInView = useInView(ref, { once: true, margin: "-50px" });
   const [expandedCourse, setExpandedCourse] = useState<string | null>(null);
   return (
-    <main className="min-h-screen pt-28 pb-20 bg-white" ref={ref}>
+    <main className="min-h-screen pt-36 pb-20 bg-white" ref={ref}>
       <div className="section-container">
         {}
         <div className="text-center mb-12">
-          <motion.span
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary text-xs font-semibold uppercase tracking-widest rounded-full mb-4"
+            className="mb-4"
           >
-            <BookOpen size={14} />
-            Learning
-          </motion.span>
+            <Badge label="Learning" icon={BookOpen} variant="primary" />
+          </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -225,11 +225,11 @@ export default function CoursesPage() {
               {}
               <div className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <span
-                    className={`px-2.5 py-0.5 rounded-full text-xs font-semibold ${levelColors[course.level]}`}
-                  >
-                    {course.level}
-                  </span>
+                  <Badge
+                    label={course.level}
+                    variant="ghost"
+                    className={`border-none ${levelColors[course.level]}`}
+                  />
                   <div className="flex items-center gap-1 text-sm">
                     <Star size={14} className="text-amber-400 fill-amber-400" />
                     <span className="font-semibold text-black">

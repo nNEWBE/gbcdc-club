@@ -90,15 +90,13 @@ export default function HomeCTA() {
                 { icon: Calendar, label: "50+ Events Yearly" },
                 { icon: BookOpen, label: "12 Active Courses" },
               ].map((item) => (
-                <div
+                <Badge
                   key={item.label}
-                  className="flex items-center gap-2.5 px-5 py-2.5 bg-white/5 rounded-full border border-white/10"
-                >
-                  <item.icon size={16} className="text-primary" />
-                  <span className="text-sm font-medium text-neutral-300">
-                    {item.label}
-                  </span>
-                </div>
+                  label={item.label}
+                  icon={item.icon}
+                  variant="ghost"
+                  className="bg-white/5 text-neutral-300 border-white/10 py-2.5 px-5"
+                />
               ))}
             </motion.div>
             {}

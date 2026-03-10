@@ -3,7 +3,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Users } from "lucide-react";
+import { ArrowRight, CheckCircle2, Users, Award } from "lucide-react";
 import Badge from "./Badge";
 export default function HomeAbout() {
   const ref = useRef(null);
@@ -31,16 +31,21 @@ export default function HomeAbout() {
             </div>
             <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/5 rounded-2xl -z-10" />
             <div className="absolute -top-6 -left-6 w-24 h-24 border-2 border-primary/20 rounded-2xl -z-10" />
-            {}
+            {/* Floating Info */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              initial={{ opacity: 0, scale: 0.8, y: 20 }}
+              animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.6 }}
-              className="absolute -bottom-4 -left-4 md:bottom-6 md:-left-8 bg-white rounded-xl shadow-xl shadow-black/10 p-4 border border-primary/50"
+              className="absolute -bottom-6 -left-6 md:bottom-10 md:-left-10 bg-white p-5 rounded-2xl shadow-2xl border border-primary/50 flex items-center gap-4 max-w-[200px]"
             >
-              <div className="text-2xl font-bold text-primary">5+</div>
-              <div className="text-xs font-medium text-neutral-500 uppercase tracking-wider">
-                Years Active
+              <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white shrink-0">
+                <Award size={20} />
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-neutral-900">5+</div>
+                <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest leading-none">
+                  Years Active
+                </div>
               </div>
             </motion.div>
           </motion.div>

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { Calendar, MapPin, ArrowUpRight, Timer, Clock, Users, Hash, UserPlus } from "lucide-react";
+import Badge from "./Badge";
 
 export interface Event {
   title: string;
@@ -43,15 +44,13 @@ export default function EventCard({ event, index, isInView }: EventCardProps) {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/30 pointer-events-none opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
           
-          <div className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/20 text-white text-[11px] font-bold uppercase tracking-widest shadow-sm">
-            <Timer size={12} strokeWidth={2.5} />
-            {event.status}
+          <div className="absolute top-4 right-4">
+            <Badge label={event.status} icon={Timer} variant="glass" className="text-[11px] font-bold" />
           </div>
 
           {event.category && (
-            <div className="absolute top-4 left-4 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white text-[10px] font-bold uppercase tracking-widest shadow-sm">
-              <Hash size={10} strokeWidth={2.5} />
-              {event.category}
+            <div className="absolute top-4 left-4">
+              <Badge label={event.category} icon={Hash} variant="glass" className="bg-black/40 text-[10px] font-bold" />
             </div>
           )}
           

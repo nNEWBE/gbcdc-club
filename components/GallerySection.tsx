@@ -105,8 +105,8 @@ export default function GallerySection() {
                     <div className="mb-2 scale-90 origin-left">
                       <Badge
                         label={image.category}
-                        variant="ghost"
-                        className="bg-white/20 backdrop-blur-md text-white border-white/20"
+                        variant="glass"
+                        className="text-[10px]"
                       />
                     </div>
                     <p className="text-white font-medium text-sm">

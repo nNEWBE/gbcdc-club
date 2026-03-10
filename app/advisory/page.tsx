@@ -11,6 +11,7 @@ import {
   Award,
   Quote,
 } from "lucide-react";
+import Badge from "@/components/Badge";
 const advisors = [
   {
     name: "Prof. Dr. Abdur Rashid",
@@ -85,19 +86,18 @@ export default function AdvisoryPage() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
   return (
-    <main className="min-h-screen pt-28 pb-20 bg-white" ref={ref}>
+    <main className="min-h-screen pt-36 pb-20 bg-white" ref={ref}>
       <div className="section-container">
         {}
         <div className="text-center mb-16">
-          <motion.span
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary text-xs font-semibold uppercase tracking-widest rounded-full mb-4"
+            className="mb-4"
           >
-            <GraduationCap size={14} />
-            Advisors
-          </motion.span>
+            <Badge label="Advisors" icon={GraduationCap} variant="primary" />
+          </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -172,12 +172,7 @@ export default function AdvisoryPage() {
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {advisors[0].expertise.map((exp) => (
-                    <span
-                      key={exp}
-                      className="px-3 py-1.5 bg-white border border-border rounded-full text-xs font-medium text-neutral-600"
-                    >
-                      {exp}
-                    </span>
+                    <Badge key={exp} label={exp} variant="ghost" className="bg-white border-neutral-100 py-1" />
                   ))}
                 </div>
               </div>
@@ -219,12 +214,7 @@ export default function AdvisoryPage() {
                 {}
                 <div className="mt-4 flex flex-wrap justify-center gap-1.5">
                   {advisor.expertise.map((exp) => (
-                    <span
-                      key={exp}
-                      className="px-2 py-1 bg-neutral-50 rounded-full text-xs text-neutral-500 font-medium"
-                    >
-                      {exp}
-                    </span>
+                    <Badge key={exp} label={exp} variant="ghost" className="bg-neutral-50 border-neutral-100 text-[10px] py-1" />
                   ))}
                 </div>
                 {}

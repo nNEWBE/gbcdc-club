@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 interface BadgeProps {
   label: string;
   icon?: LucideIcon;
-  variant?: "primary" | "success" | "secondary" | "outline" | "ghost";
+  variant?: "primary" | "success" | "secondary" | "outline" | "ghost" | "glass";
   className?: string;
 }
 export default function Badge({
@@ -20,6 +20,7 @@ export default function Badge({
     outline:
       "bg-transparent text-slate-400 border-slate-700 hover:border-slate-500",
     ghost: "bg-white/5 text-slate-400 border-white/10",
+    glass: "bg-white/20 backdrop-blur-md border-white/30 text-white shadow-sm",
   };
   return (
     <div

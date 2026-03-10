@@ -10,6 +10,7 @@ import {
   Users,
   BookOpen,
 } from "lucide-react";
+import Badge from "@/components/Badge";
 import Image from "next/image";
 const featuredNews = {
   title: "GBCDC Hosts Largest Career Fair in University History",
@@ -89,19 +90,18 @@ export default function NewsPage() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
   return (
-    <main className="min-h-screen pt-28 pb-20 bg-neutral-50" ref={ref}>
+    <main className="min-h-screen pt-36 pb-20 bg-neutral-50" ref={ref}>
       <div className="section-container">
         {}
         <div className="text-center mb-16">
-          <motion.span
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary text-xs font-semibold uppercase tracking-widest rounded-full mb-4"
+            className="mb-4"
           >
-            <Newspaper size={14} />
-            News
-          </motion.span>
+            <Badge label="News" icon={Newspaper} variant="primary" />
+          </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -137,15 +137,13 @@ export default function NewsPage() {
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent lg:bg-none" />
-              <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-primary text-white">
-                Featured
-              </span>
+              <div className="absolute top-4 left-4">
+                <Badge label="Featured" variant="success" className="px-3" />
+              </div>
             </div>
             <div className="p-8 md:p-12 flex flex-col justify-center">
               <div className="flex items-center gap-3 mb-4">
-                <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
-                  {featuredNews.category}
-                </span>
+                <Badge label={featuredNews.category} variant="primary" className="py-1 px-3" />
                 <span className="flex items-center gap-1 text-xs text-neutral-400 font-medium">
                   <Clock size={12} />
                   {featuredNews.readTime}
@@ -190,9 +188,9 @@ export default function NewsPage() {
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                  <span className="absolute bottom-3 left-3 px-2.5 py-1 rounded-full text-xs font-semibold bg-white/90 text-black backdrop-blur-sm">
-                    {article.category}
-                  </span>
+                  <div className="absolute bottom-3 left-3">
+                    <Badge label={article.category} variant="glass" className="text-black bg-white/90" />
+                  </div>
                 </div>
                 <div className="p-5">
                   <div className="flex items-center gap-3 mb-3 text-xs text-neutral-400">

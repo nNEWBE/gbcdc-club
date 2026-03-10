@@ -2,6 +2,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Linkedin, Facebook, Mail, Shield, Crown, Star } from "lucide-react";
+import Badge from "@/components/Badge";
 const executiveMembers = [
   {
     name: "Md. Rakibul Hasan",
@@ -150,19 +151,18 @@ export default function ExecutivePage() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
   return (
-    <main className="min-h-screen pt-28 pb-20 bg-neutral-50" ref={ref}>
+    <main className="min-h-screen pt-36 pb-20 bg-neutral-50" ref={ref}>
       <div className="section-container">
         {}
         <div className="text-center mb-16">
-          <motion.span
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary text-xs font-semibold uppercase tracking-widest rounded-full mb-4"
+            className="mb-4"
           >
-            <Crown size={14} />
-            Leadership
-          </motion.span>
+            <Badge label="Leadership" icon={Crown} variant="primary" />
+          </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -309,12 +309,7 @@ export default function ExecutivePage() {
                   {}
                   <div className="mt-4 flex flex-wrap justify-center gap-2">
                     {member.achievements.slice(0, 2).map((a) => (
-                      <span
-                        key={a}
-                        className="px-2.5 py-1 bg-neutral-50 rounded-full text-xs text-neutral-500 font-medium"
-                      >
-                        {a}
-                      </span>
+                      <Badge key={a} label={a} variant="ghost" className="bg-neutral-50 border-neutral-100 text-[10px] py-1" />
                     ))}
                   </div>
                   {}
