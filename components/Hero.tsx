@@ -125,7 +125,7 @@ export default function Hero() {
   };
 
   const contentContainer = {
-    enter: ,
+    enter: {},
     center: {
       transition: { staggerChildren: 0.1, delayChildren: 0.1 },
     },
